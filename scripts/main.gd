@@ -7,6 +7,7 @@ extends Node3D
 @onready var carContainer = $Environment/CarContainer
 var carPool: Array[Node3D] = []
 var spawnIndex = 0
+var playerCarStopped = false
 
 func _ready() -> void:
 	for i in range(0,poolSize):
@@ -30,4 +31,4 @@ func spawnCar() -> void:
 
 
 func _on_stopcar_stop_button_pressed() -> void:
-	pass # Replace with function body.
+	GameEvents.stop_button_pressed.emit()
