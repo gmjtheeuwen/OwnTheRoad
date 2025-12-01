@@ -27,3 +27,7 @@ func spawnCar() -> void:
 	var spawnY = -spawnDistance
 	carToSpawn.position = Vector3(spawnX, 0, spawnY)
 	carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func _on_stopcar_stop_button_pressed() -> void:
+	pass # Replace with function body.

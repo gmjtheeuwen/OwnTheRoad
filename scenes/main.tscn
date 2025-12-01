@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt2cjutntdjtl"]
+[gd_scene load_steps=9 format=3 uid="uid://bt2cjutntdjtl"]
 
 [ext_resource type="Script" uid="uid://blc7hueu1wfk1" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://k7ggvl3b5sxu" path="res://scenes/car.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dspuk2sfm2owv" path="res://scenes/player_car.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stopcar.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +34,9 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 maxSpeed = 5.0
 
+[node name="Stopcar" parent="Player" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5931243, 0.701237, -1.980652)
+
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
@@ -46,4 +50,6 @@ material = SubResource("StandardMaterial3D_1bvp3")
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="stop_button_pressed" from="Player/Stopcar" to="." method="_on_stopcar_stop_button_pressed"]
+[connection signal="stop_button_pressed" from="Player/Stopcar" to="Player" method="_on_stopcar_stop_button_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="spawnCar"]
