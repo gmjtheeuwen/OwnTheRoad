@@ -19,16 +19,19 @@ func _ready() -> void:
 		carContainer.add_child(carNode)
 
 func spawnCar() -> void:
-	var carToSpawn = carPool[spawnIndex]
-	print_debug(carToSpawn)
-	spawnIndex = (spawnIndex + 1) % poolSize
+	if not playerCarStopped:
+		var carToSpawn = carPool[spawnIndex]
+		print_debug(carToSpawn)
+		spawnIndex = (spawnIndex + 1) % poolSize
+		
+		var lane = randi() % spawnPositions.size()
+		var spawnX = spawnPositions[lane]
+		var spawnY = -spawnDistance
+		carToSpawn.position = Vector3(spawnX, 0, spawnY)
+		carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
 	
-	var lane = randi() % spawnPositions.size()
-	var spawnX = spawnPositions[lane]
-	var spawnY = -spawnDistance
-	carToSpawn.position = Vector3(spawnX, 0, spawnY)
-	carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _on_stopcar_stop_button_pressed() -> void:
 	GameEvents.stop_button_pressed.emit()
+	playerCarStopped = true
