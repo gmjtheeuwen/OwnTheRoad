@@ -1,10 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dspuk2sfm2owv"]
 
 [ext_resource type="Script" uid="uid://c45ntiq8n2dan" path="res://scripts/player_car.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://c3nglrrrb2y5w" path="res://scenes/player.tscn" id="2_ir7uv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
-size = Vector3(2, 2, 4)
+size = Vector3(2, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmyin"]
+size = Vector3(1, 2, 2)
 
 [node name="PlayerCar" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
@@ -30,4 +32,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
 operation = 2
 size = Vector3(2.2, 0.4, 1.5)
 
-[node name="Player" parent="." instance=ExtResource("2_ir7uv")]
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_jmyin")
+
+[node name="InputLabel" type="Label3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999995, 0, 0)
+billboard = 1
+text = "Press E to enter"
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.6, -0.5)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -3,6 +3,7 @@ class_name Walking
 
 @export var headbob_frequency:= 10.0
 @export var headbob_amplitude:= 0.1
+@export var walking_speed = 5.0
 @export var player: CharacterBody3D
 
 var headbob_time = 0.0
@@ -15,7 +16,13 @@ func headbob(delta) -> Vector3:
 	return new_position
 
 func physics_update(delta: float):
-	if player.velocity.length() > 0:
+	var input_dir = Input.get_vector("left", "right", "up", "down")
+	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		player.velocity.x = direction.x * walking_speed
+		player.velocity.z = direction.z * walking_speed
 		player.camera.transform.origin = headbob(delta)
 	else:
+		player.velocity.x = 0.0
+		player.velocity.z = 0.0
 		transitioned.emit(self, "idle")
