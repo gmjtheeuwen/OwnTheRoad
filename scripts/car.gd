@@ -5,15 +5,13 @@ extends StaticBody3D
 var playerCarStopped = false
 
 func _ready() -> void:
-	GameEvents.stop_button_pressed.connect(onStopPressed)
+	GameEvents.stop_button_pressed.connect(on_stop_pressed)
 
 func _process(delta: float) -> void:
 	MoveObstacleCars(delta)
 	
 func MoveObstacleCars(delta) -> void:
-	
-	if not playerCarStopped:
 		position.z += speed * delta
 
-func onStopPressed() -> void:
+func on_stop_pressed() -> void:
 	playerCarStopped = true

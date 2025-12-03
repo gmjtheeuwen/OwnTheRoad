@@ -5,6 +5,9 @@ extends CharacterBody3D
 var velocityX = 0.0
 var carIsActive = true
 
+func _ready() -> void:
+	GameEvents.stop_button_pressed.connect(on_stop_pressed)
+
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity = get_gravity() * delta
@@ -14,8 +17,6 @@ func _physics_process(delta: float) -> void:
 		velocityX = move_toward(velocityX, direction * maxSpeed, turnSpeed)
 		position.x += velocityX * delta
 		move_and_slide()
-	
-	
 
-func _on_stopcar_stop_button_pressed() -> void:
+func on_stop_pressed() -> void:
 	carIsActive = false

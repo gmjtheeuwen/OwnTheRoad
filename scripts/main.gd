@@ -10,6 +10,8 @@ var spawnIndex = 0
 var playerCarStopped = false
 
 func _ready() -> void:
+	GameEvents.stop_button_pressed.connect(on_stop_pressed)
+	
 	for i in range(0,poolSize):
 		var carNode = car.instantiate()
 		carNode.name = "Car_%s" % i
@@ -31,7 +33,5 @@ func spawnCar() -> void:
 		carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
 	
 
-
-func _on_stopcar_stop_button_pressed() -> void:
-	GameEvents.stop_button_pressed.emit()
+func on_stop_pressed() -> void:
 	playerCarStopped = true
