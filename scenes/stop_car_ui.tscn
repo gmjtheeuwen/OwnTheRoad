@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmugmxiijvmk7"]
 
-[ext_resource type="Script" uid="uid://b8wlcu7v1jvek" path="res://scripts/stopcar/stop_car_ui.gd" id="1_krml4"]
+[ext_resource type="Script" uid="uid://b8wlcu7v1jvek" path="res://scripts/stop_car_ui.gd" id="1_krml4"]
 
 [node name="StopCarUI" type="Control"]
 layout_mode = 3

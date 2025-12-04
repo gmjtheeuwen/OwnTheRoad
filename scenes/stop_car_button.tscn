@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy6gi6kd87mfu"]
 
-[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stopcar/stop_car_ui.tscn" id="1_esdex"]
-[ext_resource type="Script" uid="uid://cy6cay6c5xtit" path="res://scripts/stopcar/stop_car_button.gd" id="1_xqn1n"]
+[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stop_car_ui.tscn" id="1_esdex"]
+[ext_resource type="Script" uid="uid://cy6cay6c5xtit" path="res://scripts/stop_car_button.gd" id="1_xqn1n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3jdpr"]
 viewport_path = NodePath("SubViewport")
