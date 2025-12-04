@@ -3,8 +3,8 @@ class_name Driving
 
 @export var player_car: CharacterBody3D
 @export var player: CharacterBody3D
-@export var max_speed = 0.3
-@export var turn_speed = 0.5
+@export var max_speed = 0.1
+@export var turn_speed = 0.3
 @export var pull_over_speed = 0.05
 var velocityX = 0.0
 var car_stopped = false

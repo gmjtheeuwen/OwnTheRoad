@@ -13,10 +13,10 @@ albedo_texture = SubResource("ViewportTexture_3jdpr")
 [sub_resource type="PlaneMesh" id="PlaneMesh_xqn1n"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_706do")
-size = Vector2(0.2, 0.2)
+size = Vector2(0.15, 0.15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqptl"]
-size = Vector3(0.2, 0.2, 0.001)
+size = Vector3(0.15, 0.15, 0.001)
 
 [node name="StopCarButton" type="Area3D"]
 script = ExtResource("1_xqn1n")
