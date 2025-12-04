@@ -9,6 +9,7 @@ var carPool: Array[Node3D] = []
 var spawnIndex = 0
 
 func _ready() -> void:
+	
 	for i in range(0,poolSize):
 		var carNode = car.instantiate()
 		carNode.name = "Car_%s" % i
@@ -26,3 +27,10 @@ func spawnCar() -> void:
 	var spawnY = -spawnDistance
 	carToSpawn.position = Vector3(spawnX, 0, spawnY)
 	carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
+	
+
+func _on_fade_out_completed() -> void:
+	reset_game()
+
+func reset_game() -> void:
+	get_tree().reload_current_scene()

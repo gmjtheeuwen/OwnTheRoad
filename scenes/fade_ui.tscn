@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://y102tpa830md"]
+
+[ext_resource type="Script" uid="uid://5c6qjeqt2hsr" path="res://scripts/fade_ui.gd" id="1_m860d"]
+
+[node name="FadeUi" type="CanvasLayer"]
+script = ExtResource("1_m860d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
