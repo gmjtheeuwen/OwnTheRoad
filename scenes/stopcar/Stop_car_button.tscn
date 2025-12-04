@@ -1,24 +1,24 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy6gi6kd87mfu"]
 
-[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stop_car_ui.tscn" id="1_esdex"]
-[ext_resource type="Script" uid="uid://cy6cay6c5xtit" path="res://scripts/stop_car_button.gd" id="1_xqn1n"]
+[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stopcar/stop_car_ui.tscn" id="1_esdex"]
+[ext_resource type="Script" uid="uid://cy6cay6c5xtit" path="res://scripts/stopcar/stop_car_button.gd" id="1_xqn1n"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qqptl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3jdpr"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_706do"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_qqptl")
+albedo_texture = SubResource("ViewportTexture_3jdpr")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xqn1n"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_706do")
-size = Vector2(1, 1)
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqptl"]
-size = Vector3(1, 1, 0.01)
+size = Vector3(0.2, 0.2, 0.001)
 
-[node name="StopCarButton" type="StaticBody3D"]
+[node name="StopCarButton" type="Area3D"]
 script = ExtResource("1_xqn1n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -29,7 +29,9 @@ mesh = SubResource("PlaneMesh_xqn1n")
 shape = SubResource("BoxShape3D_qqptl")
 
 [node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+render_target_update_mode = 4
 
 [node name="StopCarUI" parent="SubViewport" instance=ExtResource("1_esdex")]
 
-[connection signal="stop_button_pressed" from="SubViewport/StopCarUI" to="." method="_on_stop_car_ui_stop_button_pressed"]
+[connection signal="stop_ui_pressed" from="SubViewport/StopCarUI" to="." method="_on_stop_ui_pressed"]

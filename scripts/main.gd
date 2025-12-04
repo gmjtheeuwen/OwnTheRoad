@@ -7,10 +7,8 @@ extends Node3D
 @onready var carContainer = $Environment/CarContainer
 var carPool: Array[Node3D] = []
 var spawnIndex = 0
-var playerCarStopped = false
 
 func _ready() -> void:
-	GameEvents.stop_button_pressed.connect(on_stop_pressed)
 	
 	for i in range(0,poolSize):
 		var carNode = car.instantiate()
@@ -24,6 +22,15 @@ func spawnCar() -> void:
 	var carToSpawn = carPool[spawnIndex]
 	spawnIndex = (spawnIndex + 1) % poolSize
 	
+	var lane = randi() % spawnPositions.size()
+	var spawnX = spawnPositions[lane]
+	var spawnY = -spawnDistance
+	carToSpawn.position = Vector3(spawnX, 0, spawnY)
+	carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
+	
 
-func on_stop_pressed() -> void:
-	playerCarStopped = true
+func _on_fade_out_completed() -> void:
+	reset_game()
+
+func reset_game() -> void:
+	get_tree().reload_current_scene()
