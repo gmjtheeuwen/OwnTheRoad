@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func spawnCar() -> void:
 	var carToSpawn = carPool[spawnIndex]
-	print_debug(carToSpawn)
 	spawnIndex = (spawnIndex + 1) % poolSize
 	
 	var lane = randi() % spawnPositions.size()
