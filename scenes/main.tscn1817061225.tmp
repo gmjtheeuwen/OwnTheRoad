@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blc7hueu1wfk1" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://k7ggvl3b5sxu" path="res://scenes/car.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dspuk2sfm2owv" path="res://scenes/player_car.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" path="res://scenes/state_machine.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dy1c420tme5eu" path="res://scenes/state_machine.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://cy3ysphmgbu08" path="res://states/DrivingState.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://c3nglrrrb2y5w" path="res://scenes/player.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/WalkingIdleState.gd" id="7_85g3d"]
@@ -37,8 +37,13 @@ shadow_enabled = true
 
 [node name="PlayerCar" parent="." instance=ExtResource("3_h2yge")]
 
-[node name="StopCarButton" parent="Player" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(0.36542994, 0, 0, 0, 0.22995757, 0, 0, 0, 1, 0.3258847, 0.65889907, -2.0611901)
+[node name="StateMachine" parent="PlayerCar" node_paths=PackedStringArray("initial_state") instance=ExtResource("4_jyhfs")]
+initial_state = NodePath("Driving")
+
+[node name="Driving" type="Node" parent="PlayerCar/StateMachine" node_paths=PackedStringArray("player_car")]
+script = ExtResource("5_tbgi4")
+player_car = NodePath("../..")
+metadata/_custom_type_script = "uid://cy3ysphmgbu08"
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -57,7 +62,7 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
 
 [node name="StateMachine" parent="Player" node_paths=PackedStringArray("initial_state") instance=ExtResource("4_jyhfs")]
-initial_state = NodePath("Idle")
+initial_state = NodePath("Driving")
 
 [node name="Driving" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player_car", "player")]
 script = ExtResource("5_tbgi4")
@@ -65,7 +70,7 @@ player_car = NodePath("../../../PlayerCar")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cy3ysphmgbu08"
 
-[node name="Idle" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
+[node name="WalkingIdle" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("7_85g3d")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://uwr30nkdol3l"
@@ -74,7 +79,3 @@ metadata/_custom_type_script = "uid://uwr30nkdol3l"
 script = ExtResource("8_choun")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
-
-[connection signal="car_entered" from="PlayerCar" to="Player/StateMachine/Idle" method="on_car_entered"]
-[connection signal="car_exited" from="PlayerCar" to="Player/StateMachine/Driving" method="on_car_exited"]
-[connection signal="timeout" from="SpawnTimer" to="." method="spawnCar"]

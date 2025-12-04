@@ -1,22 +1,20 @@
 extends CharacterBody3D
 
-@export var maxSpeed = 10.0
-@export var turnSpeed = 0.2
-var velocityX = 0.0
-var carIsActive = true
+const SENSITIVITY = 0.01
 
-func _ready() -> void:
-	GameEvents.stop_button_pressed.connect(on_stop_pressed)
+@onready var camera = $Head/Camera
+@onready var collision = $Collision
 
-func _physics_process(delta: float) -> void:
-	if !is_on_floor():
-		velocity = get_gravity() * delta
-	
-	if carIsActive:
-		var direction = Input.get_axis("ui_left", "ui_right")
-		velocityX = move_toward(velocityX, direction * maxSpeed, turnSpeed)
-		position.x += velocityX * delta
-		move_and_slide()
+# Remove the mouse in the scene
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func on_stop_pressed() -> void:
-	carIsActive = false
+# Handle rotation of camera, with max and min height
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+
+func _physics_process(_delta: float) -> void:	
+	move_and_slide()
