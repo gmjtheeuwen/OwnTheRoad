@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://dspuk2sfm2owv"]
+
+[ext_resource type="Script" uid="uid://c45ntiq8n2dan" path="res://scripts/player_car.gd" id="1_4flbx"]
+[ext_resource type="ArrayMesh" uid="uid://c4qda8ktmspxy" path="res://assets/models/SportsCar.obj" id="2_ir7uv"]
+[ext_resource type="PackedScene" uid="uid://dy6gi6kd87mfu" path="res://scenes/stop_car_button.tscn" id="3_v64uw"]
+[ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="4_s2c5k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(1.6, 0.5, 3.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmyin"]
+size = Vector3(0.6, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir7uv"]
+albedo_color = Color(0, 0.3, 0.03500004, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v64uw"]
+albedo_color = Color(0.23, 0.23, 0.23, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2c5k"]
+albedo_color = Color(0.63333344, 0.5, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hvhq"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3cpc"]
+albedo_color = Color(0.95000005, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.9490196, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54ksr"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.0
+
+[node name="PlayerCar" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_h2yge")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0999999, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_jmyin")
+
+[node name="InputLabel" type="Label3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0.5, 0)
+billboard = 1
+text = "Press E to enter"
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000002, 1.0351242, -0.60000014)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_ir7uv")
+surface_material_override/0 = SubResource("StandardMaterial3D_ir7uv")
+surface_material_override/1 = SubResource("StandardMaterial3D_v64uw")
+surface_material_override/2 = SubResource("StandardMaterial3D_s2c5k")
+surface_material_override/3 = SubResource("StandardMaterial3D_5hvhq")
+surface_material_override/4 = SubResource("StandardMaterial3D_w3cpc")
+surface_material_override/5 = SubResource("StandardMaterial3D_54ksr")
+
+[node name="StopCarButton" parent="." instance=ExtResource("3_v64uw")]
+transform = Transform3D(1, 0, 0, 0, 0.9689294, 0.24733719, 0, -0.24733719, 0.9689294, -0.48553315, 0.8894508, -0.8794123)
+
+[node name="FadeUi" parent="." instance=ExtResource("4_s2c5k")]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="stop_3D_button_pressed" from="StopCarButton" to="FadeUi" method="_on_stop_3d_button_pressed"]
+[connection signal="fade_out_completed" from="FadeUi" to="." method="_on_fade_out_completed"]

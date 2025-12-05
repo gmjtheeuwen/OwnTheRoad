@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmugmxiijvmk7"]
+
+[ext_resource type="Script" uid="uid://b8wlcu7v1jvek" path="res://scripts/stop_car_ui.gd" id="1_krml4"]
+
+[node name="StopCarUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_krml4")
+
+[node name="StopButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(5, 5)
+text = "Stop"
+
+[connection signal="pressed" from="StopButton" to="." method="_on_stop_button_pressed"]
