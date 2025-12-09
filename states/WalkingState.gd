@@ -1,7 +1,7 @@
 extends State
 class_name Walking
 
-@export var headbob_frequency:= 10.0
+@export var headbob_frequency:= 12.0
 @export var headbob_amplitude:= 0.1
 @export var walking_speed = 5.0
 @export var player: CharacterBody3D

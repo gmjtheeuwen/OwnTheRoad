@@ -8,7 +8,6 @@ signal stop_3D_button_pressed
 
 func _ready() -> void:
 	input_event.connect(_on_input_event)
-
   
 func _on_input_event(camera: Camera3D, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	var mouse3D = meshInstance3D.global_transform.affine_inverse() * event_position
@@ -23,7 +22,6 @@ func _on_input_event(camera: Camera3D, event: InputEvent, event_position: Vector
 	event.position = mouse2D
 	
 	subViewport.push_input(event)
-	
 
 func _on_stop_ui_pressed() -> void:
 	emit_signal("stop_3D_button_pressed") 

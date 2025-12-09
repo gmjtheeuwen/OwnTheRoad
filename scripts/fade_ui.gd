@@ -15,4 +15,4 @@ func _on_stop_3d_button_pressed() -> void:
 	tween.finished.connect(_on_stop_fade_out_complete)
 
 func _on_stop_fade_out_complete():
-	emit_signal("fade_out_completed") 
+	fade_out_completed.emit()

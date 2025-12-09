@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy6gi6kd87mfu"]
 
-[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stopcar/stop_car_ui.tscn" id="1_esdex"]
-[ext_resource type="Script" uid="uid://cy6cay6c5xtit" path="res://scripts/stopcar/stop_car_button.gd" id="1_xqn1n"]
+[ext_resource type="PackedScene" uid="uid://bmugmxiijvmk7" path="res://scenes/stop_car_ui.tscn" id="1_esdex"]
+[ext_resource type="Script" uid="uid://cy6cay6c5xtit" path="res://scripts/stop_car_button.gd" id="1_xqn1n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3jdpr"]
 viewport_path = NodePath("SubViewport")
@@ -13,10 +13,10 @@ albedo_texture = SubResource("ViewportTexture_3jdpr")
 [sub_resource type="PlaneMesh" id="PlaneMesh_xqn1n"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_706do")
-size = Vector2(0.2, 0.2)
+size = Vector2(0.15, 0.15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qqptl"]
-size = Vector3(0.2, 0.2, 0.001)
+size = Vector3(0.15, 0.15, 0.001)
 
 [node name="StopCarButton" type="Area3D"]
 script = ExtResource("1_xqn1n")

@@ -1,19 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://k7ggvl3b5sxu"]
+[gd_scene load_steps=11 format=3 uid="uid://k7ggvl3b5sxu"]
 
 [ext_resource type="Script" uid="uid://dasb8kgvvpqaj" path="res://scripts/car.gd" id="1_7822p"]
+[ext_resource type="ArrayMesh" uid="uid://kytelk0cs4ww" path="res://assets/models/NormalCar1.obj" id="2_qt2eu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7822p"]
 bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24jkt"]
-size = Vector3(2, 2, 4)
+size = Vector3(2, 1.3000001, 4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7822p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt2eu"]
 albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_7822p"]
-material = SubResource("StandardMaterial3D_7822p")
-size = Vector3(2, 2, 4)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtldb"]
+albedo_color = Color(0.63333344, 0.5, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mrxu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp117"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4clw4"]
+albedo_color = Color(0.95000005, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.9490196, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctevm"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.0
 
 [node name="Car" type="StaticBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_7822p")
@@ -21,9 +39,21 @@ script = ExtResource("1_7822p")
 speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65000004, 0)
 shape = SubResource("BoxShape3D_24jkt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_7822p")
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_qt2eu")
+surface_material_override/0 = SubResource("StandardMaterial3D_qt2eu")
+surface_material_override/1 = SubResource("StandardMaterial3D_jtldb")
+surface_material_override/2 = SubResource("StandardMaterial3D_3mrxu")
+surface_material_override/3 = SubResource("StandardMaterial3D_cp117")
+surface_material_override/4 = SubResource("StandardMaterial3D_4clw4")
+surface_material_override/5 = SubResource("StandardMaterial3D_ctevm")
+surface_material_override/6 = SubResource("StandardMaterial3D_3mrxu")
+surface_material_override/7 = SubResource("StandardMaterial3D_cp117")
+surface_material_override/8 = SubResource("StandardMaterial3D_3mrxu")
+surface_material_override/9 = SubResource("StandardMaterial3D_cp117")
+surface_material_override/10 = SubResource("StandardMaterial3D_3mrxu")
+surface_material_override/11 = SubResource("StandardMaterial3D_cp117")

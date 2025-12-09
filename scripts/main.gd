@@ -1,15 +1,15 @@
 extends Node3D
 
 @export var car : PackedScene
-@export var spawnDistance = 40.0
+@export var spawnDistance = 80.0
 @export var spawnPositions : Array[int] = [-8,-4,0,4,8]
 @export var poolSize = 50
-@onready var carContainer = $Environment/CarContainer
+@onready var carContainer = $CarContainer
+@onready var timer = $SpawnTimer
 var carPool: Array[Node3D] = []
 var spawnIndex = 0
 
 func _ready() -> void:
-	
 	for i in range(0,poolSize):
 		var carNode = car.instantiate()
 		carNode.name = "Car_%s" % i
@@ -19,6 +19,7 @@ func _ready() -> void:
 		carContainer.add_child(carNode)
 
 func spawnCar() -> void:
+	print(spawnIndex)
 	var carToSpawn = carPool[spawnIndex]
 	spawnIndex = (spawnIndex + 1) % poolSize
 	
@@ -27,9 +28,9 @@ func spawnCar() -> void:
 	var spawnY = -spawnDistance
 	carToSpawn.position = Vector3(spawnX, 0, spawnY)
 	carToSpawn.process_mode = Node.PROCESS_MODE_INHERIT
-	
 
-func _on_fade_out_completed() -> void:
+
+func _on_car_stopped() -> void:
 	reset_game()
 
 func reset_game() -> void:

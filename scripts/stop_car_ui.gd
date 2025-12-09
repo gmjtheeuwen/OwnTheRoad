@@ -6,4 +6,3 @@ signal stop_ui_pressed
 
 func _on_stop_button_pressed() -> void:
 	emit_signal("stop_ui_pressed") 
-	print("Stop button pressed")
