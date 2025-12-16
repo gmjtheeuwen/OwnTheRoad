@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://be1cjv2645lcx"]
+
+[ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone_example.gd" id="1_2bymc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_364db"]
+size = Vector3(0.4, 0.6, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bymc"]
+size = Vector3(0.6, 0.8, 0.2)
+
+[node name="PhoneExample" type="Node3D"]
+script = ExtResource("1_2bymc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_364db")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, -2.9802322e-08, -2.9802322e-08)
+shape = SubResource("BoxShape3D_2bymc")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="Area3D" to="." method="on_mouse_exit"]

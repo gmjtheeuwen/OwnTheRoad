@@ -1,9 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://dspuk2sfm2owv"]
+[gd_scene load_steps=15 format=3 uid="uid://dspuk2sfm2owv"]
 
 [ext_resource type="Script" uid="uid://c45ntiq8n2dan" path="res://scripts/player_car.gd" id="1_4flbx"]
 [ext_resource type="ArrayMesh" uid="uid://c4qda8ktmspxy" path="res://assets/models/SportsCar.obj" id="2_ir7uv"]
 [ext_resource type="PackedScene" uid="uid://dy6gi6kd87mfu" path="res://scenes/stop_car_button.tscn" id="3_v64uw"]
 [ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="4_s2c5k"]
+[ext_resource type="PackedScene" uid="uid://be1cjv2645lcx" path="res://scenes/phone_example.tscn" id="6_w3cpc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(1.6, 0.5, 3.8)
@@ -70,6 +72,9 @@ surface_material_override/5 = SubResource("StandardMaterial3D_54ksr")
 transform = Transform3D(1, 0, 0, 0, 0.9689294, 0.24733719, 0, -0.24733719, 0.9689294, -0.48553315, 0.8894508, -0.8794123)
 
 [node name="FadeUi" parent="." instance=ExtResource("4_s2c5k")]
+
+[node name="PhoneExample" parent="." instance=ExtResource("6_w3cpc")]
+transform = Transform3D(1, 0, 0, 0, 0.90895253, 0.4168996, 0, -0.4168996, 0.90895253, 0.43379205, 1.0024829, -1.15046)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
