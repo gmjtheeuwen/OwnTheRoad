@@ -9,6 +9,9 @@ class_name Driving
 var velocityX = 0.0
 var car_stopped = false
 
+var normal_fov := 75.0
+var fov_speed := 4.0
+
 func enter():
 	if (player):
 		player.get_node("Collision").disabled = true
@@ -16,6 +19,11 @@ func enter():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func physics_update(delta: float):
+	var camera := player_car.get_node("Head/Camera")
+	
+	if(player_car):
+		camera.fov = lerp(camera.fov, normal_fov, delta * fov_speed)
+	
 	if not car_stopped:
 		var direction = Input.get_axis("ui_left", "ui_right")
 		velocityX = move_toward(velocityX, direction * max_speed, delta * turn_speed)

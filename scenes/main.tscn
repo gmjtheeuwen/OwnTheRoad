@@ -93,8 +93,11 @@ script = ExtResource("8_choun")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
 
-[node name="Driving_Phone" type="Node" parent="Player/StateMachine"]
+[node name="Driving_Phone" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player", "player_car")]
 script = ExtResource("9_choun")
+player = NodePath("../..")
+player_car = NodePath("../../../PlayerCar")
+phone_fov = 40.0
 metadata/_custom_type_script = "uid://dgwqlkrluajad"
 
 [connection signal="car_entered" from="PlayerCar" to="." method="_on_car_entered"]
