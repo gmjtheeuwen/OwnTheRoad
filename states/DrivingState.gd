@@ -37,3 +37,7 @@ func on_car_exited():
 
 func _on_stop_3d_button_pressed() -> void:
 	car_stopped = true
+
+func on_phone_entered():
+	print("phone entered")
+	transitioned.emit(self, "driving_phone")

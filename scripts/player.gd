@@ -8,7 +8,6 @@ const SENSITIVITY = 0.01
 # Remove the mouse in the scene
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	pass
 
 # Handle rotation of camera, with max and min height
 func _unhandled_input(event: InputEvent) -> void:
