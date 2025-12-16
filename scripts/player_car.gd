@@ -8,10 +8,13 @@ signal phone_exited
 
 @onready var label = $Area3D/InputLabel
 @onready var camera = $Head/Camera
+@onready var head = $Head
 @onready var stop_button = $StopCarButton
 
 var playerInCar := false
 var playerNextToDoor := false
+
+const SENSITIVITY = 0.005
 
 func _ready() -> void:
 	label.visible = false
