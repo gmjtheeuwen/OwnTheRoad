@@ -14,4 +14,5 @@ func physics_update(_delta: float):
 	pass
 	
 func on_phone_exited():
+	print("phone exited")
 	transitioned.emit(self, "driving")

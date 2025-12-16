@@ -80,3 +80,5 @@ transform = Transform3D(1, 0, 0, 0, 0.90895253, 0.4168996, 0, -0.4168996, 0.9089
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="stop_3D_button_pressed" from="StopCarButton" to="FadeUi" method="_on_stop_3d_button_pressed"]
 [connection signal="fade_out_completed" from="FadeUi" to="." method="_on_fade_out_completed"]
+[connection signal="phone_area_entered" from="PhoneExample" to="." method="on_phone_entered"]
+[connection signal="phone_area_exited" from="PhoneExample" to="." method="on_phone_exited"]
