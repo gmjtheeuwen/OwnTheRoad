@@ -12,14 +12,8 @@ var car_stopped = false
 func enter():
 	if (player):
 		player.get_node("Collision").disabled = true
-		player_car.get_node("Camera").set_current(true)
+		player_car.get_node("Head/Camera").set_current(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-func exit():
-	if (player):
-		player.get_node("Collision").disabled = false
-		player.get_node("Head/Camera").set_current(true)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func physics_update(delta: float):
 	if not car_stopped:
