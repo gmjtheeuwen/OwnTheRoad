@@ -3,6 +3,8 @@ extends CharacterBody3D
 signal car_entered
 signal car_exited
 signal car_stopped
+signal phone_entered
+signal phone_exited
 
 @onready var label = $Area3D/InputLabel
 @onready var camera = $Camera
@@ -42,3 +44,9 @@ func _process(_delta: float) -> void:
 			car_entered.emit()
 			
 	move_and_slide()
+func on_phone_entered():
+	phone_entered.emit()
+
+func on_phone_exited():
+	phone_exited.emit()
+	
