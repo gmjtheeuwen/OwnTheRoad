@@ -7,7 +7,7 @@ signal phone_entered
 signal phone_exited
 
 @onready var label = $Area3D/InputLabel
-@onready var camera = $Camera
+@onready var camera = $Head/Camera
 @onready var stop_button = $StopCarButton
 
 var playerInCar := false
