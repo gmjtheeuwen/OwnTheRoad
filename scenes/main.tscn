@@ -1,4 +1,3 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt2cjutntdjtl"]
 [gd_scene load_steps=15 format=3 uid="uid://bt2cjutntdjtl"]
 
 [ext_resource type="Script" uid="uid://blc7hueu1wfk1" path="res://scripts/main.gd" id="1_ig7tw"]
@@ -72,7 +71,6 @@ material = SubResource("StandardMaterial3D_tipki")
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 
 [node name="StateMachine" parent="Player" node_paths=PackedStringArray("initial_state") instance=ExtResource("4_jyhfs")]
