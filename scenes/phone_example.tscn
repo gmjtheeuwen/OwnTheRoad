@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://be1cjv2645lcx"]
+[gd_scene load_steps=11 format=3 uid="uid://be1cjv2645lcx"]
 
 [ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone_example.gd" id="1_2bymc"]
 [ext_resource type="Texture2D" uid="uid://b40b2bw2karwp" path="res://assets/sprites/MessageApp.png" id="2_i0arb"]
+[ext_resource type="Script" uid="uid://dv4pnjepy8upm" path="res://scripts/message_app.gd" id="2_rkqgh"]
 [ext_resource type="Texture2D" uid="uid://4h7to1jx3ej7" path="res://assets/sprites/NavigationApp.png" id="3_6edc7"]
 [ext_resource type="Texture2D" uid="uid://dp2aarm0tdnbh" path="res://assets/sprites/UberApp.png" id="4_rkqgh"]
 
@@ -29,11 +30,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2bymc")
 [node name="PhoneCase" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -7.450581e-09, -2.9802322e-08, -0.011091646)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -7.450581e-09, -2.9802322e-08, 0.015661497)
 shape = SubResource("BoxShape3D_2bymc")
 
-[node name="MessageApp" type="Area3D" parent="PhoneCase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09429926, 0.19518068, 0.047184676)
+[node name="MessageApp" type="Area3D" parent="PhoneCase" node_paths=PackedStringArray("app_icon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09429926, 0.19518068, 0.07993975)
+script = ExtResource("2_rkqgh")
+app_icon = NodePath("AppIcon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/MessageApp"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
@@ -44,7 +47,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_6edc7")
 
-[node name="Sprite3D" type="Sprite3D" parent="PhoneCase/MessageApp"]
+[node name="AppIcon" type="Sprite3D" parent="PhoneCase/MessageApp"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0028326586)
 texture = ExtResource("2_i0arb")
 
@@ -60,7 +63,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_6edc7")
 
-[node name="Sprite3D" type="Sprite3D" parent="PhoneCase/NavigationApp"]
+[node name="AppIcon" type="Sprite3D" parent="PhoneCase/NavigationApp"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0028326586)
 texture = ExtResource("3_6edc7")
 
@@ -76,9 +79,10 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_6edc7")
 
-[node name="Sprite3D" type="Sprite3D" parent="PhoneCase/UberApp"]
+[node name="AppIcon" type="Sprite3D" parent="PhoneCase/UberApp"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0028326586)
 texture = ExtResource("4_rkqgh")
 
 [connection signal="mouse_entered" from="PhoneCase" to="." method="on_mouse_enter"]
 [connection signal="mouse_exited" from="PhoneCase" to="." method="on_mouse_exit"]
+[connection signal="input_event" from="PhoneCase/MessageApp" to="PhoneCase/MessageApp" method="_on_input_event"]
