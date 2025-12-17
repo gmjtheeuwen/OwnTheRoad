@@ -2,12 +2,12 @@ shader_type spatial;
 render_mode unshaded, fog_disabled;
 
 uniform sampler2D screenTexure : hint_screen_texture;
-uniform float pixelSize : hint_range(0.0, 100.0, 2) = 8.0;
+uniform float pixelSize : hint_range(0.0, 100.0, 2) = 0.0;
 
 uniform sampler2D distortionTexture;
 
 void vertex() {
-	POSITION = vec4(VERTEX.xy, 1.0 ,1.0);
+	POSITION = vec4(VERTEX.xy, 0.5 ,1);
 }
 
 void fragment() {
@@ -21,9 +21,9 @@ void fragment() {
 
 	//vec4 grayscaling = vec4(0.2 ,0.2 ,0.2 ,0.2);
 
-	float noice = texture(distortionTexture, UV + TIME * 0.02).r * 0.9;
+	float noise = texture(distortionTexture, UV + TIME * 0.05).r * 0.05;
 
-	ALBEDO = texture(screenTexure, SCREEN_UV + noice).rgb + color.rgb;
+	ALBEDO = texture(screenTexure, SCREEN_UV + noise).rgb + color.rgb;
 }
 
 //void light() {
