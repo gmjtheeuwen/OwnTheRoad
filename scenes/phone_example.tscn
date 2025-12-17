@@ -1,24 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://be1cjv2645lcx"]
+[gd_scene load_steps=10 format=3 uid="uid://be1cjv2645lcx"]
 
 [ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone_example.gd" id="1_2bymc"]
+[ext_resource type="Texture2D" uid="uid://b40b2bw2karwp" path="res://assets/sprites/MessageApp.png" id="2_i0arb"]
+[ext_resource type="Texture2D" uid="uid://4h7to1jx3ej7" path="res://assets/sprites/NavigationApp.png" id="3_6edc7"]
+[ext_resource type="Texture2D" uid="uid://dp2aarm0tdnbh" path="res://assets/sprites/UberApp.png" id="4_rkqgh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_364db"]
 size = Vector3(0.4, 0.6, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bymc"]
+resource_local_to_scene = true
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bymc"]
-size = Vector3(0.6, 0.8, 0.2)
+size = Vector3(0.6, 0.8, 0.17042236)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fks7e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6edc7"]
 
 [node name="PhoneExample" type="Node3D"]
 script = ExtResource("1_2bymc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_364db")
+surface_material_override/0 = SubResource("StandardMaterial3D_2bymc")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="PhoneCase" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, -2.9802322e-08, -2.9802322e-08)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -7.450581e-09, -2.9802322e-08, -0.011091646)
 shape = SubResource("BoxShape3D_2bymc")
 
-[connection signal="mouse_entered" from="Area3D" to="." method="on_mouse_enter"]
-[connection signal="mouse_exited" from="Area3D" to="." method="on_mouse_exit"]
+[node name="MessageApp" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09429926, 0.19518068, 0.047184676)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/MessageApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/MessageApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="Sprite3D" type="Sprite3D" parent="PhoneCase/MessageApp"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0028326586)
+texture = ExtResource("2_i0arb")
+
+[node name="NavigationApp" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09429926, 0.040754914, 0.047184676)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/NavigationApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/NavigationApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="Sprite3D" type="Sprite3D" parent="PhoneCase/NavigationApp"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0028326586)
+texture = ExtResource("3_6edc7")
+
+[node name="UberApp" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08376193, 0.19518068, 0.047184676)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/UberApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/UberApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="Sprite3D" type="Sprite3D" parent="PhoneCase/UberApp"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.0028326586)
+texture = ExtResource("4_rkqgh")
+
+[connection signal="mouse_entered" from="PhoneCase" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="PhoneCase" to="." method="on_mouse_exit"]
