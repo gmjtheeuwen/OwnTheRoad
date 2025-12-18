@@ -8,7 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
 render_priority = 0
 shader = ExtResource("2_g2els")
-shader_parameter/pixelSize = 8.0
+shader_parameter/wobbleSpeed = 0.0499999988824
+shader_parameter/dubblevisionAndWobbleStrengt = 0.03
 shader_parameter/distortionTexture = SubResource("CurveTexture_g2els")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qlg0r"]

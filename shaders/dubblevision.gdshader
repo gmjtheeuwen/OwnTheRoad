@@ -1,8 +1,10 @@
 shader_type spatial;
 render_mode unshaded, fog_disabled;
 
+uniform float wobbleSpeed : hint_range(0.0, 0.5, 0.01) = 0.05;
+uniform float dubblevisionAndWobbleStrengt : hint_range(0.0, 0.5, 0.01) = 0.02;
+
 uniform sampler2D screenTexure : hint_screen_texture;
-uniform float pixelSize : hint_range(0.0, 100.0, 2) = 0.0;
 
 uniform sampler2D distortionTexture;
 
@@ -19,9 +21,9 @@ void fragment() {
 	//vec2 distortedUV = SCREEN_UV + texture(distortionTexture, UV + 0.5).r * 0.01;
 	//vec4 screenColor = texture(screenTexure, distortedUV);
 
-	//vec4 grayscaling = vec4(0.2 ,0.2 ,0.2 ,0.2);
+	vec4 grayscaling = vec4(0.05 ,0.05 ,0.05 ,0.05);
 
-	float noise = texture(distortionTexture, UV + TIME * 0.05).r * 0.05;
+	float noise = texture(distortionTexture, UV + TIME * wobbleSpeed).r * dubblevisionAndWobbleStrengt;
 
 	ALBEDO = texture(screenTexure, SCREEN_UV + noise).rgb + color.rgb;
 }
