@@ -9,7 +9,7 @@ func enter():
 		player.get_node("Head/Camera").set_current(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func physics_update(_delta: float):
+func physics_update(_delta: float, _drunk_level: int = 0):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
