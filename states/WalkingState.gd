@@ -15,7 +15,7 @@ func headbob(delta) -> Vector3:
 	new_position.y = sin(headbob_time*headbob_frequency) * headbob_amplitude
 	return new_position
 
-func physics_update(delta: float):
+func physics_update(delta: float, _drunk_level: int = 0):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:

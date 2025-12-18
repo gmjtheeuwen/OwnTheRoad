@@ -19,7 +19,6 @@ func _ready() -> void:
 		carContainer.add_child(carNode)
 
 func spawnCar() -> void:
-	print(spawnIndex)
 	var carToSpawn = carPool[spawnIndex]
 	spawnIndex = (spawnIndex + 1) % poolSize
 	

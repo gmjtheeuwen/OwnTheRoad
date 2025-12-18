@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhv1lj31fp8jh"]
+
+[ext_resource type="Script" uid="uid://b5onrkmlow15e" path="res://scripts/car_ignition.gd" id="1_8t5g7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mv1q7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8t5g7"]
+material = SubResource("StandardMaterial3D_mv1q7")
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkw1x"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8labb"]
+material = SubResource("StandardMaterial3D_hkw1x")
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t5g7"]
+emission_enabled = true
+emission_energy_multiplier = 100.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hkw1x"]
+material = SubResource("StandardMaterial3D_8t5g7")
+top_radius = 0.42
+bottom_radius = 0.42
+height = 0.11
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mv1q7"]
+size = Vector3(1.2, 1.2, 0.2)
+
+[node name="Ignition" type="Node3D"]
+script = ExtResource("1_8t5g7")
+
+[node name="Box" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8t5g7")
+
+[node name="Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.05)
+mesh = SubResource("CylinderMesh_8labb")
+
+[node name="Highlight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.05)
+visible = false
+mesh = SubResource("CylinderMesh_hkw1x")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.12)
+modulate = Color(0.75, 0.75, 0.75, 1)
+text = "Start/Stop"
+font_size = 24
+
+[node name="Collision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2351742e-08)
+shape = SubResource("BoxShape3D_mv1q7")
+
+[connection signal="input_event" from="Collision" to="." method="_on_collision_input_event"]
+[connection signal="mouse_entered" from="Collision" to="." method="on_mouse_entered"]
+[connection signal="mouse_exited" from="Collision" to="." method="on_mouse_exited"]
