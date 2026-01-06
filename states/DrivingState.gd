@@ -26,6 +26,11 @@ func enter():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 		initialize_effects()
+		
+func exit():
+	player_car.brake_input = 0.0
+	player_car.throttle_input = 0.0
+	player_car.steering_input = 0.0
 
 func initialize_effects():
 	for child in get_children():
