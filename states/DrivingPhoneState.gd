@@ -2,7 +2,7 @@ extends State
 class_name Driving_Phone
 
 @export var player: CharacterBody3D
-@export var player_car: CharacterBody3D
+@export var player_car: RigidBody3D
 var normal_fov := 75.0
 @export var phone_fov := 20.0
 var fov_speed := 4.0
