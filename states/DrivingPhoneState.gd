@@ -7,10 +7,10 @@ var normal_fov := 75.0
 @export var phone_fov := 20.0
 var fov_speed := 4.0
 
-func update(_delta: float):
+func update(_delta: float, drunk_level: int = 0):
 	pass
 
-func physics_update(delta: float):
+func physics_update(delta: float, drunk_level: int = 0):
 	var camera := player_car.get_node("Head/Camera")
 	
 	if(player_car):
