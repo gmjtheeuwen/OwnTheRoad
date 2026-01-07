@@ -13,6 +13,7 @@ signal phone_exited
 
 var playerInCar := false
 var playerNextToDoor := false
+var ignitionOn = false
 
 const SENSITIVITY = 0.005
 
@@ -47,6 +48,11 @@ func _process(_delta: float) -> void:
 			car_entered.emit()
 			
 	move_and_slide()
+	
+func on_ignition_pressed():
+	ignitionOn = !ignitionOn
+	print(ignitionOn)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
