@@ -39,18 +39,26 @@ func initialize_effects():
 		if child is Effect:
 			effects.append(child)
 
-func physics_update(delta: float):
-	var camera := player_car.get_node("Head/Camera")
+func physics_update(delta: float, drunk_level: int = 0):
+	camera.fov = lerp(camera.fov, normal_fov, delta * fov_speed)
+		
+	player_car.brake_input = Input.get_action_strength("down")
+	player_car.steering_input = Input.get_action_strength("left") - Input.get_action_strength("right")	
+	player_car.throttle_input = pow(Input.get_action_strength("up"), 2.0)
 	
-	if(player_car):
-		camera.fov = lerp(camera.fov, normal_fov, delta * fov_speed)
-	if not car_stopped:
-		var direction = Input.get_axis("ui_left", "ui_right")
-		velocityX = move_toward(velocityX, direction * max_speed, delta * turn_speed)
-		player_car.position.x += velocityX
-	elif car_stopped:
-		velocityX = move_toward(velocityX, pull_over_speed, delta * turn_speed)
-		player_car.position.x += velocityX
+	if player_car.current_gear == -1:
+		player_car.brake_input = Input.get_action_strength("up")
+		player_car.throttle_input = Input.get_action_strength("down")
+	
+	for effect in effects:
+		effect.apply(delta, drunk_level)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and head and camera:
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		head.rotation.y = clamp(head.rotation.y, deg_to_rad(-30), deg_to_rad(30))
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(30))
 
 func on_car_exited():
 	player.position = player_car.position + Vector3(-1.5, 0, 0)
