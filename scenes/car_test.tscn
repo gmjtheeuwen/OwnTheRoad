@@ -20,7 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5991006)
 
 [node name="StateMachine" parent="Player" node_paths=PackedStringArray("initial_state") instance=ExtResource("3_y2m84")]
 initial_state = NodePath("Idle")
-drunk_level = 5
+drunk_level = 8
 
 [node name="Idle" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("4_j7oku")
@@ -60,4 +60,5 @@ metadata/_custom_type_script = "uid://b1suabgnqoo66"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5077957, 0)
 
 [connection signal="car_entered" from="VehicleRigidBody" to="Player/StateMachine/Idle" method="on_car_entered"]
+[connection signal="car_entered" from="VehicleRigidBody" to="Player/StateMachine/Walking" method="on_car_entered"]
 [connection signal="car_exited" from="VehicleRigidBody" to="Player/StateMachine/Driving" method="on_car_exited"]
