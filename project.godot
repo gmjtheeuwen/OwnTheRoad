@@ -22,6 +22,9 @@ window/size/mode=3
 [global_group]
 
 player=""
+npc_car=""
+building=""
+npc_pedestrian=""
 
 [input]
 
