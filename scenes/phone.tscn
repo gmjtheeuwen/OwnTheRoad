@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsl5xew48g2pm"]
+
+[ext_resource type="Texture2D" uid="uid://dhta4jv88uxck" path="res://assets/sprites/PhoneHUD.png" id="1_eud1m"]
+[ext_resource type="Texture2D" uid="uid://bk8hkm6k2awyr" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
+[ext_resource type="Texture2D" uid="uid://4h7to1jx3ej7" path="res://assets/sprites/NavigationApp.png" id="3_8moxm"]
+
+[node name="Phone" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PhoneCase" type="Sprite2D" parent="TextureRect"]
+texture = ExtResource("1_eud1m")
+
+[node name="MessageButton" type="TextureButton" parent="TextureRect/PhoneCase"]
+offset_left = -132.0
+offset_top = -245.0
+offset_right = -41.0
+offset_bottom = -156.0
+texture_normal = ExtResource("2_8nsb0")
+texture_pressed = ExtResource("2_8nsb0")
+stretch_mode = 0
+
+[node name="NavigationButton" type="TextureButton" parent="TextureRect/PhoneCase"]
+offset_left = 38.0
+offset_top = -245.0
+offset_right = 129.0
+offset_bottom = -156.0
+texture_normal = ExtResource("3_8moxm")
+texture_pressed = ExtResource("3_8moxm")
+stretch_mode = 0
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
