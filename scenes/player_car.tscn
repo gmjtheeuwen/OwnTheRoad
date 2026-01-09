@@ -349,7 +349,7 @@ size = Vector3(0.6, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_v64uw"]
 size = Vector3(1, 0.4, 0.4)
 
-[node name="VehicleRigidBody" type="RigidBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel")]
+[node name="VehicleRigidBody" type="RigidBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel") groups=["player"]]
 script = ExtResource("1_s2c5k")
 front_left_wheel = NodePath("WheelFrontLeft")
 front_right_wheel = NodePath("WheelFrontRight")
