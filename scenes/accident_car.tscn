@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://bj0eapjak8rvq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cm6ux8jv78yxd" path="res://assets/models/NormalCar1.obj" id="1_5a0iu"]
+[ext_resource type="Script" uid="uid://cmvkewn8q7pb0" path="res://scripts/accident_car.gd" id="1_57o4v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57o4v"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg2hn"]
+albedo_color = Color(0.63333344, 0.5, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o84xw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpe6m"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abjon"]
+albedo_color = Color(0.95000005, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.9490196, 1, 0, 1)
+emission_energy_multiplier = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrdo2"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 100.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4i4st"]
+size = Vector3(1.6, 1, 4.2000003)
+
+[node name="AccidentCar" type="RigidBody3D" groups=["npc_car"]]
+script = ExtResource("1_57o4v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_5a0iu")
+surface_material_override/0 = SubResource("StandardMaterial3D_57o4v")
+surface_material_override/1 = SubResource("StandardMaterial3D_bg2hn")
+surface_material_override/2 = SubResource("StandardMaterial3D_o84xw")
+surface_material_override/3 = SubResource("StandardMaterial3D_lpe6m")
+surface_material_override/4 = SubResource("StandardMaterial3D_abjon")
+surface_material_override/5 = SubResource("StandardMaterial3D_lrdo2")
+surface_material_override/6 = SubResource("StandardMaterial3D_o84xw")
+surface_material_override/7 = SubResource("StandardMaterial3D_lpe6m")
+surface_material_override/8 = SubResource("StandardMaterial3D_o84xw")
+surface_material_override/9 = SubResource("StandardMaterial3D_lpe6m")
+surface_material_override/10 = SubResource("StandardMaterial3D_o84xw")
+surface_material_override/11 = SubResource("StandardMaterial3D_lpe6m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 0.5, 5.9604645e-08)
+shape = SubResource("BoxShape3D_4i4st")

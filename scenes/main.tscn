@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt2cjutntdjtl"]
+[gd_scene load_steps=16 format=3 uid="uid://bt2cjutntdjtl"]
 
 [ext_resource type="Script" uid="uid://blc7hueu1wfk1" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://k7ggvl3b5sxu" path="res://scenes/car.tscn" id="2_0xm2m"]
@@ -9,18 +9,19 @@
 [ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/WalkingIdleState.gd" id="7_85g3d"]
 [ext_resource type="Script" uid="uid://c4g4l7ek2yhog" path="res://states/WalkingState.gd" id="8_choun"]
 [ext_resource type="Script" uid="uid://dgwqlkrluajad" path="res://states/DrivingPhoneState.gd" id="9_choun"]
+[ext_resource type="PackedScene" uid="uid://14xdmvwpq0r8" path="res://scenes/grain.tscn" id="10_choun"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
+[sub_resource type="Sky" id="Sky_choun"]
 sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 background_mode = 1
 background_color = Color(0.02666669, 0, 0.1, 1)
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_choun")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -33,6 +34,8 @@ albedo_color = Color(0.7, 0.7, 0.7, 1)
 [node name="Game" type="Node3D"]
 script = ExtResource("1_ig7tw")
 car = ExtResource("2_0xm2m")
+
+[node name="Grain" parent="." instance=ExtResource("10_choun")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
@@ -64,6 +67,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.5, 0)
 use_collision = true
 size = Vector3(1, 2.8, 200)
 material = SubResource("StandardMaterial3D_tipki")
+
+[node name="Wall" type="CSGBox3D" parent="Environment" groups=["building"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -48)
+use_collision = true
+size = Vector3(3, 3, 1)
 
 [node name="CarContainer" type="Node3D" parent="."]
 
@@ -98,11 +106,8 @@ script = ExtResource("9_choun")
 player = NodePath("../..")
 player_car = NodePath("../../../PlayerCar")
 phone_fov = 40.0
-metadata/_custom_type_script = "uid://dgwqlkrluajad"
 
-[connection signal="car_entered" from="PlayerCar" to="." method="_on_car_entered"]
 [connection signal="car_entered" from="PlayerCar" to="Player/StateMachine/Idle" method="on_car_entered"]
-[connection signal="car_exited" from="PlayerCar" to="." method="_on_car_exited"]
 [connection signal="car_exited" from="PlayerCar" to="Player/StateMachine/Driving" method="on_car_exited"]
 [connection signal="car_stopped" from="PlayerCar" to="." method="_on_car_stopped"]
 [connection signal="phone_entered" from="PlayerCar" to="Player/StateMachine/Driving" method="on_phone_entered"]

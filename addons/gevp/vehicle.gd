@@ -450,6 +450,18 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		label.visible = false
 		playerNextToDoor = false
 		
+func _on_hitbox_front_entered(body: Node3D) -> void:
+	var velocity = roundf(abs(local_velocity.z * 3.6))
+	var groups = body.get_groups()
+	if groups.size() == 0:
+		print("player had a frontal collision with an object with a speed of %s km/h" % velocity)
+	else:
+		var group = groups[0]
+		print("player had a frontal collision with %s" % group + " with a speed of %s km/h" % velocity)
+		
+		if group == "npc_car":
+			get_tree().call_deferred('change_scene_to_file', 'res://scenes/cutscenes/cutscene_accident.tscn')
+		
 func _on_fade_out_completed():
 	car_stopped.emit()
 

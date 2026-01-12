@@ -33,6 +33,7 @@ current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8417835e-05, -0.23452556, -0.92725515)
+visible = false
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qlg0r")
 

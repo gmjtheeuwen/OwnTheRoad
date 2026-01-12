@@ -2,7 +2,7 @@ extends Node3D
 
 @export var car : PackedScene
 @export var spawnDistance = 80.0
-@export var spawnPositions : Array[int] = [-8,-4,0,4,8]
+@export var spawnPositions : Array[int] = [-8,-4,0,4]
 @export var poolSize = 50
 @onready var carContainer = $CarContainer
 @onready var timer = $SpawnTimer

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://co56bktg2mgct" path="res://addons/gevp/vehicle.gd" id="1_s2c5k"]
 [ext_resource type="Script" uid="uid://dr17n2xl15ks3" path="res://addons/gevp/wheel.gd" id="2_5hvhq"]
-[ext_resource type="PackedScene" uid="uid://be1cjv2645lcx" path="res://scenes/phone_example.tscn" id="6_w3cpc"]
 
 [sub_resource type="Curve" id="Curve_bt7kc"]
 _data = [Vector2(0, 0.494505), 0.0, 2.04495, 0, 0, Vector2(0.617978, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.692308), -1.4839, 0.0, 0, 0]
@@ -347,7 +346,10 @@ shadow_mesh = SubResource("ArrayMesh_7qo4e")
 [sub_resource type="BoxShape3D" id="BoxShape3D_w3cpc"]
 size = Vector3(0.6, 1, 2)
 
-[node name="VehicleRigidBody" type="RigidBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v64uw"]
+size = Vector3(1, 0.4, 0.4)
+
+[node name="VehicleRigidBody" type="RigidBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel") groups=["player"]]
 script = ExtResource("1_s2c5k")
 front_left_wheel = NodePath("WheelFrontLeft")
 front_right_wheel = NodePath("WheelFrontRight")
@@ -440,10 +442,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.035, -0.4)
 [node name="Camera" type="Camera3D" parent="Head"]
 current = true
 
-[node name="PhoneExample" parent="." instance=ExtResource("6_w3cpc")]
-transform = Transform3D(1, 0, 0, 0, 0.90895253, 0.4168996, 0, -0.4168996, 0.90895253, 0.43379205, 1.0024829, -1.15046)
+[node name="HitboxFront" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxFront"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.54999995)
+shape = SubResource("BoxShape3D_v64uw")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="phone_area_entered" from="PhoneExample" to="." method="on_phone_entered"]
-[connection signal="phone_area_exited" from="PhoneExample" to="." method="on_phone_exited"]
+[connection signal="body_entered" from="HitboxFront" to="." method="_on_hitbox_front_entered"]
