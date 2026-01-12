@@ -461,7 +461,7 @@ func _on_hitbox_front_entered(body: Node3D) -> void:
 		
 		if group == "npc_car":
 			get_tree().call_deferred('change_scene_to_file', 'res://scenes/cutscenes/cutscene_accident.tscn')
-		
+			
 func _on_fade_out_completed():
 	car_stopped.emit()
 
