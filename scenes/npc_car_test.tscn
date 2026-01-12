@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://e014a4iro88h"]
+
+[ext_resource type="PackedScene" uid="uid://cfhvg0t8ksnx2" path="res://scenes/npc_car.tscn" id="1_1w0tu"]
+
+[node name="NPCCarTest" type="Node3D"]
+
+[node name="Roads" type="Node3D" parent="."]
+
+[node name="RoadW" type="CSGBox3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+use_collision = true
+size = Vector3(8, 0.1, 80)
+
+[node name="RoadN" type="CSGBox3D" parent="Roads"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30, 0, -29.999998)
+use_collision = true
+size = Vector3(8, 0.1, 140)
+
+[node name="RoadE" type="CSGBox3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+use_collision = true
+size = Vector3(8, 0.1, 80)
+
+[node name="RoadE2" type="CSGBox3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 0)
+use_collision = true
+size = Vector3(8, 0.1, 80)
+
+[node name="RoadS" type="CSGBox3D" parent="Roads"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 30, 0, 29.999998)
+use_collision = true
+size = Vector3(8, 0.1, 140)
+
+[node name="Culdesac" type="CSGCylinder3D" parent="Roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 58)
+use_collision = true
+radius = 20.0
+height = 0.1
+
+[node name="NPCCar" parent="." instance=ExtResource("1_1w0tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
+
+[node name="PointContainer" type="Node3D" parent="NPCCar"]
+
+[node name="Point1" type="Node3D" parent="NPCCar/PointContainer"]
+
+[node name="Point2" type="Node3D" parent="NPCCar/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="Point3" type="Node3D" parent="NPCCar/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+
+[node name="Point4" type="Node3D" parent="NPCCar/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="NPCCar2" parent="." instance=ExtResource("1_1w0tu")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 90, 0, 30)
+
+[node name="PointContainer" type="Node3D" parent="NPCCar2"]
+
+[node name="Point1" type="Node3D" parent="NPCCar2/PointContainer"]
+
+[node name="Point2" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 1.9073486e-05)
+
+[node name="Point3" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.00004, 0, 13.000023)
+
+[node name="Point4" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.00004, 0, 17.000008)
+
+[node name="Point5" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.00003, 0, 28.000008)
+
+[node name="Point6" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.00005, 0, 40.000008)
+
+[node name="Point7" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.00004, 0, 43.000008)
+
+[node name="Point8" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.000046, 0, 40.000015)
+
+[node name="Point9" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.00005, 0, 28.000011)
+
+[node name="Point10" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.00004, 0, 17.000011)
+
+[node name="Point11" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.000042, 0, 13.000023)
+
+[node name="Point12" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.000015, 0, -59.999985)
+
+[node name="Point13" type="Node3D" parent="NPCCar2/PointContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5258789e-05, 0, -59.999996)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 8.742278e-08, -8.742277e-08, 8.742278e-08, -4.371139e-08, 1, 8.742277e-08, -1, -4.3711395e-08, 30, 40, 9)
+current = true
+fov = 120.0
