@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciu6hf17juvx2"]
+[gd_scene load_steps=8 format=3 uid="uid://ciu6hf17juvx2"]
 
 [ext_resource type="Script" uid="uid://dcfx3r4jbaepd" path="res://scripts/title_screen.gd" id="1_iowo3"]
 [ext_resource type="Texture2D" uid="uid://bqdcc2lmisvbh" path="res://assets/sprites/titlescreen/titlebg.png" id="1_ynr0n"]
 [ext_resource type="Texture2D" uid="uid://d1ujyle4ohja5" path="res://assets/sprites/titlescreen/blackgradient.png" id="2_iowo3"]
+[ext_resource type="AudioStream" uid="uid://bi8usr0aljnfe" path="res://assets/sounds/crowdinabar.wav" id="2_qrms8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrms8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -26,8 +27,9 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 
-[node name="TitleScreen" type="Node2D"]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("bgm")]
 script = ExtResource("1_iowo3")
+bgm = NodePath("BGM")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -91,6 +93,9 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qrms8")
+volume_db = -40.0
+autoplay = true
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 
