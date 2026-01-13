@@ -16,5 +16,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
-func _physics_process(_delta: float) -> void:	
+func _physics_process(delta: float) -> void:	
 	move_and_slide()
