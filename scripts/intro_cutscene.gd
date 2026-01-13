@@ -1,7 +1,10 @@
 extends Node2D
 
+@onready var animation_player = $AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimationPlayer.play("fade_in")
-	await get_tree().create_timer(6).timeout
+	print("timer 1 started.")
+	animation_player.play("intro cutscene")
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

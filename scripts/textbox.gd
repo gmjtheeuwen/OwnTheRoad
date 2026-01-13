@@ -3,19 +3,26 @@ extends CanvasLayer
 @onready var label = $TextboxContainer/MarginContainer/Text/Label
 var current_tween: Tween
 const CHARACTER_READ_RATE = 0.1
+
 enum State{
 	READY,
 	READING,
 	FINISHED
 }
+
 var current_state = State.READY
 var text_queue = []
+
+# Signal to notify when specific text is finished displaying
+signal text_finished(text_content)
 
 func _ready() -> void:
 	print("Starting state: State.READY")
 	hide_textbox()
 	queue_text("this is words and text.")
+	queue_text("I really hope this works.")
 	queue_text("this is more words and text.")
+	queue_text("Is it working.")
 
 func _process(_delta: float) -> void:
 	match current_state:
@@ -27,9 +34,11 @@ func _process(_delta: float) -> void:
 				label.visible_ratio = 1.0
 				if current_tween:
 					current_tween.kill()
-				change_state(State.FINISHED)  # Manually trigger the state change
+				change_state(State.FINISHED)
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept"):
+				# Emit signal with the current text before hiding
+				text_finished.emit(label.text)
 				change_state(State.READY)
 				hide_textbox()
 	
@@ -50,11 +59,9 @@ func display_text():
 	change_state(State.READING)
 	textbox_container.show()
 	
-	# Kill any existing tween
 	if current_tween:
 		current_tween.kill()
 	
-	# Create new tween
 	current_tween = create_tween()
 	current_tween.set_trans(Tween.TRANS_LINEAR)
 	current_tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHARACTER_READ_RATE)
