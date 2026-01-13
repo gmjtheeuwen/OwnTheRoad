@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var point_container = $PointContainer
 @export var starting_point_index: int = 0
 @export var max_speed = 30.0
-@export var cornering_speed = 5.0
+@export var cornering_speed = 8.0
 @export var acceleration = 10.0
 
 var points = []
@@ -31,11 +31,9 @@ func _physics_process(delta: float) -> void:
 	if (!is_on_floor()):
 		position.y += get_gravity().y * delta
 	
-	next_point = points[(current_point_index+1)%points.size()]
-	
 	var distance = global_position.distance_to(next_point)
 	
-	if distance < speed*2:
+	if distance < speed*1.2:
 		target_speed = cornering_speed
 	else:
 		target_speed = max_speed
