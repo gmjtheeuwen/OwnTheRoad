@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://6j5osovhyap8"]
+[gd_scene load_steps=56 format=3 uid="uid://6j5osovhyap8"]
 
 [ext_resource type="PackedScene" uid="uid://c3nglrrrb2y5w" path="res://scenes/player.tscn" id="1_4lajt"]
 [ext_resource type="ArrayMesh" uid="uid://b884xbi604ut" path="res://assets/kits/kenney_city-kit-roads/Models/OBJ format/road-straight.obj" id="1_oyptx"]
@@ -35,15 +35,22 @@
 [ext_resource type="ArrayMesh" uid="uid://dlnugp2fj3tbr" path="res://assets/kits/kenney_city-kit-commercial_2.1/Models/OBJ format/building-skyscraper-e.obj" id="34_hahxc"]
 [ext_resource type="ArrayMesh" uid="uid://b38xrwmmyt3m2" path="res://assets/kits/kenney_city-kit-commercial_2.1/Models/OBJ format/building-c.obj" id="35_kgemm"]
 [ext_resource type="ArrayMesh" uid="uid://c44mx0v0hlvnw" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/building-type-a.obj" id="38_1dbsn"]
-[ext_resource type="ArrayMesh" uid="uid://dw1hoirwucbek" path="res://assets/kits/Nature Kit/Models/OBJ format/ground_grass.obj" id="38_hahxc"]
+[ext_resource type="ArrayMesh" uid="uid://epjt77ve1ihi" path="res://assets/kits/Nature Kit/Models/OBJ format/ground_grass.obj" id="38_hahxc"]
 [ext_resource type="ArrayMesh" uid="uid://5w0rqwaq8epv" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/fence-2x2.obj" id="39_c37mt"]
+[ext_resource type="ArrayMesh" uid="uid://cuf3n1xjy2awm" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_largeA.obj" id="40_dqbo3"]
 [ext_resource type="ArrayMesh" uid="uid://djobbo5dtotgi" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/building-type-b.obj" id="40_ku6xg"]
 [ext_resource type="ArrayMesh" uid="uid://bubb04ov714b4" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/building-type-c.obj" id="41_5u25d"]
+[ext_resource type="ArrayMesh" uid="uid://c7ykqtc7uaxrk" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_largeF.obj" id="41_7fu3t"]
+[ext_resource type="ArrayMesh" uid="uid://d1h7wkcfi4kr5" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_largeD.obj" id="42_0qh65"]
 [ext_resource type="ArrayMesh" uid="uid://7edw4xj4xubt" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/path-stones-short.obj" id="42_6cqd6"]
 [ext_resource type="ArrayMesh" uid="uid://c0e34opk33ica" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/building-type-d.obj" id="43_7fu3t"]
+[ext_resource type="ArrayMesh" uid="uid://ddkwu3xidfiyw" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_largeE.obj" id="43_46fq5"]
 [ext_resource type="ArrayMesh" uid="uid://cv8lqb058nup" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/fence-3x2.obj" id="44_0qh65"]
+[ext_resource type="ArrayMesh" uid="uid://ufeq1cwltlf2" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_largeC.obj" id="44_ac6pr"]
 [ext_resource type="ArrayMesh" uid="uid://dxhnbidstc6wo" path="res://assets/kits/kenney_city-kit-suburban_20/Models/OBJ format/fence-1x2.obj" id="45_46fq5"]
-[ext_resource type="ArrayMesh" uid="uid://h5g1la4po43b" path="res://assets/kits/Nature Kit/Models/OBJ format/path_wood.obj" id="45_dqbo3"]
+[ext_resource type="ArrayMesh" uid="uid://d3gxerldgf35v" path="res://assets/kits/Nature Kit/Models/OBJ format/path_wood.obj" id="45_dqbo3"]
+[ext_resource type="ArrayMesh" uid="uid://cr543oxm211ko" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_largeB.obj" id="45_vfxbh"]
+[ext_resource type="ArrayMesh" uid="uid://bm20jjtcbnbnd" path="res://assets/kits/Nature Kit/Models/OBJ format/rock_smallB.obj" id="46_ihd2o"]
 [ext_resource type="PackedScene" uid="uid://dspuk2sfm2owv" path="res://scenes/player_car.tscn" id="48_6cqd6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v2drl"]
@@ -1639,7 +1646,7 @@ mesh = ExtResource("45_46fq5")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="GroundGrass" type="MeshInstance3D" parent="park"]
-transform = Transform3D(9.051, 0, 0, 0, 0.1, 0, 0, 0, 5.905, 5.503938, 0.0058975997, 3.9471447)
+transform = Transform3D(9.051, 0, 0, 0, 0.1, 0, 0, 0, 5.905, 5.4919734, 0.0058975997, 3.9449716)
 mesh = ExtResource("38_hahxc")
 
 [node name="GroundGrass2" type="MeshInstance3D" parent="park"]
@@ -1702,6 +1709,506 @@ transform = Transform3D(-0.3064178, 0, 0.32139382, 0, 0.1, 0, -0.2571151, 0, -0.
 mesh = ExtResource("45_dqbo3")
 skeleton = NodePath("../..")
 
+[node name="PathWood8" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3064178, 0, 0.32139382, 0, 0.1, 0, -0.2571151, 0, -0.38302222, 2.133445, 0.003544426, 2.085079)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood9" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.25711513, 0, 0.38302222, 0, 0.1, 0, -0.30641785, 0, -0.32139382, 2.4081838, 0.003544426, 2.369868)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood10" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.16904737, 0, 0.4531539, 0, 0.1, 0, -0.3625232, 0, -0.21130918, 2.6039934, 0.003544426, 2.66916)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood11" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.25172818, 0, 0.38857302, 0, 0.1, 0, -0.3108585, 0, -0.31466016, 2.8275957, 0.003544426, 3.011263)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood20" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.36649767, 0, 0.20031051, 0, 0.1, 0, -0.16024844, 0, -0.458122, 3.0428796, 0.003544426, 3.1912906)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood21" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.19805615, 0, 0.4344066, 0, 0.099999994, 0, -0.34752536, 0, -0.24757014, 3.2581298, 0.003544426, 3.3960512)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood14" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.35643116, 0, 0.22692528, 0, 0.09999999, 0, -0.1815403, 0, -0.44553885, 3.4704568, 0.003544426, 3.6137543)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood60" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3990249, 0, -0.034895547, 0, 0.09999998, 0, 0.02791643, 0, -0.49878103, 3.239804, 0.003544426, 3.6295888)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood61" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.2843397, 0, -0.35167262, 0, 0.09999997, 0, 0.28133819, 0, -0.3554245, 2.9118254, 0.003544426, 3.7947984)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood62" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.1143558, 0, -0.47913155, 0, 0.099999964, 0, 0.3833054, 0, -0.14294472, 2.780689, 0.003544426, 4.006026)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood17" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39994437, 0, 0.008342362, 0, 0.09999998, 0, -0.0066739083, 0, -0.49993038, 3.8055007, 0.003544426, 3.6879163)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood18" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3773632, 0, -0.16581704, 0, 0.09999997, 0, 0.13265367, 0, -0.47170398, 4.0881, 0.003544426, 3.6234066)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood25" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.15230553, 0, -0.46233603, 0, 0.09999997, 0, 0.36986884, 0, -0.1903819, 4.1258817, 0.003544426, 3.8310783)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood26" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.11706889, 0, -0.47810632, 0, 0.09999997, 0, 0.38248506, 0, -0.14633606, 4.002933, 0.003544426, 4.1973124)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood27" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.04739631, 0, -0.49647757, 0, 0.09999997, 0, 0.397182, 0, -0.059245355, 3.8894715, 0.003544426, 4.4404445)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood19" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.30519822, 0, -0.32320172, 0, 0.09999997, 0, 0.25856137, 0, -0.3814977, 4.279968, 0.003544426, 3.5588307)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood15" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.20552425, 0, 0.42895174, 0, 0.09999998, 0, -0.34316155, 0, -0.25690538, 3.4818323, 0.003544426, 3.770765)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood16" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.15980043, 0, 0.4583663, 0, 0.09999997, 0, -0.36669317, 0, -0.19975054, 3.62794, 0.003544426, 4.0744987)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood13" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.07176125, 0, 0.4918878, 0, 0.09999999, 0, -0.39351034, 0, -0.089701556, 3.7626998, 0.003544426, 4.4198413)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood28" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.14198403, 0, 0.4674407, 0, 0.099999994, 0, -0.37395272, 0, -0.17748003, 3.8867815, 0.003544426, 4.78689)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood29" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.21747492, 0, 0.41964394, 0, 0.099999994, 0, -0.3357153, 0, -0.27184358, 4.041116, 0.003544426, 5.1105137)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood30" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.17098105, 0, 0.4520189, 0, 0.099999994, 0, -0.3616153, 0, -0.21372627, 4.227049, 0.003544426, 5.410852)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood31" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3123468, 0, 0.31234875, 0, 0.099999994, 0, -0.2498792, 0, -0.39043337, 4.4371, 0.003544426, 5.667881)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood32" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.22395496, 0, 0.41428432, 0, 0.099999994, 0, -0.33142766, 0, -0.27994367, 4.663711, 0.003544426, 5.9227214)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood56" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.32300264, 0, 0.2949294, 0, 0.099999994, 0, -0.2359437, 0, -0.4037532, 4.8701043, 0.003544426, 6.1456795)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood57" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.37883946, 0, 0.16047168, 0, 0.09999999, 0, -0.12837751, 0, -0.47354913, 5.19041, 0.003544426, 6.332845)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood58" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39509192, 0, -0.078088045, 0, 0.099999994, 0, 0.062470343, 0, -0.49386454, 5.5370717, 0.003544426, 6.379103)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood66" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3599817, 0, -0.21799262, 0, 0.09999999, 0, 0.17439412, 0, -0.44997674, 5.8864317, 0.003544426, 6.2522073)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood88" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3947672, 0, 0.080612324, 0, 0.09999999, 0, -0.064490035, 0, -0.49345866, 5.717007, 0.003544426, 6.5164986)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood89" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.35922956, 0, 0.21992241, 0, 0.09999999, 0, -0.17593817, 0, -0.4490367, 6.0562444, 0.003544426, 6.603846)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood90" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.38950172, 0, 0.11380142, 0, 0.099999994, 0, -0.09104135, 0, -0.48687682, 6.420789, 0.003544426, 6.723718)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood91" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39984462, 0, 0.0139432615, 0, 0.099999994, 0, -0.011154771, 0, -0.49980542, 6.713403, 0.003544426, 6.757386)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood92" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.37468612, 0, 0.17504637, 0, 0.099999994, 0, -0.14003731, 0, -0.4683574, 6.971275, 0.003544426, 6.8207717)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood93" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39223787, 0, -0.0980245, 0, 0.099999994, 0, 0.07841951, 0, -0.490297, 7.299774, 0.003544426, 6.841994)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood94" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3376865, 0, -0.26800188, 0, 0.09999999, 0, 0.21440151, 0, -0.4221077, 7.5932336, 0.003544426, 6.728822)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood95" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.24691346, 0, -0.39337063, 0, 0.099999994, 0, 0.31469664, 0, -0.3086414, 7.857662, 0.003544426, 6.465423)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood96" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.066900365, 0, -0.49295732, 0, 0.1, 0, 0.39436612, 0, -0.08362515, 7.9772353, 0.003544426, 6.163143)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood97" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.201353, 0, -0.4320321, 0, 0.1, 0, 0.34562594, 0, -0.25169092, 8.064517, 0.003544426, 5.8194385)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood98" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.31860802, 0, -0.30230662, 0, 0.099999994, 0, 0.24184541, 0, -0.39825964, 8.268554, 0.003544426, 5.5704837)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood99" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.399377, 0, -0.02790215, 0, 0.09999997, 0, 0.022321671, 0, -0.49922082, 8.603675, 0.003544426, 5.4493003)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood100" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.31051126, 0, 0.3151956, 0, 0.099999964, 0, -0.2521567, 0, -0.38813874, 8.947707, 0.003544426, 5.5503526)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood101" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.19923186, 0, 0.4335657, 0, 0.09999998, 0, -0.34685287, 0, -0.2490396, 9.179845, 0.003544426, 5.8152537)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood106" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.19840789, 0, 0.43415567, 0, 0.09999997, 0, -0.34732485, 0, 0.24800964, 9.179845, 0.003544426, 6.5101085)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood107" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.040464163, 0, 0.49743494, 0, 0.099999964, 0, -0.39794832, 0, 0.050580144, 9.28316, 0.003544426, 6.1380744)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood102" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.01812436, 0, 0.49948645, 0, 0.099999964, 0, -0.3995895, 0, -0.022655403, 9.09936, 0.003544426, 6.816734)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood103" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.22897315, 0, 0.409976, 0, 0.099999964, 0, -0.32798114, 0, -0.28621614, 9.217117, 0.003544426, 7.1164203)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood104" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3518698, 0, 0.23778902, 0, 0.099999964, 0, -0.1902314, 0, -0.4398369, 9.481345, 0.003544426, 7.363441)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood105" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3999065, 0, 0.010837555, 0, 0.09999998, 0, -0.008670044, 0, -0.4998827, 9.877593, 0.003544426, 7.4450974)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood67" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.31242532, 0, -0.31222615, 0, 0.09999999, 0, 0.249781, 0, -0.39053127, 6.208108, 0.003544426, 6.072366)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood68" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.37357977, 0, -0.17870322, 0, 0.099999994, 0, 0.14296259, 0, -0.46697426, 6.489034, 0.003544426, 5.8730826)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood69" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.30527958, 0, -0.32308188, 0, 0.099999994, 0, 0.25846562, 0, -0.38159904, 6.790237, 0.003544426, 5.6745477)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood70" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.14870928, 0, -0.4641616, 0, 0.099999994, 0, 0.37132955, 0, -0.18588625, 7.0014205, 0.003544426, 5.4084344)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood71" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.049980868, 0, -0.49608102, 0, 0.09999999, 0, 0.3968652, 0, 0.062476218, 7.0772414, 0.003544426, 5.0476136)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood72" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.25230286, 0, -0.38798985, 0, 0.099999994, 0, 0.31039226, 0, 0.31537843, 6.9467773, 0.003544426, 4.7384257)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood73" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.37756425, 0, -0.16510041, 0, 0.09999999, 0, 0.1320806, 0, 0.47195497, 6.60821, 0.003544426, 4.5281596)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood74" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.28, 0, -0.35707107, 0, 0.09999999, 0, 0.28565723, 0, 0.34999987, 6.2816925, 0.003544426, 4.319879)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood75" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.091965534, 0, -0.48660514, 0, 0.099999994, 0, 0.38928446, 0, 0.11495707, 6.09015, 0.003544426, 3.9824398)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood76" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.20164828, 0, -0.4318162, 0, 0.09999999, 0, 0.34545332, 0, 0.25206038, 5.9576683, 0.003544426, 3.638995)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood77" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.2971739, 0, -0.33468163, 0, 0.099999994, 0, 0.2677457, 0, 0.37146723, 5.672355, 0.003544426, 3.3197377)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood78" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.3830528, 0, 0.14399798, 0, 0.09999999, 0, -0.11519827, 0, 0.47881553, 5.672355, 0.003544426, 3.1586683)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood79" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.3196685, 0, 0.30055195, 0, 0.09999999, 0, -0.2404416, 0, 0.39958516, 6.0145345, 0.003544426, 3.0480216)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood80" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.38930222, 0, 0.11486359, 0, 0.099999994, 0, -0.091890775, 0, 0.4866273, 6.324676, 0.003544426, 2.8952994)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood81" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.38956842, 0, -0.11344445, 0, 0.09999999, 0, 0.090755805, 0, 0.48696008, 6.7071414, 0.003544426, 2.8952997)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood82" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.2937338, 0, -0.3393937, 0, 0.099999994, 0, 0.27151534, 0, 0.36716712, 7.014194, 0.003544426, 3.0946271)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood83" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.16618855, 0, -0.45480296, 0, 0.099999994, 0, 0.36384276, 0, 0.20773573, 7.2318416, 0.003544426, 3.381846)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood84" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.007511386, 0, -0.4999118, 0, 0.1, 0, 0.3999298, 0, 0.009389448, 7.2932115, 0.003544426, 3.7850602)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood85" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.15832101, 0, -0.45916802, 0, 0.1, 0, 0.3673347, 0, -0.19790088, 7.240709, 0.003544426, 4.156538)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood86" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.052605104, 0, -0.49565735, 0, 0.1, 0, 0.39652622, 0, -0.0657561, 7.1382213, 0.003544426, 4.516578)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood87" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.042109903, 0, -0.49722168, 0, 0.1, 0, 0.39777777, 0, 0.052637566, 7.089432, 0.003544426, 4.909289)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood33" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.36214182, 0, -0.21232891, 0, 0.099999994, 0, 0.16986315, 0, -0.45267686, 3.2580814, 0.003544426, 7.2658844)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood50" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.2842807, 0, -0.351747, 0, 0.09999999, 0, 0.28139767, 0, -0.35535046, 3.5483081, 0.003544426, 7.0545726)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood51" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.35623786, 0, -0.22739959, 0, 0.099999994, 0, 0.18191962, 0, -0.4452969, 3.822437, 0.003544426, 6.802456)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood52" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3984439, 0, -0.04406487, 0, 0.1, 0, 0.035251703, 0, -0.49805456, 4.157993, 0.003544426, 6.699993)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood63" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.24635838, 0, -0.39391422, 0, 0.1, 0, 0.31513143, 0, -0.30794755, 4.3716044, 0.003544426, 6.5443206)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood64" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.007413638, 0, -0.49991423, 0, 0.099999994, 0, 0.39993164, 0, 0.009267307, 4.5443964, 0.003544426, 6.037231)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood65" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.162427, 0, -0.45692182, 0, 0.099999994, 0, 0.3655376, 0, -0.20303336, 4.546102, 0.003544426, 6.2505536)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood53" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.36904788, 0, -0.19285662, 0, 0.1, 0, 0.15428518, 0, -0.46130943, 4.509828, 0.003544426, 6.6350837)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood54" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.396374, 0, 0.06717447, 0, 0.10000002, 0, -0.053739864, 0, -0.4954672, 4.847604, 0.003544426, 6.588655)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood55" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39701375, 0, -0.060986903, 0, 0.1, 0, 0.0487893, 0, -0.4962668, 5.132086, 0.003544426, 6.5897393)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood59" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.34652218, 0, -0.24975841, 0, 0.1, 0, 0.19980662, 0, -0.43315226, 5.480186, 0.003544426, 6.455519)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood34" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.18308757, 0, 0.44454837, 0, 0.09999998, 0, -0.35563895, 0, -0.22885947, 2.2415893, 0.003544426, 5.628657)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood44" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.07863863, 0, 0.4902421, 0, 0.09999997, 0, -0.39219394, 0, -0.09829835, 2.402129, 0.003544426, 6.009928)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood45" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.14649658, 0, 0.46525988, 0, 0.09999997, 0, -0.3722081, 0, 0.18312052, 2.370941, 0.003544426, 6.3610606)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood46" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.044018637, 0, 0.4969631, 0, 0.099999964, 0, -0.39757076, 0, 0.055023145, 2.3075123, 0.003544426, 6.6632814)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood47" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.16987579, 0, 0.45266944, 0, 0.099999964, 0, -0.36213583, 0, -0.21234472, 2.3897007, 0.003544426, 6.96988)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood48" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.33152533, 0, 0.27976266, 0, 0.09999996, 0, -0.22381039, 0, -0.41440645, 2.5873158, 0.003544426, 7.2290444)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood49" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39974913, 0, 0.017711306, 0, 0.09999996, 0, -0.014169157, 0, -0.49968606, 2.895222, 0.003544426, 7.315796)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood35" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.22932768, 0, 0.40966606, 0, 0.09999997, 0, -0.32773295, 0, 0.28665924, 2.243718, 0.003544426, 5.2109547)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood43" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.04774977, 0, 0.49642444, 0, 0.09999997, 0, -0.39713985, 0, -0.059687424, 2.186415, 0.003544426, 5.379095)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood36" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.36352873, 0, 0.20859264, 0, 0.09999997, 0, -0.1668741, 0, 0.45441055, 2.5307925, 0.003544426, 4.9719462)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood37" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.13454236, 0, 0.4708674, 0, 0.09999997, 0, -0.3766941, 0, 0.16817771, 2.7626438, 0.003544426, 4.697103)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood38" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.13155988, 0, 0.47218227, 0, 0.09999997, 0, -0.37774608, 0, -0.16444986, 2.7626438, 0.003544426, 4.3803263)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood39" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.010407984, 0, 0.49983057, 0, 0.09999999, 0, -0.39986473, 0, -0.013010085, 2.6710196, 0.003544426, 4.0492024)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood40" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.16669011, 0, 0.45451608, 0, 0.099999994, 0, -0.36361313, 0, -0.20836262, 2.6018102, 0.003544426, 3.699644)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood41" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.00712061, 0, 0.49992082, 0, 0.10000002, 0, -0.39993688, 0, -0.008900861, 2.52009, 0.003544426, 3.3312283)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood42" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.089456595, 0, 0.48733583, 0, 0.10000002, 0, -0.3898689, 0, 0.111820556, 2.5685518, 0.003544426, 2.9117985)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood12" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.29710853, 0, -0.3347728, 0, 0.09999996, 0, 0.2678182, 0, -0.37138543, 4.4132724, 0.003544426, 3.4382305)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood22" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.37473983, 0, -0.17486668, 0, 0.09999998, 0, 0.13989322, 0, -0.46842462, 4.724686, 0.003544426, 3.2065847)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood23" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.39433664, 0, -0.08384042, 0, 0.09999997, 0, 0.067072205, 0, -0.49292055, 5.0447497, 0.003544426, 3.1378949)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="PathWood24" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.3931189, 0, 0.092344396, 0, 0.09999997, 0, -0.07387572, 0, -0.4913984, 5.313321, 0.003544426, 3.1378949)
+mesh = ExtResource("45_dqbo3")
+skeleton = NodePath("../..")
+
 [node name="PathWood4" type="MeshInstance3D" parent="park"]
 transform = Transform3D(-0.20000008, 0, 0.4330127, 0, 0.1, 0, -0.34641024, 0, -0.25000003, 1.2410102, 0.004445714, 1.1753362)
 mesh = ExtResource("45_dqbo3")
@@ -1716,6 +2223,75 @@ skeleton = NodePath("../..")
 transform = Transform3D(-0.2828428, 0, 0.35355338, 0, 0.1, 0, -0.2828428, 0, -0.35355338, 1.5488442, 0.0050106407, 1.5957253)
 mesh = ExtResource("45_dqbo3")
 skeleton = NodePath("../..")
+
+[node name="RockLargeA" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 5.470052, -0.44095325, 4.452475)
+mesh = ExtResource("40_dqbo3")
+skeleton = NodePath("../..")
+
+[node name="RockLargeF" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.11098, -0.22442673, 4.8666186)
+mesh = ExtResource("41_7fu3t")
+
+[node name="RockLargeD" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.000646, -0.40412384, 4.313429)
+mesh = ExtResource("42_0qh65")
+
+[node name="RockLargeE" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.01881353, 0, -0.99982303, 0, 1, 0, 0.99982303, 0, 0.01881353, 5.4418845, -0.17066424, 5.215227)
+mesh = ExtResource("43_46fq5")
+
+[node name="RockLargeC" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9127436, -0.23855917, 5.037208)
+mesh = ExtResource("44_ac6pr")
+
+[node name="RockLargeB" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.99965495, 0, -0.026264181, 0, 1, 0, 0.026264181, 0, -0.99965495, 5.6454825, -0.32166347, 4.4688334)
+mesh = ExtResource("45_vfxbh")
+
+[node name="RockSmallB" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4130297, 0.004808694, 4.052899)
+mesh = ExtResource("46_ihd2o")
+
+[node name="RockLargeC2" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2529464, -0.26105818, 3.8863907)
+mesh = ExtResource("44_ac6pr")
+
+[node name="RockLargeE2" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.86845857, 0, 0.49576187, 0, 1, 0, -0.49576187, 0, 0.86845857, 4.749295, -0.2556207, 4.113657)
+mesh = ExtResource("43_46fq5")
+
+[node name="RockLargeF2" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.031375904, 0, -0.9995077, 0, 1, 0, 0.9995077, 0, -0.031375904, 4.643891, -0.3950059, 4.859517)
+mesh = ExtResource("41_7fu3t")
+
+[node name="RockLargeA2" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6633706, -0.14383309, 3.8674004)
+mesh = ExtResource("40_dqbo3")
+
+[node name="RockLargeD2" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.81282634, 0, 0.5825061, 0, 1, 0, -0.5825061, 0, -0.81282634, 6.3740063, -0.49252197, 3.4718919)
+mesh = ExtResource("42_0qh65")
+
+[node name="RockLargeB2" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8501124, -0.29632804, 3.4941776)
+mesh = ExtResource("45_vfxbh")
+
+[node name="RockLargeF3" type="MeshInstance3D" parent="park"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 0.7, 6.576257, -0.63897413, 3.6247864)
+mesh = ExtResource("41_7fu3t")
+
+[node name="RockLargeC3" type="MeshInstance3D" parent="park"]
+transform = Transform3D(-0.7257347, 0, -0.68797463, 0, 1, 0, 0.68797463, 0, -0.7257347, 3.1105258, -0.16042416, 5.5225363)
+mesh = ExtResource("44_ac6pr")
+
+[node name="RockLargeF4" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0629365, -0.33983418, 6.7348046)
+mesh = ExtResource("41_7fu3t")
+
+[node name="RockLargeD3" type="MeshInstance3D" parent="park"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9462128, -0.42445222, 6.1228557)
+mesh = ExtResource("42_0qh65")
 
 [node name="Player" parent="." instance=ExtResource("1_4lajt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.919462, 0, 2.286882)
