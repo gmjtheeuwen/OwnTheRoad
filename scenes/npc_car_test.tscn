@@ -39,16 +39,17 @@ height = 0.1
 
 [node name="NPCCar" parent="." instance=ExtResource("1_1w0tu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -28)
+max_speed = 60.0
 
 [node name="PointContainer" type="Node3D" parent="NPCCar"]
 
 [node name="Point1" type="Node3D" parent="NPCCar/PointContainer"]
 
 [node name="Point2" type="Node3D" parent="NPCCar/PointContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 0, 0)
 
 [node name="Point3" type="Node3D" parent="NPCCar/PointContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 56)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 0, 56)
 
 [node name="Point4" type="Node3D" parent="NPCCar/PointContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 56)

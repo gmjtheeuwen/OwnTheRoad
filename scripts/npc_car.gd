@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	var distance = global_position.distance_to(next_point)
 	
-	if distance < speed*1.2:
+	if distance < sqrt(speed) * speed/2.5:
 		target_speed = cornering_speed
 	else:
 		target_speed = max_speed
