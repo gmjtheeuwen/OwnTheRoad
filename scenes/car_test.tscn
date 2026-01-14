@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckmh7kptl5eos"]
+[gd_scene load_steps=11 format=3 uid="uid://dh5csqwj1oh0d"]
 
-[ext_resource type="PackedScene" uid="uid://dxnvsoi1pvfeu" path="res://scenes/track.tscn" id="1_gm8sd"]
-[ext_resource type="PackedScene" uid="uid://c3nglrrrb2y5w" path="res://scenes/player.tscn" id="2_o01lw"]
-[ext_resource type="PackedScene" uid="uid://dy1c420tme5eu" path="res://scenes/state_machine.tscn" id="3_y2m84"]
+[ext_resource type="PackedScene" path="res://scenes/track.tscn" id="1_gm8sd"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_o01lw"]
+[ext_resource type="PackedScene" path="res://scenes/state_machine.tscn" id="3_y2m84"]
 [ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/WalkingIdleState.gd" id="4_j7oku"]
 [ext_resource type="Script" uid="uid://c4g4l7ek2yhog" path="res://states/WalkingState.gd" id="5_gaoq8"]
 [ext_resource type="Script" uid="uid://cy3ysphmgbu08" path="res://states/DrivingState.gd" id="6_rf1x0"]
