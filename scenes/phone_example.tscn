@@ -14,14 +14,15 @@ resource_local_to_scene = true
 albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bymc"]
-size = Vector3(0.6, 0.8, 0.17042236)
+size = Vector3(0.6, 0.8, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fks7e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6edc7"]
 
-[node name="PhoneExample" type="Node3D"]
+[node name="PhoneExample" type="Node3D" node_paths=PackedStringArray("message_app_icon")]
 script = ExtResource("1_2bymc")
+message_app_icon = NodePath("PhoneCase/MessageApp/AppIcon")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_364db")
@@ -30,7 +31,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2bymc")
 [node name="PhoneCase" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -7.450581e-09, -2.9802322e-08, 0.015661497)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0.05)
 shape = SubResource("BoxShape3D_2bymc")
 
 [node name="MessageApp" type="Area3D" parent="PhoneCase" node_paths=PackedStringArray("app_icon")]

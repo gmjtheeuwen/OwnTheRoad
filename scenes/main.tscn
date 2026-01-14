@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c4g4l7ek2yhog" path="res://states/WalkingState.gd" id="8_choun"]
 [ext_resource type="Script" uid="uid://dgwqlkrluajad" path="res://states/DrivingPhoneState.gd" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://14xdmvwpq0r8" path="res://scenes/grain.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://dsl5xew48g2pm" path="res://scenes/phone.tscn" id="10_choun"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -106,6 +107,8 @@ script = ExtResource("9_choun")
 player = NodePath("../..")
 player_car = NodePath("../../../PlayerCar")
 phone_fov = 40.0
+
+[node name="Phone" parent="Player" instance=ExtResource("10_choun")]
 
 [connection signal="car_entered" from="PlayerCar" to="Player/StateMachine/Idle" method="on_car_entered"]
 [connection signal="car_exited" from="PlayerCar" to="Player/StateMachine/Driving" method="on_car_exited"]
