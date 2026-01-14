@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqv6n67esvqjb"]
+[gd_scene load_steps=13 format=3 uid="uid://bu2my4k8nybtu"]
 
-[ext_resource type="Script" uid="uid://bptpmmwdt5ldm" path="res://scripts/intro_cutscene.gd" id="1_qiuj5"]
-[ext_resource type="Texture2D" uid="uid://dsmjen6r3ko41" path="res://assets/illustrations/intro_4.png" id="2_1n81e"]
-[ext_resource type="Texture2D" uid="uid://dn1cuf6bfmh3" path="res://assets/illustrations/intro_3.png" id="3_8hq43"]
-[ext_resource type="Texture2D" uid="uid://14gahme86ty3" path="res://assets/illustrations/intro_2.png" id="4_fx1av"]
-[ext_resource type="Texture2D" uid="uid://c5c88ohfi1y4o" path="res://assets/illustrations/intro_1.png" id="5_ukn74"]
-[ext_resource type="AudioStream" uid="uid://buhhoij2l03k6" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
-[ext_resource type="AudioStream" uid="uid://c76xefvj7ondv" path="res://assets/sounds/crowd-in-a-bar.wav" id="8_kxktx"]
+[ext_resource type="Script" uid="uid://bptpmmwdt5ldm" path="res://scripts/intro_cutscene.gd" id="1_vp4y5"]
+[ext_resource type="Texture2D" uid="uid://dsmjen6r3ko41" path="res://assets/illustrations/intro_4.png" id="2_ytjem"]
+[ext_resource type="Texture2D" uid="uid://dn1cuf6bfmh3" path="res://assets/illustrations/intro_3.png" id="3_pfwak"]
+[ext_resource type="Texture2D" uid="uid://14gahme86ty3" path="res://assets/illustrations/intro_2.png" id="4_aou75"]
+[ext_resource type="Texture2D" uid="uid://c5c88ohfi1y4o" path="res://assets/illustrations/intro_1.png" id="5_x84n7"]
+[ext_resource type="AudioStream" uid="uid://buhhoij2l03k6" path="res://assets/music/Bar.mp3" id="6_y81b1"]
+[ext_resource type="AudioStream" uid="uid://c76xefvj7ondv" path="res://assets/sounds/crowd-in-a-bar.wav" id="7_vnvue"]
 
 [sub_resource type="Animation" id="Animation_dw6o5"]
 length = 0.001
@@ -201,7 +201,7 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_qiuj5")
+script = ExtResource("1_vp4y5")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_top = -47.0
@@ -212,22 +212,22 @@ color = Color(0, 0, 0, 1)
 [node name="intro_4" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(954, 600)
-texture = ExtResource("2_1n81e")
+texture = ExtResource("2_ytjem")
 
 [node name="intro_3" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(954, 600)
-texture = ExtResource("3_8hq43")
+texture = ExtResource("3_pfwak")
 
 [node name="intro_2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(954, 600)
-texture = ExtResource("4_fx1av")
+texture = ExtResource("4_aou75")
 
 [node name="intro_1" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(954, 600)
-texture = ExtResource("5_ukn74")
+texture = ExtResource("5_x84n7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -235,12 +235,12 @@ libraries = {
 }
 
 [node name="Bar" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_qtmnn")
+stream = ExtResource("6_y81b1")
 volume_db = -12.0
 autoplay = true
 
 [node name="CrowdInABar" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_kxktx")
+stream = ExtResource("7_vnvue")
 volume_db = -16.186
 autoplay = true
 
