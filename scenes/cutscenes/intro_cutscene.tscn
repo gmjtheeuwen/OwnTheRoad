@@ -1,0 +1,247 @@
+[gd_scene load_steps=13 format=3 uid="uid://bqv6n67esvqjb"]
+
+[ext_resource type="Script" uid="uid://bptpmmwdt5ldm" path="res://scripts/intro_cutscene.gd" id="1_qiuj5"]
+[ext_resource type="Texture2D" uid="uid://dsmjen6r3ko41" path="res://assets/illustrations/intro_4.png" id="2_1n81e"]
+[ext_resource type="Texture2D" uid="uid://dn1cuf6bfmh3" path="res://assets/illustrations/intro_3.png" id="3_8hq43"]
+[ext_resource type="Texture2D" uid="uid://14gahme86ty3" path="res://assets/illustrations/intro_2.png" id="4_fx1av"]
+[ext_resource type="Texture2D" uid="uid://c5c88ohfi1y4o" path="res://assets/illustrations/intro_1.png" id="5_ukn74"]
+[ext_resource type="AudioStream" uid="uid://buhhoij2l03k6" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
+[ext_resource type="AudioStream" uid="uid://c76xefvj7ondv" path="res://assets/sounds/crowd-in-a-bar.wav" id="8_kxktx"]
+
+[sub_resource type="Animation" id="Animation_dw6o5"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("intro_2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("intro_3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("intro_4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrowdInABar:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-16.186]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bar:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-12.0]
+}
+
+[sub_resource type="Animation" id="Animation_wifpd"]
+resource_name = "intro_cutscene"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xeku4"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jusdg"]
+resource_name = "intro cutscene"
+length = 35.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 7, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("intro_2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(8, 9, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("intro_3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(16, 17, 23, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("intro_4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(24, 25, 31, 32),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CrowdInABar:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(23.033333, 24.566668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-16.186, -80.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bar:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(33.033333, 35.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-12.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw6o5"]
+_data = {
+&"RESET": SubResource("Animation_dw6o5"),
+&"fade_in": SubResource("Animation_wifpd"),
+&"fade_out": SubResource("Animation_xeku4"),
+&"intro cutscene": SubResource("Animation_jusdg")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qiuj5")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = -47.0
+offset_right = 2249.0
+offset_bottom = 1252.0
+color = Color(0, 0, 0, 1)
+
+[node name="intro_4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(954, 600)
+texture = ExtResource("2_1n81e")
+
+[node name="intro_3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(954, 600)
+texture = ExtResource("3_8hq43")
+
+[node name="intro_2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(954, 600)
+texture = ExtResource("4_fx1av")
+
+[node name="intro_1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(954, 600)
+texture = ExtResource("5_ukn74")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dw6o5")
+}
+
+[node name="Bar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qtmnn")
+volume_db = -12.0
+autoplay = true
+
+[node name="CrowdInABar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kxktx")
+volume_db = -16.186
+autoplay = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
