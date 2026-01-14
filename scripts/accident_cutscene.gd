@@ -3,54 +3,50 @@ extends Node2D
 @onready var textbox = $Textbox
 @onready var animation_player = $AnimationPlayer
 
-# References to all ColorRects and intro nodes
-@onready var color_rects = {
-	"ColorRect": $ColorRect,
-	"ColorRect3": $ColorRect3,
-	"ColorRect4": $ColorRect4,
-	"ColorRect5": $ColorRect5
+@onready var accident = {
+	"accident_1": $CanvasLayer/MarginContainer/accident_1,
+	"accident_2": $CanvasLayer/MarginContainer/accident_2,
+	"accident_3": $CanvasLayer/MarginContainer/accident_3,
+	"accident_4": $CanvasLayer/MarginContainer/accident_4,
 }
 
-@onready var intros = {
-	"intro_1": $intro_1,
-	"intro_2": $intro_2,
-	"intro_3": $intro_3,
-	"intro_4": $intro_4
-}
-
-# Define triggers: text -> [color_rect_to_fade, intro_to_hide]
 var text_triggers = {
-	"this is more words and text.": {
-		"fade_out": "ColorRect3",
-		"hide_intro": "intro_1"
-	}
+	"My head... What the hell happened?": {
+		"hide_accident": "accident_1"
+		},
+	"This isn't happening.": {
+		"hide_accident": "accident_2"
+	},
+	"It's gonna be a hell of a fine, but nothing more.": {
+		"hide_accident": "accident_3"
+		},
+	"... Please be okay.": {
+		"hide_accident": "accident_4"
+		}
 }
 
+# In your Node2D script _ready() function
 func _ready() -> void:
-	# Connect to textbox signal
+	# Connect to textbox signals
 	textbox.text_finished.connect(_on_text_finished)
-	
+	textbox.all_text_finished.connect(_on_all_text_finished)
 	# Initial fade in
-	animation_player.play("fade_in")
-	await get_tree().create_timer(6).timeout
+	animation_player.play("shaky_cam")
 
+func _on_all_text_finished() -> void:
+	# Optional: wait a bit before transitioning
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+	# Initial fade in
+	animation_player.play("shaky_cam")
 func _on_text_finished(text_content: String) -> void:
 	print("Text finished: ", text_content)
 	
-	# Check if this text has a trigger
 	if text_triggers.has(text_content):
 		var trigger = text_triggers[text_content]
 		
 		# Fade out ColorRect
-		if trigger["fade_out"] and color_rects.has(trigger["fade_out"]):
-			fade_out_color_rect(color_rects[trigger["fade_out"]])
-		
-		# Hide intro
-		if trigger["hide_intro"] and intros.has(trigger["hide_intro"]):
-			intros[trigger["hide_intro"]].hide()
-
-func fade_out_color_rect(color_rect: ColorRect) -> void:
-	var tween = create_tween()
-	tween.tween_property(color_rect, "modulate:a", 0.0, 1.0)
-	await tween.finished
-	color_rect.hide()
+		if trigger["hide_accident"] and accident.has(trigger["hide_accident"]):
+			accident[trigger["hide_accident"]].hide()
+ 

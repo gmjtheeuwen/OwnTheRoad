@@ -19,10 +19,22 @@ signal text_finished(text_content)
 func _ready() -> void:
 	print("Starting state: State.READY")
 	hide_textbox()
-	queue_text("this is words and text.")
-	queue_text("I really hope this works.")
-	queue_text("this is more words and text.")
-	queue_text("Is it working.")
+	queue_text("My head... What the hell happened?") #change accident
+	queue_text("...")
+	queue_text("... No. There's no way.")
+	queue_text("This isn't happening.") #change accident
+	queue_text("Yeah... It's no big deal.")
+	queue_text("I'm fine. We're all fine.")
+	queue_text("It's gonna be a hell of a fine, but nothing more.") #change accident
+	queue_text("I'm gonna... reach the driver.")
+	queue_text("I'll ask if... They're okay.")
+	queue_text("I'll... get... yelled at...")
+	queue_text("I'll... pay up...")
+	queue_text("And I'll be on my way.")
+	queue_text("... Please be okay.") #change scene to main
+
+# In Textbox.gd
+signal all_text_finished
 
 func _process(_delta: float) -> void:
 	match current_state:
@@ -41,6 +53,10 @@ func _process(_delta: float) -> void:
 				text_finished.emit(label.text)
 				change_state(State.READY)
 				hide_textbox()
+				
+				# Check if this was the last text
+				if text_queue.is_empty():
+					all_text_finished.emit()
 	
 func queue_text(next_text):
 	text_queue.push_back(next_text)

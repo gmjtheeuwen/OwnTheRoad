@@ -17,7 +17,7 @@ script = ExtResource("1_nyk3b")
 
 [node name="TextboxContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1080, 200)
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -29,6 +29,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="TextboxContainer"]
+modulate = Color(1, 1, 1, 0.39215687)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dw6o5")
 
