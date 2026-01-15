@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=3 uid="uid://bkorx52wivetv"]
 
 [ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone.gd" id="1_3rig2"]
-[ext_resource type="Texture2D" uid="uid://5tlo8ce4xntk" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
+[ext_resource type="Texture2D" uid="uid://bk8hkm6k2awyr" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
 [ext_resource type="Material" uid="uid://bk7tsxashm07s" path="res://assets/materials/black_phone.tres" id="2_mseb3"]
-[ext_resource type="Texture2D" uid="uid://njxh7jbrpdlk" path="res://assets/sprites/NavigationApp.png" id="3_8moxm"]
-[ext_resource type="ArrayMesh" uid="uid://ciq7vysxk3mrs" path="res://assets/models/i phone x.obj" id="3_qvaam"]
+[ext_resource type="Texture2D" uid="uid://4h7to1jx3ej7" path="res://assets/sprites/NavigationApp.png" id="3_8moxm"]
+[ext_resource type="ArrayMesh" uid="uid://bi3ixmqlo6hjt" path="res://assets/models/i phone x.obj" id="3_qvaam"]
 [ext_resource type="Script" uid="uid://dv4pnjepy8upm" path="res://scripts/message_app.gd" id="4_espqj"]
-[ext_resource type="Script" path="res://scripts/navigation_app.gd" id="6_eoxts"]
-[ext_resource type="Script" path="res://scripts/uber_app.gd" id="8_mseb3"]
-[ext_resource type="Texture2D" uid="uid://7rhy055yejmt" path="res://assets/sprites/UberApp.png" id="8_oijjg"]
-[ext_resource type="Script" path="res://scripts/app_action.gd" id="9_g4p5k"]
-[ext_resource type="Texture2D" uid="uid://r00gy6kbk2bw" path="res://assets/sprites/messageapp/textexample.png" id="10_c45ss"]
+[ext_resource type="Script" uid="uid://camtvcqyxom8g" path="res://scripts/navigation_app.gd" id="6_eoxts"]
+[ext_resource type="Script" uid="uid://8sjj45rb5c1o" path="res://scripts/uber_app.gd" id="8_mseb3"]
+[ext_resource type="Texture2D" uid="uid://dp2aarm0tdnbh" path="res://assets/sprites/UberApp.png" id="8_oijjg"]
+[ext_resource type="Script" uid="uid://0yp07ms2oyb" path="res://scripts/app_action.gd" id="9_g4p5k"]
+[ext_resource type="Texture2D" uid="uid://0cj126kxacvi" path="res://assets/sprites/messageapp/textexample.png" id="10_c45ss"]
 [ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="12_qvaam"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bymc"]
@@ -113,6 +113,9 @@ mesh = SubResource("BoxMesh_6edc7")
 transform = Transform3D(0.016901776, 0, 0, 0, 0.0074256253, 0, 0, 0, 0.01, 0.013393216, 0, -0.0012624487)
 texture = ExtResource("10_c45ss")
 
+[node name="SFX" type="AudioStreamPlayer3D" parent="PhoneCase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
+
 [node name="FadeUi" parent="." instance=ExtResource("12_qvaam")]
 
 [connection signal="mouse_entered" from="PhoneCase" to="." method="on_mouse_enter"]
@@ -129,6 +132,7 @@ texture = ExtResource("10_c45ss")
 [connection signal="mouse_entered" from="PhoneCase/UberApp" to="." method="on_mouse_enter"]
 [connection signal="mouse_exited" from="PhoneCase/UberApp" to="." method="on_mouse_exit"]
 [connection signal="open_uber_app" from="PhoneCase/UberApp" to="." method="_on_open_uber_app"]
+[connection signal="open_uber_app" from="PhoneCase/UberApp" to="FadeUi" method="_on_uber_app_open_uber_app"]
 [connection signal="close_app" from="PhoneCase/AppAction" to="." method="_on_app_close"]
 [connection signal="input_event" from="PhoneCase/AppAction" to="PhoneCase/AppAction" method="_on_input_event"]
 [connection signal="mouse_entered" from="PhoneCase/AppAction" to="." method="on_mouse_enter"]
