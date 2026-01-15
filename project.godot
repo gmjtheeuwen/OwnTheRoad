@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="OwnTheRoad"
-run/main_scene="uid://bt2cjutntdjtl"
+run/main_scene="uid://ciu6hf17juvx2"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [global_group]

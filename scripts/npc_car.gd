@@ -12,6 +12,7 @@ var next_point: Vector3
 var direction: Vector3
 var speed: float
 var target_speed: float
+var driving := false
 
 func _ready() -> void:	
 	for point in point_container.get_children():
@@ -28,8 +29,7 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
-	if (!is_on_floor()):
-		position.y += get_gravity().y * delta
+	if not driving:	pass
 	
 	var distance = global_position.distance_to(next_point)
 	
@@ -41,13 +41,11 @@ func _physics_process(delta: float) -> void:
 	speed = move_toward(speed, target_speed, acceleration*delta)
 	
 	direction = points[current_point_index].direction_to(next_point)
+	global_rotation = Vector3(0, -direction.signed_angle_to(Vector3.RIGHT, Vector3.UP), 0)
 	velocity = speed*direction
 	
 	move_and_slide()
 	
 	if distance < 1:
 		current_point_index = (current_point_index+1)%points.size()
-		next_point = points[(current_point_index+1)%points.size()]
-		
-		direction = points[current_point_index].direction_to(next_point)
-		global_rotation = Vector3(0, -direction.signed_angle_to(Vector3.RIGHT, Vector3.UP), 0)
+		next_point = points[(current_point_index+1)%points.size()]		

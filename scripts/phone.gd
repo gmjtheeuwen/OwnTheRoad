@@ -9,14 +9,6 @@ signal phone_area_exited
 @export var navigation_app : Area3D
 @export var uber_app : Area3D
 
-func on_mouse_enter():
-	print("Enter phone")
-	phone_area_entered.emit()
-	
-func on_mouse_exit():
-	print("Exit phone")
-	phone_area_exited.emit()
-
 func disable_apps():
 	message_app.input_ray_pickable = false
 	message_app.visible = false
@@ -37,25 +29,25 @@ func enable_apps():
 	app_action.input_ray_pickable = false
 	app_action.visible = false
 
-func _on_message_app_open_message_app() -> void:
+func _on_open_message_app() -> void:
 	disable_apps()
 	app_screen.texture = load("res://assets/sprites/messageapp/textexample.png")
 
-func _on_navigation_app_open_navigation_app() -> void:
+func _on_open_navigation_app() -> void:
 	disable_apps()
 	app_screen.texture = load("res://assets/sprites/navigationapp/navigationexample.png")
 
-func _on_uber_app_open_uber_app() -> void:
+func _on_open_uber_app() -> void:
 	disable_apps()
 	app_screen.texture = load("res://assets/sprites/uberapp/Uberexample.png")
 
-func _on_app_action_close_app() -> void:
+func _on_app_close() -> void:
 	enable_apps()
 
-func _on_player_phone_entered() -> void:
+func _on_phone_opened() -> void:
 	visible = true
 
-func on_phone_exited() -> void:
+func on_phone_closed() -> void:
 	visible = false
 
 func _on_fade_ui_fade_out_completed() -> void:

@@ -10,8 +10,6 @@ var camera: Camera3D
 var head: Node3D
 
 var headbob_time = 0.0
-signal enable_phone
-signal disable_phone
 
 @export var phone_fov := 30.0
 var fov_speed := 4.0
@@ -22,18 +20,14 @@ func enter():
 		head = player.get_node("Head")
 		camera.set_current(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		enable_phone.emit()
-
-func physics_update(delta: float, drunk_level: int = 0):
-	var camera := player.get_node("Head/Camera")
-	
-	if(player):
-		camera.fov = lerp(camera.fov, phone_fov, delta * fov_speed)
 		
+func on_car_entered():
+	player.collision.disabled = true
+	player.position = Vector3(0, -10, 0)
+	transitioned.emit(self, "driving")
 	
-	if Input.is_action_just_pressed("phone"):
-		exit_phone()
-
-func exit_phone():
-	disable_phone.emit()
+func on_phone_closed():
 	transitioned.emit(self, "idle")
+
+func physics_update(delta: float, _drunk_level: int = 0):
+	camera.fov = lerp(camera.fov, phone_fov, delta * fov_speed)
