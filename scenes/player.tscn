@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3nglrrrb2y5w"]
+[gd_scene load_steps=9 format=3 uid="uid://c3nglrrrb2y5w"]
 
 [ext_resource type="Script" uid="uid://dq4ak7akmvva" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Shader" uid="uid://c1elk8vshxiwj" path="res://shaders/dubblevision.gdshader" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://be1cjv2645lcx" path="res://scenes/phone.tscn" id="3_qhqgy"]
 
 [sub_resource type="CurveTexture" id="CurveTexture_g2els"]
 
@@ -47,3 +48,10 @@ skeleton = NodePath("../..")
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("ConvexPolygonShape3D_qlg0r")
+
+[node name="PhoneExample" parent="." instance=ExtResource("3_qhqgy")]
+transform = Transform3D(1, 0, 0, 0, 0.88528, 0.46505836, 0, -0.46505836, 0.88528, 0.16533934, 1.3750705, -0.8818439)
+visible = false
+
+[connection signal="phone_entered" from="." to="PhoneExample" method="_on_player_phone_entered"]
+[connection signal="phone_exited" from="." to="PhoneExample" method="on_phone_exited"]

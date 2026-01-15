@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/WalkingIdleState.gd" id="7_85g3d"]
 [ext_resource type="Script" uid="uid://c4g4l7ek2yhog" path="res://states/WalkingState.gd" id="8_choun"]
 [ext_resource type="Script" uid="uid://dgwqlkrluajad" path="res://states/DrivingPhoneState.gd" id="9_choun"]
-[ext_resource type="PackedScene" uid="uid://dsl5xew48g2pm" path="res://scenes/phone.tscn" id="10_choun"]
+[ext_resource type="Script" uid="uid://lcond4o3kgk7" path="res://states/WalkingPhoneState.gd" id="9_ya4ey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -87,10 +87,16 @@ metadata/_custom_type_script = "uid://cy3ysphmgbu08"
 [node name="Idle" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("7_85g3d")
 player = NodePath("../..")
+normal_fov = 75.0
 metadata/_custom_type_script = "uid://uwr30nkdol3l"
 
 [node name="Walking" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_choun")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
+
+[node name="Idle_Phone" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("9_ya4ey")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
 
@@ -101,8 +107,6 @@ player_car = NodePath("../../../PlayerCar")
 phone_fov = 40.0
 metadata/_custom_type_script = "uid://dgwqlkrluajad"
 
-[node name="Phone" parent="Player" instance=ExtResource("10_choun")]
-
 [connection signal="car_entered" from="PlayerCar" to="." method="_on_car_entered"]
 [connection signal="car_entered" from="PlayerCar" to="Player/StateMachine/Idle" method="on_car_entered"]
 [connection signal="car_exited" from="PlayerCar" to="." method="_on_car_exited"]
@@ -111,3 +115,6 @@ metadata/_custom_type_script = "uid://dgwqlkrluajad"
 [connection signal="phone_entered" from="PlayerCar" to="Player/StateMachine/Driving" method="on_phone_entered"]
 [connection signal="phone_exited" from="PlayerCar" to="Player/StateMachine/Driving_Phone" method="on_phone_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="spawnCar"]
+[connection signal="phone_entered" from="Player" to="Player/StateMachine/Walking" method="_on_phone_entered"]
+[connection signal="disable_phone" from="Player/StateMachine/Idle_Phone" to="Player" method="on_disable_phone"]
+[connection signal="enable_phone" from="Player/StateMachine/Idle_Phone" to="Player" method="on_enable_phone"]

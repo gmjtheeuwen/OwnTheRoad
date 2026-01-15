@@ -45,5 +45,18 @@ func _on_navigation_app_open_navigation_app() -> void:
 	disable_apps()
 	app_screen.texture = load("res://assets/sprites/navigationapp/navigationexample.png")
 
+func _on_uber_app_open_uber_app() -> void:
+	disable_apps()
+	app_screen.texture = load("res://assets/sprites/uberapp/Uberexample.png")
+
 func _on_app_action_close_app() -> void:
 	enable_apps()
+
+func _on_player_phone_entered() -> void:
+	visible = true
+
+func on_phone_exited() -> void:
+	visible = false
+
+func _on_fade_ui_fade_out_completed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

@@ -4,6 +4,8 @@ const SENSITIVITY = 0.01
 
 @onready var camera = $Head/Camera
 @onready var collision = $Collision
+signal phone_entered
+signal phone_exited
 
 # Remove the mouse in the scene
 func _ready():
@@ -18,3 +20,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:	
 	move_and_slide()
+
+
+func on_enable_phone() -> void:
+	phone_entered.emit()
+
+
+func on_disable_phone() -> void:
+	phone_exited.emit()
