@@ -19,19 +19,32 @@ signal text_finished(text_content)
 func _ready() -> void:
 	print("Starting state: State.READY")
 	hide_textbox()
-	queue_text("My head... What the hell happened?") #change accident
-	queue_text("...")
-	queue_text("... No. There's no way.")
-	queue_text("This isn't happening.") #change accident
-	queue_text("Yeah... It's no big deal.")
-	queue_text("I'm fine. We're all fine.")
-	queue_text("It's gonna be a hell of a fine, but nothing more.") #change accident
-	queue_text("I'm gonna... reach the driver.")
-	queue_text("I'll ask if... They're okay.")
-	queue_text("I'll... get... yelled at...")
-	queue_text("I'll... pay up...")
-	queue_text("And I'll be on my way.")
-	queue_text("... Please be okay.") #change scene to main
+	queue_text("
+	My head... What the hell happened?") #change accident
+	queue_text("
+	...")
+	queue_text("
+	... No. There's no way.")
+	queue_text("
+	This isn't happening.") #change accident
+	queue_text("
+	Yeah... It's no big deal.")
+	queue_text("
+	I'm fine. We're all fine.")
+	queue_text("
+	It's gonna be a hell of a fine, but nothing more.") #change accident
+	queue_text("
+	I'm gonna... reach the driver.")
+	queue_text("
+	I'll ask if... They're okay.")
+	queue_text("
+	I'll... get... yelled at...")
+	queue_text("
+	I'll... pay up...")
+	queue_text("
+	And I'll be on my way.")
+	queue_text("
+	... Please be okay.") #change scene to main
 
 # In Textbox.gd
 signal all_text_finished

@@ -40,6 +40,15 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 8
 
+[node name="Label" type="Label" parent="TextboxContainer/MarginContainer"]
+custom_minimum_size = Vector2(1040, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "You"
+autowrap_mode = 2
+clip_text = true
+
 [node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
 visible = false
 layout_mode = 2

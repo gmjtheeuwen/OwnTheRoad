@@ -308,18 +308,21 @@ skew = -0.06981317
 texture = ExtResource("2_nvilk")
 
 [node name="accident_3" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.65, 0.65)
 skew = -0.06981317
 texture = ExtResource("4_vp4y5")
 
 [node name="accident_2" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.65, 0.65)
 skew = -0.10471976
 texture = ExtResource("5_ytjem")
 
 [node name="accident_1" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(6.500057, 4.0000086)
 scale = Vector2(0.76312506, 0.69500005)
