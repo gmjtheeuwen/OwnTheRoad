@@ -38,8 +38,7 @@ func _on_all_text_finished() -> void:
 	await get_tree().create_timer(3.0).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/title/title_screen.tscn")
 
-	# Initial fade in
-	animation_player.play("shaky_cam")
+
 func _on_text_finished(text_content: String) -> void:
 	print("Text finished: ", text_content)
 	

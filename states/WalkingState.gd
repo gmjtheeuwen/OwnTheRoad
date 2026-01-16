@@ -10,14 +10,16 @@ var fov_speed := 4.0
 
 var camera: Camera3D
 
+var normal_fov = 75.0
+var fov_speed = 4.0
 var headbob_time = 0.0
 
 func enter():
 	if (player):
-		camera = player.get_node("Head/Camera")
+		player.camera = player.get_node("Head/Camera")
 		player.get_node("Collision").disabled = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		camera.set_current(true)
+		player.camera.set_current(true)
 
 func exit():
 	player.velocity.x = 0.0
@@ -44,9 +46,9 @@ func physics_update(delta: float, _drunk_level: int = 0):
 		player.velocity.x = 0.0
 		player.velocity.z = 0.0
 		transitioned.emit(self, "idle")
-	
-	if camera.fov != normal_fov:
-		camera.fov = lerp(camera.fov, normal_fov, delta * fov_speed)
+		
+	if player.camera.fov != normal_fov:
+		player.camera.fov = lerp(player.camera.fov, normal_fov, delta * fov_speed)
 
 func on_car_entered():
 	player.collision.disabled = true

@@ -1,8 +1,5 @@
 extends Node3D
 
-signal phone_area_entered
-signal phone_area_exited
-
 @onready var app_screen = $PhoneCase/AppAction/Appscreen
 @onready var app_action = $PhoneCase/AppAction
 @export var message_app : Area3D
@@ -59,5 +56,5 @@ func play_phone_sfx() -> void:
 	phone_sfx.stream = load("res://assets/sounds/phone_tap.wav")
 	phone_sfx.play()
 
-func _on_fade_ui_fade_out_completed() -> void:
-	get_tree().change_scene_to_file("res://scenes/cutscenes/taxi_scene.tscn")
+func _on_fade_out_completed() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/cutscenes/taxi_scene.tscn")
