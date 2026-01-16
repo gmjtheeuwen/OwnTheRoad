@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bu2my4k8nybtu"]
 
 [ext_resource type="Script" uid="uid://bsbmbtfxt2eor" path="res://scripts/accident_cutscene.gd" id="1_nvilk"]
-[ext_resource type="Texture2D" uid="uid://bsch37ul1caxv" path="res://assets/illustrations/accident_3.png" id="2_nvilk"]
-[ext_resource type="Texture2D" uid="uid://cobktakn1onlc" path="res://assets/illustrations/accident_2.png" id="4_vp4y5"]
-[ext_resource type="AudioStream" uid="uid://bx3tlkyxc7x67" path="res://assets/music/Accident.mp3" id="5_ls10g"]
-[ext_resource type="Texture2D" uid="uid://duke0g1qw2lk" path="res://assets/illustrations/accident_1.png" id="5_ytjem"]
+[ext_resource type="Texture2D" uid="uid://6ko0vst6kwt1" path="res://assets/illustrations/accident_3.png" id="2_nvilk"]
+[ext_resource type="Texture2D" uid="uid://ca4p6u8m4jon3" path="res://assets/illustrations/accident_2.png" id="4_vp4y5"]
+[ext_resource type="AudioStream" uid="uid://bjheosldc5g4o" path="res://assets/music/Accident.mp3" id="5_ls10g"]
+[ext_resource type="Texture2D" uid="uid://dd62juc77xcnl" path="res://assets/illustrations/accident_1.png" id="5_ytjem"]
 [ext_resource type="PackedScene" uid="uid://b28kh7ieaxeg0" path="res://scenes/textbox.tscn" id="6_ls10g"]
 
 [sub_resource type="Animation" id="Animation_dw6o5"]
