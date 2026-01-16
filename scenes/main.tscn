@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt2cjutntdjtl"]
+[gd_scene load_steps=16 format=3 uid="uid://bt2cjutntdjtl"]
 
 [ext_resource type="Script" uid="uid://blc7hueu1wfk1" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://k7ggvl3b5sxu" path="res://scenes/car.tscn" id="2_0xm2m"]
@@ -6,21 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://dy1c420tme5eu" path="res://scenes/state_machine.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://cy3ysphmgbu08" path="res://states/DrivingState.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://c3nglrrrb2y5w" path="res://scenes/player.tscn" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/WalkingIdleState.gd" id="7_85g3d"]
+[ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/IdleState.gd" id="7_85g3d"]
 [ext_resource type="Script" uid="uid://c4g4l7ek2yhog" path="res://states/WalkingState.gd" id="8_choun"]
 [ext_resource type="Script" uid="uid://dgwqlkrluajad" path="res://states/DrivingPhoneState.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://lcond4o3kgk7" path="res://states/IdlePhoneState.gd" id="10_choun"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
+[sub_resource type="Sky" id="Sky_choun"]
 sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 background_mode = 1
 background_color = Color(0.02666669, 0, 0.1, 1)
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_choun")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -48,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0051617622, -0.9999999, 0.009273291)
 use_collision = true
 size = Vector3(24, 2, 200)
 material = SubResource("StandardMaterial3D_1bvp3")
@@ -65,6 +66,11 @@ use_collision = true
 size = Vector3(1, 2.8, 200)
 material = SubResource("StandardMaterial3D_tipki")
 
+[node name="Wall" type="CSGBox3D" parent="Environment" groups=["building"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -48)
+use_collision = true
+size = Vector3(3, 3, 1)
+
 [node name="CarContainer" type="Node3D" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -73,8 +79,7 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 
-[node name="StateMachine" parent="Player" node_paths=PackedStringArray("initial_state") instance=ExtResource("4_jyhfs")]
-initial_state = NodePath("Idle")
+[node name="StateMachine" parent="Player" instance=ExtResource("4_jyhfs")]
 
 [node name="Driving" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player_car", "player")]
 script = ExtResource("5_tbgi4")
@@ -93,15 +98,20 @@ script = ExtResource("8_choun")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
 
-[node name="Driving_Phone" type="Node" parent="Player/StateMachine"]
+[node name="Driving_Phone" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player", "player_car")]
 script = ExtResource("9_choun")
+player = NodePath("../..")
+player_car = NodePath("../../../PlayerCar")
 metadata/_custom_type_script = "uid://dgwqlkrluajad"
 
-[connection signal="car_entered" from="PlayerCar" to="." method="_on_car_entered"]
+[node name="Idle_Phone" type="Node" parent="Player/StateMachine"]
+script = ExtResource("10_choun")
+
 [connection signal="car_entered" from="PlayerCar" to="Player/StateMachine/Idle" method="on_car_entered"]
-[connection signal="car_exited" from="PlayerCar" to="." method="_on_car_exited"]
 [connection signal="car_exited" from="PlayerCar" to="Player/StateMachine/Driving" method="on_car_exited"]
 [connection signal="car_stopped" from="PlayerCar" to="." method="_on_car_stopped"]
 [connection signal="phone_entered" from="PlayerCar" to="Player/StateMachine/Driving" method="on_phone_entered"]
-[connection signal="phone_exited" from="PlayerCar" to="Player/StateMachine/Driving_Phone" method="on_phone_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="spawnCar"]
+[connection signal="phone_entered" from="Player" to="Player/StateMachine/Walking" method="_on_phone_entered"]
+[connection signal="disable_phone" from="Player/StateMachine/Idle_Phone" to="Player" method="on_disable_phone"]
+[connection signal="enable_phone" from="Player/StateMachine/Idle_Phone" to="Player" method="on_enable_phone"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciu6hf17juvx2"]
+
+[ext_resource type="Script" uid="uid://dcfx3r4jbaepd" path="res://scripts/title_screen.gd" id="1_iowo3"]
+[ext_resource type="Texture2D" uid="uid://bqdcc2lmisvbh" path="res://assets/sprites/titlescreen/titlebg.png" id="1_ynr0n"]
+[ext_resource type="Texture2D" uid="uid://d1ujyle4ohja5" path="res://assets/sprites/titlescreen/blackgradient.png" id="2_iowo3"]
+[ext_resource type="AudioStream" uid="uid://bpwbqhyem36jx" path="res://assets/sounds/crowdinabar.wav" id="2_qrms8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrms8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iowo3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.38431373)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.4121524, 0.4121525, 0.41215223, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xedo"]
+bg_color = Color(0.6, 0.6, 0.6, 0.14901961)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("bgm")]
+script = ExtResource("1_iowo3")
+bgm = NodePath("BGM")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackgroundImage" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 319)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("1_ynr0n")
+
+[node name="BlackGradient" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(578, 319)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("2_iowo3")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameTitle" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 128.0
+offset_right = 467.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 60
+text = "Own The Road"
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 272.0
+offset_right = 390.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_qrms8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iowo3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8xedo")
+action_mode = 0
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 432.0
+offset_right = 390.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_qrms8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iowo3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8xedo")
+action_mode = 0
+text = "Exit"
+
+[node name="FadeUI" type="CanvasLayer" parent="."]
+
+[node name="FadeRect" type="ColorRect" parent="FadeUI"]
+offset_right = 1155.0
+offset_bottom = 658.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qrms8")
+volume_db = -40.0
+autoplay = true
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -17,6 +17,9 @@ var head: Node3D
 
 const SENSITIVITY = 0.005
 
+var normal_fov := 75.0
+var fov_speed := 4.0
+
 func enter():
 	if (player):
 		player.get_node("Collision").disabled = true
@@ -24,8 +27,12 @@ func enter():
 		head = player_car.get_node("Head")
 		camera.set_current(true)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
 		initialize_effects()
+		
+func exit():
+	player_car.brake_input = 0.0
+	player_car.throttle_input = 0.0
+	player_car.steering_input = 0.0
 
 func initialize_effects():
 	for child in get_children():
@@ -33,6 +40,8 @@ func initialize_effects():
 			effects.append(child)
 
 func physics_update(delta: float, drunk_level: int = 0):
+	camera.fov = lerp(camera.fov, normal_fov, delta * fov_speed)
+		
 	player_car.brake_input = Input.get_action_strength("down")
 	player_car.steering_input = Input.get_action_strength("left") - Input.get_action_strength("right")	
 	player_car.throttle_input = pow(Input.get_action_strength("up"), 2.0)
@@ -52,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(30))
 
 func on_car_exited():
-	player.position = player_car.position + Vector3(-1.5, 0, 0)
+	player.position = player_car.position + Vector3(1.5, 0, 0)
 	player.collision.disabled = false
 	transitioned.emit(self, "idle")
 
