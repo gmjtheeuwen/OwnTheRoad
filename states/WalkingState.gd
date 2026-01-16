@@ -10,8 +10,6 @@ var fov_speed := 4.0
 
 var camera: Camera3D
 
-var normal_fov = 75.0
-var fov_speed = 4.0
 var headbob_time = 0.0
 
 func enter():
