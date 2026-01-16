@@ -1,8 +1,5 @@
 extends Node3D
 
-signal phone_area_entered
-signal phone_area_exited
-
 @onready var app_screen = $PhoneCase/AppAction/Appscreen
 @onready var app_action = $PhoneCase/AppAction
 @export var message_app : Area3D
@@ -50,5 +47,5 @@ func _on_phone_opened() -> void:
 func on_phone_closed() -> void:
 	visible = false
 
-func _on_fade_ui_fade_out_completed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+func _on_fade_out_completed() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/cutscenes/taxi_scene.tscn")

@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var max_speed = 30.0
 @export var cornering_speed = 8.0
 @export var acceleration = 10.0
+@export var driving := true
 
 var points = []
 var current_point_index = 0
@@ -12,7 +13,6 @@ var next_point: Vector3
 var direction: Vector3
 var speed: float
 var target_speed: float
-var driving := false
 
 func _ready() -> void:	
 	for point in point_container.get_children():
@@ -29,7 +29,7 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
-	if not driving:	pass
+	if not driving:	return
 	
 	var distance = global_position.distance_to(next_point)
 	

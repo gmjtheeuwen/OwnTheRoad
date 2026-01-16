@@ -288,7 +288,7 @@ emission_energy_multiplier = 10.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_me1gr"]
 size = Vector3(4, 0.4, 1)
 
-[node name="NPCCar" type="CharacterBody3D"]
+[node name="NPCCar" type="CharacterBody3D" groups=["npc_car"]]
 script = ExtResource("1_me1gr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

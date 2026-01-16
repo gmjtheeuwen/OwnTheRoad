@@ -26,11 +26,9 @@ func _process(_delta: float) -> void:
 		if phone.visible:
 			phone.visible = false
 			phone_closed.emit()
-			global_rotation.y = head.global_rotation.y
 		else:
 			phone.visible = true
 			phone_opened.emit()
-			head.global_rotation.y = global_rotation.y
 		
 
 func _physics_process(_delta: float) -> void:	

@@ -20,3 +20,4 @@ func spawn_car(speed: float, location: Vector3):
 	car.speed = speed
 	car.rotation = spawn_point.rotation
 	car.driving = true
+	
