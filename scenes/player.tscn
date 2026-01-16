@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dq4ak7akmvva" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Shader" uid="uid://c1elk8vshxiwj" path="res://shaders/dubblevision.gdshader" id="2_g2els"]
-[ext_resource type="PackedScene" uid="uid://be1cjv2645lcx" path="res://scenes/phone.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bkorx52wivetv" path="res://scenes/phone.tscn" id="3_qhqgy"]
 
 [sub_resource type="CurveTexture" id="CurveTexture_g2els"]
 
@@ -34,6 +34,7 @@ current = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8417835e-05, -0.23452556, -0.92725515)
 visible = false
+layers = 2
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qlg0r")
 
@@ -47,3 +48,10 @@ skeleton = NodePath("../..")
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_3vyb7")
+
+[node name="Phone" parent="." instance=ExtResource("3_qhqgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141, 0.8, -1.3)
+visible = false
+
+[connection signal="phone_closed" from="." to="Phone" method="on_phone_closed"]
+[connection signal="phone_opened" from="." to="Phone" method="_on_phone_opened"]

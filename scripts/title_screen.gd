@@ -29,7 +29,7 @@ func _on_play_button_pressed() -> void:
 	tween.finished.connect(_on_play_fade_out_complete)
 
 func _on_play_fade_out_complete():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().call_deferred("change_scene_to_file","res://scenes/cutscenes/intro_cutscene.tscn")
 
 func _on_exit_button_pressed() -> void:
 	menu_action_sfx.stream = load("res://assets/sounds/clickbutton.wav")

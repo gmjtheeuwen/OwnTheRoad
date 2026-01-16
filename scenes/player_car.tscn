@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://dspuk2sfm2owv"]
+[gd_scene load_steps=22 format=4 uid="uid://dspuk2sfm2owv"]
 
 [ext_resource type="Script" uid="uid://co56bktg2mgct" path="res://addons/gevp/vehicle.gd" id="1_s2c5k"]
 [ext_resource type="Script" uid="uid://dr17n2xl15ks3" path="res://addons/gevp/wheel.gd" id="2_5hvhq"]
-[ext_resource type="PackedScene" uid="uid://be1cjv2645lcx" path="res://scenes/phone.tscn" id="6_w3cpc"]
+[ext_resource type="PackedScene" uid="uid://bkorx52wivetv" path="res://scenes/phone.tscn" id="6_w3cpc"]
 
 [sub_resource type="Curve" id="Curve_bt7kc"]
 _data = [Vector2(0, 0.494505), 0.0, 2.04495, 0, 0, Vector2(0.617978, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.692308), -1.4839, 0.0, 0, 0]
@@ -441,7 +441,6 @@ billboard = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.035, -0.4)
 
 [node name="Camera" type="Camera3D" parent="Head"]
-current = true
 
 [node name="HitboxFront" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
@@ -449,6 +448,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxFront"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.54999995)
 shape = SubResource("BoxShape3D_v64uw")
+
+[node name="Phone" parent="." instance=ExtResource("6_w3cpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.6, -1.1)
+visible = false
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

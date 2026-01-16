@@ -286,13 +286,13 @@ emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 10.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_me1gr"]
-size = Vector3(1.6, 1, 4)
+size = Vector3(4, 0.4, 1)
 
-[node name="NPCCar" type="CharacterBody3D"]
+[node name="NPCCar" type="CharacterBody3D" groups=["npc_car"]]
 script = ExtResource("1_me1gr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -1.1920929e-07, 0, 1.7881393e-07)
+transform = Transform3D(1.9272301e-07, 0, 1, 0, 1, 0, -1, 0, 1.9272301e-07, -1.1920929e-07, 0, 1.7881393e-07)
 mesh = SubResource("ArrayMesh_ku4xp")
 surface_material_override/0 = SubResource("StandardMaterial3D_3o7cf")
 surface_material_override/1 = SubResource("StandardMaterial3D_54occ")
@@ -308,5 +308,5 @@ surface_material_override/10 = SubResource("StandardMaterial3D_leffd")
 surface_material_override/11 = SubResource("StandardMaterial3D_ubjnt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.7881393e-07, 0.5, 1.1920928e-07)
+transform = Transform3D(1.0000001, 0, -7.351372e-08, 0, 1, 0, 7.351372e-08, 0, 1.0000001, -3.5527137e-15, 0.25, 0)
 shape = SubResource("BoxShape3D_me1gr")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dcfx3r4jbaepd" path="res://scripts/title_screen.gd" id="1_iowo3"]
 [ext_resource type="Texture2D" uid="uid://bqdcc2lmisvbh" path="res://assets/sprites/titlescreen/titlebg.png" id="1_ynr0n"]
 [ext_resource type="Texture2D" uid="uid://d1ujyle4ohja5" path="res://assets/sprites/titlescreen/blackgradient.png" id="2_iowo3"]
-[ext_resource type="AudioStream" uid="uid://bi8usr0aljnfe" path="res://assets/sounds/crowdinabar.wav" id="2_qrms8"]
+[ext_resource type="AudioStream" uid="uid://bpwbqhyem36jx" path="res://assets/sounds/crowdinabar.wav" id="2_qrms8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrms8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

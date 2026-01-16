@@ -6,11 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dy1c420tme5eu" path="res://scenes/state_machine.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://cy3ysphmgbu08" path="res://states/DrivingState.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://c3nglrrrb2y5w" path="res://scenes/player.tscn" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/WalkingIdleState.gd" id="7_85g3d"]
+[ext_resource type="Script" uid="uid://uwr30nkdol3l" path="res://states/IdleState.gd" id="7_85g3d"]
 [ext_resource type="Script" uid="uid://c4g4l7ek2yhog" path="res://states/WalkingState.gd" id="8_choun"]
 [ext_resource type="Script" uid="uid://dgwqlkrluajad" path="res://states/DrivingPhoneState.gd" id="9_choun"]
-[ext_resource type="PackedScene" uid="uid://14xdmvwpq0r8" path="res://scenes/grain.tscn" id="10_choun"]
-[ext_resource type="Script" uid="uid://lcond4o3kgk7" path="res://states/WalkingPhoneState.gd" id="9_ya4ey"]
+[ext_resource type="Script" uid="uid://lcond4o3kgk7" path="res://states/IdlePhoneState.gd" id="10_choun"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,8 +34,6 @@ albedo_color = Color(0.7, 0.7, 0.7, 1)
 [node name="Game" type="Node3D"]
 script = ExtResource("1_ig7tw")
 car = ExtResource("2_0xm2m")
-
-[node name="Grain" parent="." instance=ExtResource("10_choun")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
@@ -82,8 +79,7 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 
-[node name="StateMachine" parent="Player" node_paths=PackedStringArray("initial_state") instance=ExtResource("4_jyhfs")]
-initial_state = NodePath("Idle")
+[node name="StateMachine" parent="Player" instance=ExtResource("4_jyhfs")]
 
 [node name="Driving" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player_car", "player")]
 script = ExtResource("5_tbgi4")
@@ -95,7 +91,6 @@ metadata/_custom_type_script = "uid://cy3ysphmgbu08"
 [node name="Idle" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("7_85g3d")
 player = NodePath("../..")
-normal_fov = 75.0
 metadata/_custom_type_script = "uid://uwr30nkdol3l"
 
 [node name="Walking" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
@@ -103,22 +98,19 @@ script = ExtResource("8_choun")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
 
-[node name="Idle_Phone" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("9_ya4ey")
-player = NodePath("../..")
-metadata/_custom_type_script = "uid://c4g4l7ek2yhog"
-
 [node name="Driving_Phone" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("player", "player_car")]
 script = ExtResource("9_choun")
 player = NodePath("../..")
 player_car = NodePath("../../../PlayerCar")
-phone_fov = 40.0
+metadata/_custom_type_script = "uid://dgwqlkrluajad"
+
+[node name="Idle_Phone" type="Node" parent="Player/StateMachine"]
+script = ExtResource("10_choun")
 
 [connection signal="car_entered" from="PlayerCar" to="Player/StateMachine/Idle" method="on_car_entered"]
 [connection signal="car_exited" from="PlayerCar" to="Player/StateMachine/Driving" method="on_car_exited"]
 [connection signal="car_stopped" from="PlayerCar" to="." method="_on_car_stopped"]
 [connection signal="phone_entered" from="PlayerCar" to="Player/StateMachine/Driving" method="on_phone_entered"]
-[connection signal="phone_exited" from="PlayerCar" to="Player/StateMachine/Driving_Phone" method="on_phone_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="spawnCar"]
 [connection signal="phone_entered" from="Player" to="Player/StateMachine/Walking" method="_on_phone_entered"]
 [connection signal="disable_phone" from="Player/StateMachine/Idle_Phone" to="Player" method="on_disable_phone"]

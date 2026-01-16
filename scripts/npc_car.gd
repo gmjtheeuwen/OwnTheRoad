@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var max_speed = 30.0
 @export var cornering_speed = 8.0
 @export var acceleration = 10.0
+@export var driving := true
 
 var points = []
 var current_point_index = 0
@@ -28,8 +29,7 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
-	if (!is_on_floor()):
-		position.y += get_gravity().y * delta
+	if not driving:	return
 	
 	var distance = global_position.distance_to(next_point)
 	
@@ -41,13 +41,11 @@ func _physics_process(delta: float) -> void:
 	speed = move_toward(speed, target_speed, acceleration*delta)
 	
 	direction = points[current_point_index].direction_to(next_point)
+	global_rotation = Vector3(0, -direction.signed_angle_to(Vector3.RIGHT, Vector3.UP), 0)
 	velocity = speed*direction
 	
 	move_and_slide()
 	
 	if distance < 1:
 		current_point_index = (current_point_index+1)%points.size()
-		next_point = points[(current_point_index+1)%points.size()]
-		
-		direction = points[current_point_index].direction_to(next_point)
-		global_rotation = Vector3(0, -direction.signed_angle_to(Vector3.RIGHT, Vector3.UP), 0)
+		next_point = points[(current_point_index+1)%points.size()]		

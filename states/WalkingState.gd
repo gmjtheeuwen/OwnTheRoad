@@ -6,7 +6,20 @@ class_name Walking
 @export var walking_speed = 5.0
 @export var player: CharacterBody3D
 
+var normal_fov = 75.0
+var fov_speed = 4.0
 var headbob_time = 0.0
+
+func enter():
+	if (player):
+		player.camera = player.get_node("Head/Camera")
+		player.get_node("Collision").disabled = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		player.camera.set_current(true)
+
+func exit():
+	player.velocity.x = 0.0
+	player.velocity.z = 0.0
 
 func headbob(delta) -> Vector3:
 	var new_position = Vector3.ZERO
@@ -29,16 +42,14 @@ func physics_update(delta: float, _drunk_level: int = 0):
 		player.velocity.x = 0.0
 		player.velocity.z = 0.0
 		transitioned.emit(self, "idle")
-	
-	if Input.is_action_just_pressed("phone"):
-		open_phone()
+		
+	if player.camera.fov != normal_fov:
+		player.camera.fov = lerp(player.camera.fov, normal_fov, delta * fov_speed)
 
 func on_car_entered():
 	player.collision.disabled = true
 	player.position = Vector3(0, -10, 0)
 	transitioned.emit(self, "driving")
-	
 
-func open_phone():
-	print("phone entered")
+func on_phone_opened():
 	transitioned.emit(self, "idle_phone")

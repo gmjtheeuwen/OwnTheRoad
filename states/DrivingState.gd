@@ -61,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(30))
 
 func on_car_exited():
-	player.position = player_car.position + Vector3(-1.5, 0, 0)
+	player.position = player_car.position + Vector3(1.5, 0, 0)
 	player.collision.disabled = false
 	transitioned.emit(self, "idle")
 

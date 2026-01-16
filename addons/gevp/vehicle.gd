@@ -329,6 +329,9 @@ extends RigidBody3D
 ## on the result you want - will do.
 @export var frontal_area := 2.0
 
+@export_group("Cutscenes")
+@export var accident_cutscene: StringName
+
 const ANGULAR_VELOCITY_TO_RPM := 60.0 / TAU
 
 var wheel_array : Array[Wheel] = []
@@ -421,18 +424,16 @@ class Axle:
 			slip = maxf(slip, wheel.slip_vector.y)
 		return slip
 
-
 signal car_entered
 signal car_exited
-signal car_stopped
-signal phone_entered
-signal phone_exited
+signal phone_opened
+signal phone_closed
 
 @onready var label = $Area3D/InputLabel
 
 var playerInCar := false
 var playerNextToDoor := false
-var ignitionOn = false
+var phone_visible = false
 
 func _ready():
 	initialize()
@@ -440,6 +441,7 @@ func _ready():
 		label.visible = false
 		var event = InputMap.action_get_events("interact")[0] as InputEventKey
 		label.text = "[%s] Enter" % event.as_text_physical_keycode()
+	phone_visible = $Phone.visible
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		label.visible = true
@@ -460,10 +462,7 @@ func _on_hitbox_front_entered(body: Node3D) -> void:
 		print("player had a frontal collision with %s" % group + " with a speed of %s km/h" % velocity)
 		
 		if group == "npc_car":
-			get_tree().call_deferred('change_scene_to_file', 'res://scenes/cutscenes/cutscene_accident.tscn')
-			
-func _on_fade_out_completed():
-	car_stopped.emit()
+			get_tree().call_deferred('change_scene_to_file', accident_cutscene)
 
 func _integrate_forces(state : PhysicsDirectBodyState3D):
 	current_gravity = state.total_gravity
@@ -653,16 +652,20 @@ func _process(_delta: float) -> void:
 			playerNextToDoor = false
 			label.visible = false
 			car_entered.emit()
-
-func on_phone_entered():
-	phone_entered.emit()
-
-func on_phone_exited():
-	phone_exited.emit()
+	if Input.is_action_just_pressed("phone"):
+		if phone_visible:
+			phone_closed.emit()
+		else:
+			phone_opened.emit()
 	
 func _physics_process(delta : float) -> void:
 	if not is_ready:
 		return
+		
+	if not playerInCar and abs(local_velocity.z) > 0:
+		brake_input = 1.0
+		steering_input = 0.0
+		throttle_input = 0.0
 	
 	## For stability calculations, we need the vehicle body inertia which isn't
 	## available immediately
