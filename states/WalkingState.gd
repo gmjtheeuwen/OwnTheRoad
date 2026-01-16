@@ -8,6 +8,10 @@ class_name Walking
 
 var headbob_time = 0.0
 
+func exit():
+	player.velocity.x = 0.0
+	player.velocity.z = 0.0
+
 func headbob(delta) -> Vector3:
 	var new_position = Vector3.ZERO
 	headbob_time += delta
@@ -16,6 +20,9 @@ func headbob(delta) -> Vector3:
 	return new_position
 
 func physics_update(delta: float, _drunk_level: int = 0):
+	if not player.is_on_floor():
+		player.velocity.y += player.get_gravity().y*delta
+	
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -26,3 +33,11 @@ func physics_update(delta: float, _drunk_level: int = 0):
 		player.velocity.x = 0.0
 		player.velocity.z = 0.0
 		transitioned.emit(self, "idle")
+
+func on_car_entered():
+	player.collision.disabled = true
+	player.position = Vector3(0, -10, 0)
+	transitioned.emit(self, "driving")
+
+func on_phone_opened():
+	transitioned.emit(self, "idle_phone")

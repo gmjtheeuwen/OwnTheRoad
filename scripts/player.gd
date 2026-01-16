@@ -2,8 +2,13 @@ extends CharacterBody3D
 
 const SENSITIVITY = 0.01
 
+@onready var head = $Head
 @onready var camera = $Head/Camera
 @onready var collision = $Collision
+@onready var phone = $Phone
+
+signal phone_opened
+signal phone_closed
 
 # Remove the mouse in the scene
 func _ready():
@@ -15,6 +20,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("phone"):
+		if phone.visible:
+			phone.visible = false
+			phone_closed.emit()
+			global_rotation.y = head.global_rotation.y
+		else:
+			phone.visible = true
+			phone_opened.emit()
+			head.global_rotation.y = global_rotation.y
+		
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(_delta: float) -> void:	
 	move_and_slide()

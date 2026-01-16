@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=3 uid="uid://bkorx52wivetv"]
+
+[ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone.gd" id="1_3rig2"]
+[ext_resource type="Texture2D" uid="uid://5tlo8ce4xntk" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
+[ext_resource type="Material" uid="uid://bk7tsxashm07s" path="res://assets/materials/black_phone.tres" id="2_mseb3"]
+[ext_resource type="Texture2D" uid="uid://njxh7jbrpdlk" path="res://assets/sprites/NavigationApp.png" id="3_8moxm"]
+[ext_resource type="ArrayMesh" uid="uid://ciq7vysxk3mrs" path="res://assets/models/i phone x.obj" id="3_qvaam"]
+[ext_resource type="Script" uid="uid://dv4pnjepy8upm" path="res://scripts/message_app.gd" id="4_espqj"]
+[ext_resource type="Script" path="res://scripts/navigation_app.gd" id="6_eoxts"]
+[ext_resource type="Script" path="res://scripts/uber_app.gd" id="8_mseb3"]
+[ext_resource type="Texture2D" uid="uid://7rhy055yejmt" path="res://assets/sprites/UberApp.png" id="8_oijjg"]
+[ext_resource type="Script" path="res://scripts/app_action.gd" id="9_g4p5k"]
+[ext_resource type="Texture2D" uid="uid://r00gy6kbk2bw" path="res://assets/sprites/messageapp/textexample.png" id="10_c45ss"]
+[ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="12_qvaam"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bymc"]
+resource_local_to_scene = true
+albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bymc"]
+size = Vector3(0.28598633, 0.61996156, 0.11777344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fks7e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6edc7"]
+
+[node name="Phone" type="Node3D" node_paths=PackedStringArray("message_app", "navigation_app", "uber_app")]
+script = ExtResource("1_3rig2")
+message_app = NodePath("PhoneCase/MessageApp")
+navigation_app = NodePath("PhoneCase/NavigationApp")
+uber_app = NodePath("PhoneCase/UberApp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0009996099, -2.7922617e-05, 5.105192e-07, -3.931042e-07, -4.2103434e-06, -0.0009999911, 2.7924523e-05, -0.0009996012, 4.197725e-06, -0.30202705, -0.07118237, 0.053258598)
+material_override = ExtResource("2_mseb3")
+mesh = ExtResource("3_qvaam")
+surface_material_override/0 = SubResource("StandardMaterial3D_2bymc")
+
+[node name="PhoneCase" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44553834, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.1567932, -0.24692577, 0.0068544634)
+shape = SubResource("BoxShape3D_2bymc")
+
+[node name="MessageApp" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.20450224, -0.14208192, 0.054449067)
+script = ExtResource("4_espqj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/MessageApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/MessageApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="AppIcon" type="Sprite3D" parent="PhoneCase/MessageApp"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.010439515, 0, -0.0024973974)
+texture = ExtResource("2_8nsb0")
+
+[node name="NavigationApp" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.09429926, -0.14176825, 0.047184676)
+script = ExtResource("6_eoxts")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/NavigationApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/NavigationApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="AppIcon" type="Sprite3D" parent="PhoneCase/NavigationApp"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.02467373, 0, 0.0028326586)
+texture = ExtResource("3_8moxm")
+
+[node name="UberApp" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.20953503, -0.2134952, 0.05331047)
+script = ExtResource("8_mseb3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/UberApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/UberApp"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="AppIcon" type="Sprite3D" parent="PhoneCase/UberApp"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.016710967, 0, 0.0028326586)
+texture = ExtResource("8_oijjg")
+
+[node name="AppAction" type="Area3D" parent="PhoneCase"]
+transform = Transform3D(1.6515908, 0, 0, 0, 3.754243, 0, 0, 0, 0.5, -0.17499924, -0.24591404, 0.05331047)
+visible = false
+input_ray_pickable = false
+script = ExtResource("9_g4p5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(0.12262534, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.011912547, 0, -0.03305719)
+shape = SubResource("BoxShape3D_fks7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(0.13298537, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0.013562858, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_6edc7")
+
+[node name="Appscreen" type="Sprite3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(0.016901776, 0, 0, 0, 0.0074256253, 0, 0, 0, 0.01, 0.013393216, 0, -0.0012624487)
+texture = ExtResource("10_c45ss")
+
+[node name="FadeUi" parent="." instance=ExtResource("12_qvaam")]
+
+[connection signal="mouse_entered" from="PhoneCase" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="PhoneCase" to="." method="on_mouse_exit"]
+[connection signal="input_event" from="PhoneCase/MessageApp" to="PhoneCase/MessageApp" method="_on_input_event"]
+[connection signal="mouse_entered" from="PhoneCase/MessageApp" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="PhoneCase/MessageApp" to="." method="on_mouse_exit"]
+[connection signal="open_message_app" from="PhoneCase/MessageApp" to="." method="_on_open_message_app"]
+[connection signal="input_event" from="PhoneCase/NavigationApp" to="PhoneCase/NavigationApp" method="_on_input_event"]
+[connection signal="mouse_entered" from="PhoneCase/NavigationApp" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="PhoneCase/NavigationApp" to="." method="on_mouse_exit"]
+[connection signal="open_navigation_app" from="PhoneCase/NavigationApp" to="." method="_on_open_navigation_app"]
+[connection signal="input_event" from="PhoneCase/UberApp" to="PhoneCase/UberApp" method="_on_input_event"]
+[connection signal="mouse_entered" from="PhoneCase/UberApp" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="PhoneCase/UberApp" to="." method="on_mouse_exit"]
+[connection signal="open_uber_app" from="PhoneCase/UberApp" to="." method="_on_open_uber_app"]
+[connection signal="close_app" from="PhoneCase/AppAction" to="." method="_on_app_close"]
+[connection signal="input_event" from="PhoneCase/AppAction" to="PhoneCase/AppAction" method="_on_input_event"]
+[connection signal="mouse_entered" from="PhoneCase/AppAction" to="." method="on_mouse_enter"]
+[connection signal="mouse_exited" from="PhoneCase/AppAction" to="." method="on_mouse_exit"]
+[connection signal="fade_out_completed" from="FadeUi" to="." method="_on_fade_ui_fade_out_completed"]

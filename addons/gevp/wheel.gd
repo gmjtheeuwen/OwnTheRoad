@@ -157,15 +157,6 @@ func process_forces(opposite_compression : float, braking : bool, delta : float)
 		last_collider = get_collider()
 		last_collision_point = get_collision_point()
 		last_collision_normal = get_collision_normal()
-		#var surface_groups : Array[StringName] = last_collider.get_groups()
-		#if surface_groups.size() > 0:
-			#if surface_type != surface_groups[0]:
-				#surface_type = surface_groups[0]
-				#current_cof = coefficient_of_friction[surface_type]
-				#current_rolling_resistance = rolling_resistance[surface_type]
-				#current_lateral_grip_assist = lateral_grip_assist[surface_type]
-				#current_longitudinal_grip_ratio = longitudinal_grip_ratio[surface_type]
-				#current_tire_stiffness = 1000000.0 + 8000000.0 * tire_stiffnesses[surface_type]
 	else:
 		last_collider = null
 	
