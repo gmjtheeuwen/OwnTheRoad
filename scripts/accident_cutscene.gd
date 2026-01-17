@@ -27,14 +27,11 @@ var text_triggers = {
 
 # In your Node2D script _ready() function
 func _ready() -> void:
-	# Connect to textbox signals
 	textbox.text_finished.connect(_on_text_finished)
 	textbox.all_text_finished.connect(_on_all_text_finished)
-	# Initial fade in
 	animation_player.play("shaky_cam")
 
 func _on_all_text_finished() -> void:
-	# Optional: wait a bit before transitioning
 	await get_tree().create_timer(1.0).timeout
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/title/title_screen.tscn")
 
@@ -45,7 +42,6 @@ func _on_text_finished(text_content: String) -> void:
 	if text_triggers.has(text_content):
 		var trigger = text_triggers[text_content]
 		
-		# Fade out ColorRect
 		if trigger["hide_accident"] and accident.has(trigger["hide_accident"]):
 			accident[trigger["hide_accident"]].hide()
  

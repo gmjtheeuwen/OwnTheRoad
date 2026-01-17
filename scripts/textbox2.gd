@@ -13,7 +13,6 @@ enum State{
 var current_state = State.READY
 var text_queue = []
 
-# Signal to notify when specific text is finished displaying
 signal text_finished(text_content)
 
 func _ready() -> void:
@@ -49,7 +48,6 @@ func _ready() -> void:
 	I don't mind. Just don't fall asleep or puke on my seats.")
 	
 
-# In Textbox.gd
 signal all_text_finished
 
 func _process(_delta: float) -> void:
@@ -65,12 +63,9 @@ func _process(_delta: float) -> void:
 				change_state(State.FINISHED)
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept"):
-				# Emit signal with the current text before hiding
 				text_finished.emit(label.text)
 				change_state(State.READY)
 				hide_textbox()
-				
-				# Check if this was the last text
 				if text_queue.is_empty():
 					all_text_finished.emit()
 	
@@ -90,10 +85,8 @@ func display_text():
 	label.visible_ratio = 0.0
 	change_state(State.READING)
 	textbox_container.show()
-	
 	if current_tween:
 		current_tween.kill()
-	
 	current_tween = create_tween()
 	current_tween.set_trans(Tween.TRANS_LINEAR)
 	current_tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHARACTER_READ_RATE)
