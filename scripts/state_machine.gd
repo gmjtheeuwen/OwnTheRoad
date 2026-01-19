@@ -5,6 +5,9 @@ extends Node
 var states: Dictionary = {}
 var current_state: State
 
+@export var max_drunk_level = 8
+@export var drunk_level = 4
+
 func _ready() -> void:
 	for child in get_children():
 		if child is State:
@@ -16,13 +19,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if current_state:
-		current_state.update(delta)
+		current_state.update(delta, drunk_level)
 
 func _physics_process(delta: float) -> void:
 	if current_state:
-		current_state.physics_update(delta)
+		current_state.physics_update(delta, drunk_level)
 
 func on_child_transition(state, new_state_name):
+	print("State: %s" % new_state_name)
 	if state != current_state:
 		return
 		
@@ -35,3 +39,7 @@ func on_child_transition(state, new_state_name):
 		
 	new_state.enter()
 	current_state = new_state
+	
+func increment_drunk_level():
+	drunk_level += 1
+	if (drunk_level > max_drunk_level): drunk_level = max_drunk_level

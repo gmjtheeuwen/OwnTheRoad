@@ -3,13 +3,19 @@ extends CharacterBody3D
 signal car_entered
 signal car_exited
 signal car_stopped
+signal phone_entered
+signal phone_exited
 
 @onready var label = $Area3D/InputLabel
-@onready var camera = $Camera
+@onready var camera = $Head/Camera
+@onready var head = $Head
 @onready var stop_button = $StopCarButton
 
 var playerInCar := false
 var playerNextToDoor := false
+var ignitionOn = false
+
+const SENSITIVITY = 0.005
 
 func _ready() -> void:
 	label.visible = false
@@ -42,3 +48,21 @@ func _process(_delta: float) -> void:
 			car_entered.emit()
 			
 	move_and_slide()
+	
+func on_ignition_pressed():
+	ignitionOn = !ignitionOn
+	print(ignitionOn)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		head.rotation.y = clamp(head.rotation.y, deg_to_rad(-40), deg_to_rad(40))
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(40))
+
+func on_phone_entered():
+	phone_entered.emit()
+
+func on_phone_exited():
+	phone_exited.emit()
+	
