@@ -21,7 +21,8 @@ func apply(delta: float, drunk_level: int):
 		target_offset = randf_range(-1.0, 1.0)*scalar*BASE_OFFSET
 	
 	current_offset = move_toward(current_offset, target_offset, delta * scalar * THROTTLE_SPEED)
-	car.throttle_input += current_offset
+	car.throttle_input = clamp(car.throttle_input + current_offset, -1.0, 1.0)
+	
 	
 func get_scalar(drunk_level: float) -> float:
 	if (drunk_level < level):

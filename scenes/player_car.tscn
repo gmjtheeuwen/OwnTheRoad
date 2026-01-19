@@ -348,9 +348,9 @@ shadow_mesh = SubResource("ArrayMesh_7qo4e")
 size = Vector3(0.6, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v64uw"]
-size = Vector3(1, 0.4, 0.4)
+size = Vector3(1.2, 0.4, 0.1)
 
-[node name="VehicleRigidBody" type="RigidBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel") groups=["player"]]
+[node name="VehicleRigidBody" type="RigidBody3D" node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel") groups=["player_car"]]
 script = ExtResource("1_s2c5k")
 front_left_wheel = NodePath("WheelFrontLeft")
 front_right_wheel = NodePath("WheelFrontRight")
@@ -446,7 +446,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.035, -0.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxFront"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.54999995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.6999999)
 shape = SubResource("BoxShape3D_v64uw")
 
 [node name="Phone" parent="." instance=ExtResource("6_w3cpc")]

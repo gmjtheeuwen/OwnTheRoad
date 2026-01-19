@@ -9,7 +9,7 @@ func _ready() -> void:
 	car.position += Vector3(0, -10, 0)
 
 func on_trigger(body: Node3D):
-	if (!body.is_in_group('player')): return
+	if (!body.is_in_group('player_car')): return
 	if (!body is Vehicle) : return
 	var player_car = body as Vehicle
 	var speed = abs(player_car.local_velocity.z)

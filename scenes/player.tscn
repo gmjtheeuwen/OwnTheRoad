@@ -4,10 +4,14 @@
 [ext_resource type="Shader" uid="uid://c1elk8vshxiwj" path="res://shaders/dubblevision.gdshader" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bkorx52wivetv" path="res://scenes/phone.tscn" id="3_qhqgy"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dqkch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
 [sub_resource type="CurveTexture" id="CurveTexture_g2els"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("2_g2els")
 shader_parameter/wobbleSpeed = 0.02999999932944
 shader_parameter/dubblevisionAndWobbleStrengt = 0.00999999977648
@@ -18,10 +22,6 @@ material = SubResource("ShaderMaterial_dqkch")
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_dqkch"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
-
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
 
@@ -30,13 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
 current = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8417835e-05, -0.23452556, -0.92725515)
-visible = false
-layers = 2
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_qlg0r")
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -52,6 +45,13 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 [node name="Phone" parent="." instance=ExtResource("3_qhqgy")]
 transform = Transform3D(1, 0, 0, 0, 0.88636523, 0.46298665, 0, -0.46298665, 0.88636523, 0.3221411, 0.6721319, -1.3)
 visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8417835e-05, 1.2654744, -0.92725515)
+sorting_offset = -100.0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_qlg0r")
+skeleton = NodePath("../Head/Camera")
 
 [connection signal="phone_closed" from="." to="Phone" method="on_phone_closed"]
 [connection signal="phone_opened" from="." to="Phone" method="_on_phone_opened"]

@@ -662,11 +662,13 @@ func _physics_process(delta : float) -> void:
 	if not is_ready:
 		return
 		
-	if not playerInCar and abs(local_velocity.z) > 0:
-		brake_input = 1.0
+	if not playerInCar:
+		handbrake_input = 1.0
+		brake_input = 0.0
 		steering_input = 0.0
 		throttle_input = 0.0
-	
+	else:
+		handbrake_input = 0.0
 	## For stability calculations, we need the vehicle body inertia which isn't
 	## available immediately
 	if not vehicle_inertia:
