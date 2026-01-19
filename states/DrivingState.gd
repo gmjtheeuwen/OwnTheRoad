@@ -41,7 +41,7 @@ func initialize_effects():
 
 func physics_update(delta: float, drunk_level: int = 0):
 	camera.fov = lerp(camera.fov, normal_fov, delta * fov_speed)
-		
+	
 	player_car.brake_input = Input.get_action_strength("down")
 	player_car.steering_input = Input.get_action_strength("left") - Input.get_action_strength("right")	
 	player_car.throttle_input = pow(Input.get_action_strength("up"), 2.0)

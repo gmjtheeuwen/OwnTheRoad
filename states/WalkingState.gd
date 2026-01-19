@@ -5,9 +5,11 @@ class_name Walking
 @export var headbob_amplitude:= 0.1
 @export var walking_speed = 5.0
 @export var player: CharacterBody3D
+@export var normal_fov : float = 75
+var fov_speed := 4.0
 
-var normal_fov = 75.0
-var fov_speed = 4.0
+var camera: Camera3D
+
 var headbob_time = 0.0
 
 func enter():

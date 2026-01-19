@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqv6n67esvqjb"]
+[gd_scene load_steps=14 format=3 uid="uid://bqv6n67esvqjb"]
 
 [ext_resource type="Script" uid="uid://bptpmmwdt5ldm" path="res://scripts/intro_cutscene.gd" id="1_qiuj5"]
 [ext_resource type="Texture2D" uid="uid://dsmjen6r3ko41" path="res://assets/illustrations/intro_4.png" id="2_1n81e"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c5c88ohfi1y4o" path="res://assets/illustrations/intro_1.png" id="5_ukn74"]
 [ext_resource type="AudioStream" uid="uid://b301i7svipagy" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
 [ext_resource type="AudioStream" uid="uid://c76xefvj7ondv" path="res://assets/sounds/crowd-in-a-bar.wav" id="8_kxktx"]
+[ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="8_qiuj5"]
 
 [sub_resource type="Animation" id="Animation_dw6o5"]
 length = 0.001
@@ -260,4 +261,8 @@ stream = ExtResource("8_kxktx")
 volume_db = -16.186
 autoplay = true
 
+[node name="FadeUi" parent="." instance=ExtResource("8_qiuj5")]
+
+[connection signal="skipped_cutscene" from="." to="FadeUi" method="_on_skipped_cutscene"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="fade_out_completed" from="FadeUi" to="." method="fade_out_completed"]

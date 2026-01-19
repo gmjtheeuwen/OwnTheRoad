@@ -2,7 +2,7 @@ extends Effect
 class_name BrakeEffect
 
 @export var car: Vehicle
-@export var level: int
+@export var level: int = 8
 
 @export var BASE_OFFSET = 0.4
 
