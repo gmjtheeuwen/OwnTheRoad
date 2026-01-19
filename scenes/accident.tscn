@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjw4ngke6y33p"]
 
-[ext_resource type="Script" path="res://scripts/accident.gd" id="1_ydh11"]
+[ext_resource type="Script" uid="uid://cl5imqn0bi3nm" path="res://scripts/accident.gd" id="1_ydh11"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2cas"]
 size = Vector3(4, 2, 1)
@@ -9,14 +9,14 @@ size = Vector3(4, 2, 1)
 script = ExtResource("1_ydh11")
 
 [node name="Trigger" type="Area3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16, 0, -14)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16, 0, 14)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_o2cas")
 
 [node name="CollisionPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 
 [node name="SpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)

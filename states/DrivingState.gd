@@ -35,6 +35,7 @@ func exit():
 	player_car.steering_input = 0.0
 
 func initialize_effects():
+	effects = []
 	for child in get_children():
 		if child is Effect:
 			effects.append(child)
