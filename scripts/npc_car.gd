@@ -1,12 +1,14 @@
 extends CharacterBody3D
 
 @onready var point_container = $PointContainer
+@onready var mesh_instance = $MeshInstance3D
 @export var starting_point_index: int = 0
 @export var max_speed = 30.0
 @export var cornering_speed = 8.0
 @export var acceleration = 10.0
 @export var driving := true
 
+var colors = []
 var points = []
 var current_point_index = 0
 var next_point: Vector3
@@ -15,6 +17,17 @@ var speed: float
 var target_speed: float
 
 func _ready() -> void:	
+	for i in range(5):
+		var color = randf()
+		var material = StandardMaterial3D.new()
+		material.albedo_color = Color.from_hsv(color, 1.0, 1.0)
+		colors.append(material)
+	
+	var car_color = colors[randi()%colors.size()]
+	print(car_color.albedo_color.h)
+	mesh_instance.mesh.surface_set_material(0, car_color)
+	mesh_instance.set_surface_override_material(0, null)
+	
 	for point in point_container.get_children():
 		if point is Node3D:
 			points.append(point.global_position)

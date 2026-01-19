@@ -26,6 +26,7 @@ player=""
 npc_car=""
 building=""
 npc_pedestrian=""
+player_car=""
 
 [input]
 
