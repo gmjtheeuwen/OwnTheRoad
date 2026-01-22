@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dn1cuf6bfmh3" path="res://assets/illustrations/intro_3.png" id="3_8hq43"]
 [ext_resource type="Texture2D" uid="uid://14gahme86ty3" path="res://assets/illustrations/intro_2.png" id="4_fx1av"]
 [ext_resource type="Texture2D" uid="uid://c5c88ohfi1y4o" path="res://assets/illustrations/intro_1.png" id="5_ukn74"]
-[ext_resource type="AudioStream" uid="uid://b301i7svipagy" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
+[ext_resource type="AudioStream" uid="uid://buhhoij2l03k6" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
 [ext_resource type="AudioStream" uid="uid://c76xefvj7ondv" path="res://assets/sounds/crowd-in-a-bar.wav" id="8_kxktx"]
 [ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="8_qiuj5"]
 
@@ -83,6 +83,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [-12.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer2/MarginContainer/Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer3/MarginContainer/Label2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer4/MarginContainer/Label3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wifpd"]
 resource_name = "intro_cutscene"
@@ -118,7 +154,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jusdg"]
 resource_name = "intro cutscene"
-length = 35.5
+length = 47.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,7 +162,7 @@ tracks/0/path = NodePath("CanvasLayer/MarginContainer/intro_1:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 7, 8),
+"times": PackedFloat32Array(7, 8, 14, 15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -138,7 +174,7 @@ tracks/1/path = NodePath("CanvasLayer/MarginContainer/intro_2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(8, 9, 15, 16),
+"times": PackedFloat32Array(15, 16, 22, 23),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -150,7 +186,7 @@ tracks/2/path = NodePath("CanvasLayer/MarginContainer/intro_3:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(16, 17, 23, 24),
+"times": PackedFloat32Array(23, 24, 30, 31),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -162,7 +198,7 @@ tracks/3/path = NodePath("CanvasLayer/MarginContainer/intro_4:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(24, 25, 31, 32),
+"times": PackedFloat32Array(31, 32, 38, 39),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -174,7 +210,7 @@ tracks/4/path = NodePath("CrowdInABar:volume_db")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(23.033333, 24.566668),
+"times": PackedFloat32Array(30.033333, 31.566668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-16.186, -80.0]
@@ -186,10 +222,46 @@ tracks/5/path = NodePath("Bar:volume_db")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(33.033333, 35.5),
+"times": PackedFloat32Array(40.033333, 42.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-12.0, -80.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer2/MarginContainer/Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer3/MarginContainer/Label2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(23, 24, 30, 31),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer4/MarginContainer/Label3:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(39, 40, 45, 46),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dw6o5"]
@@ -262,6 +334,88 @@ volume_db = -16.186
 autoplay = true
 
 [node name="FadeUi" parent="." instance=ExtResource("8_qiuj5")]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1040.0
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="CanvasLayer2/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1040, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "                 One Friday night, you decided
+                 it was a good time as any to get
+                 some drinks and chill."
+autowrap_mode = 2
+clip_text = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1040.0
+offset_top = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label2" type="Label" parent="CanvasLayer3/MarginContainer"]
+custom_minimum_size = Vector2(1040, 200)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 36
+text = "
+After a few drinks and conversations, you get a call
+from your girlfriend to return home."
+autowrap_mode = 2
+clip_text = true
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer4"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1040.0
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Label3" type="Label" parent="CanvasLayer4/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1040, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 52
+text = "
+                        Get home."
+autowrap_mode = 2
+clip_text = true
 
 [connection signal="skipped_cutscene" from="." to="FadeUi" method="_on_skipped_cutscene"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
