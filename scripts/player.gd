@@ -8,6 +8,7 @@ const ROTATION_LERP_SPEED := 6.0
 @onready var collision = $Collision
 @onready var phone = $Phone
 @onready var label = $Head/Camera/Label
+@onready var double_vision = $MeshInstance3D
 
 var timeLabelVisible := 5.0
 var phone_camera_target: Transform3D
@@ -37,10 +38,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("phone"):
 		if phone.visible:
 			phone.visible = false
+			double_vision.visible = true
 			phone_closed.emit()
 		else:
 			label.visible = false
 			phone.visible = true
+			double_vision.visible = false
 			phone_opened.emit()
 		
 
