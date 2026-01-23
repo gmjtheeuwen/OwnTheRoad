@@ -246,10 +246,10 @@ tracks/7/path = NodePath("CanvasLayer3/MarginContainer/Label2:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(23, 24, 30, 31),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 23, 24, 30, 31),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -258,10 +258,10 @@ tracks/8/path = NodePath("CanvasLayer4/MarginContainer/Label3:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(39, 40, 45, 46),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 39, 40, 45, 46),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dw6o5"]
@@ -332,9 +332,6 @@ autoplay = true
 stream = ExtResource("8_kxktx")
 volume_db = -16.186
 autoplay = true
-
-[node name="FadeUi" parent="." instance=ExtResource("8_qiuj5")]
-visible = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -416,6 +413,8 @@ text = "
                         Get home."
 autowrap_mode = 2
 clip_text = true
+
+[node name="FadeUi" parent="." instance=ExtResource("8_qiuj5")]
 
 [connection signal="skipped_cutscene" from="." to="FadeUi" method="_on_skipped_cutscene"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
