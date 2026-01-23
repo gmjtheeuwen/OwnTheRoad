@@ -4,7 +4,7 @@ class_name BrakeEffect
 @export var car: Vehicle
 @export var level: int = 8
 
-@export var BASE_OFFSET = 0.4
+@export var BASE_OFFSET = 0.8
 
 var delay = 0.0
 

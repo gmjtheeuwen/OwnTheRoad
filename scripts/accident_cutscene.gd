@@ -27,6 +27,7 @@ var text_triggers = {
 
 # In your Node2D script _ready() function
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	textbox.text_finished.connect(_on_text_finished)
 	textbox.all_text_finished.connect(_on_all_text_finished)
 	animation_player.play("shaky_cam")

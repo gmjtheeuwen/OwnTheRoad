@@ -4,7 +4,7 @@ class_name ThrottleEffect
 @export var car: Vehicle
 @export var level: int = 8
 
-@export var BASE_OFFSET = 0.1
+@export var BASE_OFFSET = 0.2
 @export var THROTTLE_SPEED = 0.05
 @export var MIN_DELAY = 5.0
 @export var MAX_DELAY = 10.0

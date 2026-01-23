@@ -4,7 +4,7 @@ class_name SteeringEffect
 @export var car: Vehicle
 @export var level: int = 8
 
-@export var BASE_OFFSET_ANGLE = 2.0
+@export var BASE_OFFSET_ANGLE = 3.0
 @export var TURN_SPEED = 0.2
 @export var MIN_DELAY = 2.5
 @export var MAX_DELAY = 10.0
