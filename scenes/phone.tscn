@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkorx52wivetv"]
+[gd_scene load_steps=16 format=3 uid="uid://bkorx52wivetv"]
 
 [ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone.gd" id="1_3rig2"]
 [ext_resource type="Texture2D" uid="uid://bk8hkm6k2awyr" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://8sjj45rb5c1o" path="res://scripts/uber_app.gd" id="8_mseb3"]
 [ext_resource type="Texture2D" uid="uid://dp2aarm0tdnbh" path="res://assets/sprites/UberApp.png" id="8_oijjg"]
 [ext_resource type="Script" uid="uid://0yp07ms2oyb" path="res://scripts/app_action.gd" id="9_g4p5k"]
-[ext_resource type="Texture2D" uid="uid://0cj126kxacvi" path="res://assets/sprites/messageapp/textexample.png" id="10_c45ss"]
 [ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="12_qvaam"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bymc"]
@@ -94,6 +93,10 @@ mesh = SubResource("BoxMesh_6edc7")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.016710967, 0, 0.0028326586)
 texture = ExtResource("8_oijjg")
 
+[node name="Timer" type="Timer" parent="PhoneCase/UberApp"]
+wait_time = 60.0
+one_shot = true
+
 [node name="AppAction" type="Area3D" parent="PhoneCase"]
 transform = Transform3D(1.6515908, 0, 0, 0, 3.754243, 0, 0, 0, 0.5, -0.17499924, -0.24591404, 0.05331047)
 visible = false
@@ -111,7 +114,14 @@ mesh = SubResource("BoxMesh_6edc7")
 
 [node name="Appscreen" type="Sprite3D" parent="PhoneCase/AppAction"]
 transform = Transform3D(0.016901776, 0, 0, 0, 0.0074256253, 0, 0, 0, 0.01, 0.013393216, 0, -0.0012624487)
-texture = ExtResource("10_c45ss")
+
+[node name="Label" type="Label3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(0.30273828, 0, 0, 0, 0.13318264, 0, 0, 0, 1, 0.015496843, 0.014095418, 0.032010585)
+text = "Your taxi will arrive in:"
+font_size = 15
+outline_size = 8
+autowrap_mode = 2
+width = 80.0
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="PhoneCase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
@@ -132,7 +142,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
 [connection signal="mouse_entered" from="PhoneCase/UberApp" to="." method="on_mouse_enter"]
 [connection signal="mouse_exited" from="PhoneCase/UberApp" to="." method="on_mouse_exit"]
 [connection signal="open_uber_app" from="PhoneCase/UberApp" to="." method="_on_open_uber_app"]
-[connection signal="open_uber_app" from="PhoneCase/UberApp" to="FadeUi" method="_on_open_uber_app"]
+[connection signal="timeout" from="PhoneCase/UberApp/Timer" to="." method="_on_timer_end"]
+[connection signal="timeout" from="PhoneCase/UberApp/Timer" to="FadeUi" method="on_taxi_arrived"]
 [connection signal="close_app" from="PhoneCase/AppAction" to="." method="_on_app_close"]
 [connection signal="input_event" from="PhoneCase/AppAction" to="PhoneCase/AppAction" method="_on_input_event"]
 [connection signal="mouse_entered" from="PhoneCase/AppAction" to="." method="on_mouse_enter"]
