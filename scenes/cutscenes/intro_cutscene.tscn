@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dn1cuf6bfmh3" path="res://assets/illustrations/intro_3.png" id="3_8hq43"]
 [ext_resource type="Texture2D" uid="uid://14gahme86ty3" path="res://assets/illustrations/intro_2.png" id="4_fx1av"]
 [ext_resource type="Texture2D" uid="uid://c5c88ohfi1y4o" path="res://assets/illustrations/intro_1.png" id="5_ukn74"]
-[ext_resource type="AudioStream" uid="uid://buhhoij2l03k6" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
+[ext_resource type="AudioStream" uid="uid://b301i7svipagy" path="res://assets/music/Bar.mp3" id="6_qtmnn"]
 [ext_resource type="AudioStream" uid="uid://c76xefvj7ondv" path="res://assets/sounds/crowd-in-a-bar.wav" id="8_kxktx"]
 [ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="8_qiuj5"]
 
