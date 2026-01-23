@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfhvg0t8ksnx2"]
+[gd_scene load_steps=13 format=4 uid="uid://cfhvg0t8ksnx2"]
 
 [ext_resource type="Script" uid="uid://bhgmdaf1t24jc" path="res://scripts/npc_car.gd" id="1_me1gr"]
+[ext_resource type="AudioStream" uid="uid://bfwsgqf4pd7ls" path="res://assets/sounds/car sound outside.mp3" id="2_3o7cf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me1gr"]
 albedo_color = Color(1, 0, 0, 1)
@@ -314,3 +315,10 @@ surface_material_override/11 = SubResource("StandardMaterial3D_ubjnt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.0000001, 0, -7.351372e-08, 0, 1, 0, 7.351372e-08, 0, 1.0000001, -3.5527137e-15, 0.25, 0)
 shape = SubResource("BoxShape3D_me1gr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_3o7cf")
+volume_db = 18.64
+autoplay = true
+doppler_tracking = 2
+parameters/looping = true
