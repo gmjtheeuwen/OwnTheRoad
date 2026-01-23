@@ -48,6 +48,7 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8417835e-05, 1.2654744, -0.92725515)
+visible = false
 sorting_offset = -100.0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qlg0r")

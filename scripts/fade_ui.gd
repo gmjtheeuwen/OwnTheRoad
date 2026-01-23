@@ -9,7 +9,7 @@ func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 0.0, 0.5)
 
-func _on_open_uber_app() -> void:
+func on_taxi_arrived() -> void:
 	var tween = create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 1.0, 1) 
 	tween.finished.connect(fade_out_completed.emit)
