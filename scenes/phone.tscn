@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkorx52wivetv"]
+[gd_scene load_steps=21 format=3 uid="uid://bkorx52wivetv"]
 
 [ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone.gd" id="1_3rig2"]
 [ext_resource type="Texture2D" uid="uid://bk8hkm6k2awyr" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://8sjj45rb5c1o" path="res://scripts/uber_app.gd" id="8_mseb3"]
 [ext_resource type="Texture2D" uid="uid://dp2aarm0tdnbh" path="res://assets/sprites/UberApp.png" id="8_oijjg"]
 [ext_resource type="Script" uid="uid://0yp07ms2oyb" path="res://scripts/app_action.gd" id="9_g4p5k"]
+[ext_resource type="Script" uid="uid://lmjhorjtkdf1" path="res://scripts/taxi_button.gd" id="11_qvaam"]
 [ext_resource type="PackedScene" uid="uid://y102tpa830md" path="res://scenes/fade_ui.tscn" id="12_qvaam"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bymc"]
@@ -17,11 +18,27 @@ resource_local_to_scene = true
 albedo_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bymc"]
-size = Vector3(0.28598633, 0.61996156, 0.11777344)
+size = Vector3(0.03, 0.03, 0.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fks7e"]
+size = Vector3(1.1264648, 1.0702447, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvaam"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6edc7"]
+material = SubResource("StandardMaterial3D_qvaam")
+size = Vector3(0.03, 0.03, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mseb3"]
+albedo_color = Color(0.030500045, 0.61, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mseb3"]
+material = SubResource("StandardMaterial3D_mseb3")
+size = Vector3(0.2, 0.05, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvaam"]
+size = Vector3(0.2, 0.05, 0.05)
 
 [node name="Phone" type="Node3D" node_paths=PackedStringArray("message_app", "navigation_app", "uber_app")]
 script = ExtResource("1_3rig2")
@@ -39,15 +56,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2bymc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44553834, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.1567932, -0.24692577, 0.0068544634)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1567932, -0.24692577, 0.0068544634)
 shape = SubResource("BoxShape3D_2bymc")
 
 [node name="MessageApp" type="Area3D" parent="PhoneCase"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.20450224, -0.14208192, 0.054449067)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.20450224, -0.14208192, 0.057910874)
 script = ExtResource("4_espqj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/MessageApp"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.029523186)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.010249674, -0.00056016445, -0.029523186)
 shape = SubResource("BoxShape3D_fks7e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/MessageApp"]
@@ -60,7 +77,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.010439515, 0, -0.0024
 texture = ExtResource("2_8nsb0")
 
 [node name="NavigationApp" type="Area3D" parent="PhoneCase"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.09429926, -0.14176825, 0.047184676)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.09429926, -0.14176825, 0.050646484)
 script = ExtResource("6_eoxts")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/NavigationApp"]
@@ -77,7 +94,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.02467373, 0, 0.00283
 texture = ExtResource("3_8moxm")
 
 [node name="UberApp" type="Area3D" parent="PhoneCase"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.20953503, -0.2134952, 0.05331047)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.20953503, -0.2134952, 0.056772277)
 script = ExtResource("8_mseb3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/UberApp"]
@@ -98,30 +115,58 @@ wait_time = 60.0
 one_shot = true
 
 [node name="AppAction" type="Area3D" parent="PhoneCase"]
-transform = Transform3D(1.6515908, 0, 0, 0, 3.754243, 0, 0, 0, 0.5, -0.17499924, -0.24591404, 0.05331047)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15582523, -0.24591404, 0.0075974017)
 input_ray_pickable = false
 script = ExtResource("9_g4p5k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/AppAction"]
-transform = Transform3D(0.12262534, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.011912547, 0, -0.03305719)
-shape = SubResource("BoxShape3D_fks7e")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/AppAction"]
-transform = Transform3D(0.13298537, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0.013562858, 0, 0)
+[node name="CloseAppButton" type="CollisionShape3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07389711, 0.1517359, 0.046212792)
 visible = false
+shape = SubResource("BoxShape3D_2bymc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/AppAction/CloseAppButton"]
 mesh = SubResource("BoxMesh_6edc7")
+skeleton = NodePath("../..")
+
+[node name="CloseLabel" type="Label3D" parent="PhoneCase/AppAction/CloseAppButton"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0.005925834)
+text = "X
+"
+outline_size = 0
 
 [node name="Appscreen" type="Sprite3D" parent="PhoneCase/AppAction"]
-transform = Transform3D(0.016901776, 0, 0, 0, 0.0074256253, 0, 0, 0, 0.01, 0.013393216, 0, -0.0012624487)
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.005274579, 0, 0.050863817)
 
-[node name="Label" type="Label3D" parent="PhoneCase/AppAction"]
-transform = Transform3D(0.30273828, 0, 0, 0, 0.13318264, 0, 0, 0, 1, 0.015496843, 0.014095418, 0.032010585)
+[node name="TaxiLabel" type="Label3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.004266396, 0.010563552, 0.043793514)
+visible = false
 text = "Your taxi will arrive in:"
-font_size = 15
-outline_size = 8
+font_size = 36
 autowrap_mode = 2
-width = 80.0
+width = 200.0
+
+[node name="TaxiButton" type="Node3D" parent="PhoneCase/AppAction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0055533648, 0, 0)
+visible = false
+script = ExtResource("11_qvaam")
+
+[node name="Label3D" type="Label3D" parent="PhoneCase/AppAction/TaxiButton"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.048224337)
+text = "Call a taxi"
+font_size = 36
+autowrap_mode = 2
+width = 200.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhoneCase/AppAction/TaxiButton"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.021535695)
+mesh = SubResource("BoxMesh_mseb3")
+
+[node name="Area3D" type="Area3D" parent="PhoneCase/AppAction/TaxiButton/MeshInstance3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhoneCase/AppAction/TaxiButton/MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.109344e-05)
+shape = SubResource("BoxShape3D_qvaam")
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="PhoneCase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
@@ -148,4 +193,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
 [connection signal="input_event" from="PhoneCase/AppAction" to="PhoneCase/AppAction" method="_on_input_event"]
 [connection signal="mouse_entered" from="PhoneCase/AppAction" to="." method="on_mouse_enter"]
 [connection signal="mouse_exited" from="PhoneCase/AppAction" to="." method="on_mouse_exit"]
+[connection signal="taxi_called" from="PhoneCase/AppAction/TaxiButton" to="." method="_on_taxi_called"]
+[connection signal="input_event" from="PhoneCase/AppAction/TaxiButton/MeshInstance3D/Area3D" to="PhoneCase/AppAction/TaxiButton" method="_on_input_event"]
 [connection signal="fade_out_completed" from="FadeUi" to="." method="_on_fade_out_completed"]

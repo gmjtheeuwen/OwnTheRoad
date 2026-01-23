@@ -7,8 +7,9 @@ extends Node3D
 @export var uber_app : Area3D
 @onready var phone_sfx = $PhoneCase/SFX
 @onready var timer = $PhoneCase/UberApp/Timer
-@onready var label : Label3D = $PhoneCase/AppAction/Label
-@onready var collision = $PhoneCase/AppAction/CollisionShape3D
+@onready var taxi_label : Label3D = $PhoneCase/AppAction/TaxiLabel
+@onready var taxi_button = $PhoneCase/AppAction/TaxiButton
+@onready var close_app_button = $PhoneCase/AppAction/CloseAppButton
 
 var timerVisible = false
 
@@ -21,6 +22,7 @@ func disable_apps():
 	uber_app.visible = false
 	app_action.input_ray_pickable = true
 	app_action.visible = true
+	close_app_button.visible = true
 	
 func enable_apps():
 	message_app.input_ray_pickable = true
@@ -31,10 +33,11 @@ func enable_apps():
 	uber_app.visible =true
 	app_action.input_ray_pickable = false
 	app_action.visible = false
+	close_app_button.visible = false
 	
 func _process(_delta: float) -> void:
 	if (timerVisible):
-		label.text = "Your taxi will arrive in: \n%s" % roundi(timer.time_left)
+		taxi_label.text = "Your taxi will arrive in: \n%s" % roundi(timer.time_left)
 
 func _on_open_message_app() -> void:
 	disable_apps()
@@ -49,9 +52,8 @@ func _on_open_navigation_app() -> void:
 func _on_open_uber_app() -> void:
 	disable_apps()
 	play_phone_sfx()
-	timer.start()
-	timerVisible = true
-	collision.disabled = true
+	app_screen.texture = null
+	taxi_button.visible = true
 
 func _on_app_close() -> void:
 	enable_apps()
@@ -66,6 +68,13 @@ func on_phone_closed() -> void:
 func play_phone_sfx() -> void:
 	phone_sfx.stream = load("res://assets/sounds/phone_tap.wav")
 	phone_sfx.play()
+	
+func _on_taxi_called():
+	taxi_button.visible = false
+	taxi_label.show()
+	timer.start()
+	timerVisible = true
+	close_app_button.disabled = true
 
 func _on_fade_out_completed():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/cutscenes/taxi_scene.tscn")
