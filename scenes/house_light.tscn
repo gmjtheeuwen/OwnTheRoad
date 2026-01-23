@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3rdtj1djlsrq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrbnm"]
+albedo_color = Color(1, 0.967, 0.33999997, 1)
+emission_enabled = true
+emission = Color(1, 0.967, 0.33999997, 1)
+
+[node name="HouseLight" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.30541992, 0.066467285, 0.34277344)
+material = SubResource("StandardMaterial3D_lrbnm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(1, 0.967, 0.33999997, 1)
+light_energy = 4.5
+spot_range = 5.7
+spot_angle = 37.7
