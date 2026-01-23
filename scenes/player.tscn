@@ -54,5 +54,9 @@ extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qlg0r")
 skeleton = NodePath("../Head/Camera")
 
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46231705, -2.4378533)
+billboard = 2
+
 [connection signal="phone_closed" from="." to="Phone" method="on_phone_closed"]
 [connection signal="phone_opened" from="." to="Phone" method="_on_phone_opened"]
