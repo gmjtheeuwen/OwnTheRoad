@@ -7,7 +7,7 @@ const ROTATION_LERP_SPEED := 6.0
 @onready var camera = $Head/Camera
 @onready var collision = $Collision
 @onready var phone = $Phone
-@onready var label = $Label
+@onready var label = $Head/Camera/Label
 
 var timeLabelVisible := 5.0
 var phone_camera_target: Transform3D

@@ -430,6 +430,7 @@ signal phone_opened
 signal phone_closed
 
 @onready var label = $Area3D/InputLabel
+@onready var audio = $AudioStreamPlayer3D
 
 var playerInCar := false
 var playerNextToDoor := false
@@ -646,9 +647,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if playerInCar:
 			playerInCar = false
+			audio.playing = false
 			car_exited.emit()
 		elif playerNextToDoor:
 			playerInCar = true
+			audio.playing = true
 			playerNextToDoor = false
 			label.visible = false
 			car_entered.emit()
