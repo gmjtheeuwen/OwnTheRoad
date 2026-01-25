@@ -116,6 +116,7 @@ func _on_open_navigation_app() -> void:
 	disable_apps()
 	play_phone_sfx()
 	app_screen.texture = load("res://assets/sprites/navigationapp/navigationexample.png")
+	taxi_button.visible = false
 
 func _on_open_uber_app() -> void:
 	disable_apps()
