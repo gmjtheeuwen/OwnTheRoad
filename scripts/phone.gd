@@ -11,6 +11,32 @@ extends Node3D
 @onready var taxi_button = $PhoneCase/AppAction/TaxiButton
 @onready var close_app_button = $PhoneCase/AppAction/CloseAppButton
 
+@export var hidden_position: Vector3
+@export var visible_position: Vector3
+
+@export var hidden_rotation: Vector3
+@export var visible_rotation: Vector3
+
+@export var slide_duration := 0.35
+@export var slide_ease := Tween.EASE_OUT
+@export var slide_trans := Tween.TRANS_QUAD
+
+enum NotificationMode {
+	RANDOM,
+	FIXED
+}
+
+@export var notification_mode := NotificationMode.RANDOM
+
+@export var min_notify_time := 8.0
+@export var max_notify_time := 25.0
+@export var fixed_notify_time := 15.0
+
+@export var notification_sound: AudioStream
+
+
+var slide_tween: Tween
+
 var timerVisible = false
 
 func disable_apps():
@@ -58,12 +84,6 @@ func _on_open_uber_app() -> void:
 func _on_app_close() -> void:
 	enable_apps()
 	play_phone_sfx()
-
-func _on_phone_opened() -> void:
-	visible = true
-
-func on_phone_closed() -> void:
-	visible = false
 
 func play_phone_sfx() -> void:
 	phone_sfx.stream = load("res://assets/sounds/phone_tap.wav")

@@ -50,6 +50,8 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 [node name="Phone" parent="." instance=ExtResource("3_qhqgy")]
 transform = Transform3D(1, 0, 0, 0, 0.88636523, 0.46298665, 0, -0.46298665, 0.88636523, 0.1675381, 0.86631966, -1.100287)
 visible = false
+hidden_position = Vector3(0.168, 0, 0)
+visible_position = Vector3(0.168, 0.866, -1.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8417835e-05, 1.2654744, -0.92725515)
@@ -57,6 +59,3 @@ sorting_offset = -100.0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qlg0r")
 skeleton = NodePath("../Head/Camera")
-
-[connection signal="phone_closed" from="." to="Phone" method="on_phone_closed"]
-[connection signal="phone_opened" from="." to="Phone" method="_on_phone_opened"]

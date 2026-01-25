@@ -442,7 +442,6 @@ func _ready():
 		label.visible = false
 		var event = InputMap.action_get_events("interact")[0] as InputEventKey
 		label.text = "[%s] Enter" % event.as_text_physical_keycode()
-	phone_visible = $Phone.visible
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		label.visible = true
