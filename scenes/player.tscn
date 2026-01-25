@@ -59,3 +59,5 @@ sorting_offset = -100.0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qlg0r")
 skeleton = NodePath("../Head/Camera")
+
+[connection signal="phone_pressed" from="." to="Phone" method="_on_app_close"]

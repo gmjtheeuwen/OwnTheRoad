@@ -175,6 +175,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
 
 [node name="FadeUi" parent="." instance=ExtResource("12_qvaam")]
 
+[node name="NotificationTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NotificationSFX" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_entered" from="PhoneCase" to="." method="on_mouse_enter"]
 [connection signal="mouse_exited" from="PhoneCase" to="." method="on_mouse_exit"]
 [connection signal="input_event" from="PhoneCase/MessageApp" to="PhoneCase/MessageApp" method="_on_input_event"]
@@ -198,3 +203,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
 [connection signal="taxi_called" from="PhoneCase/AppAction/TaxiButton" to="." method="_on_taxi_called"]
 [connection signal="input_event" from="PhoneCase/AppAction/TaxiButton/MeshInstance3D/Area3D" to="PhoneCase/AppAction/TaxiButton" method="_on_input_event"]
 [connection signal="fade_out_completed" from="FadeUi" to="." method="_on_fade_out_completed"]
+[connection signal="timeout" from="NotificationTimer" to="." method="_on_notification_timer_timeout"]
