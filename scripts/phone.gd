@@ -42,10 +42,11 @@ var slide_tween: Tween
 
 var timerVisible = false
 
+var taxi_called = false
+
 func _ready():
 	randomize()
 	start_notifications()
-
 
 func disable_apps():
 	message_app.input_ray_pickable = false
@@ -120,7 +121,8 @@ func _on_open_uber_app() -> void:
 	disable_apps()
 	play_phone_sfx()
 	app_screen.texture = null
-	taxi_button.visible = true
+	if not taxi_called:
+		taxi_button.visible = true
 
 func _on_app_close() -> void:
 	enable_apps()
@@ -139,11 +141,12 @@ func play_phone_sfx() -> void:
 	phone_sfx.play()
 	
 func _on_taxi_called():
+	taxi_called = true
 	taxi_button.visible = false
 	taxi_label.show()
 	timer.start()
 	timerVisible = true
-	close_app_button.disabled = true
+	close_app_button.disabled = false
 
 func _on_fade_out_completed():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/cutscenes/taxi_scene.tscn")
