@@ -28,11 +28,15 @@ enum NotificationMode {
 	FIXED
 }
 
+var notif_id = 0
+
+const MAX_NOTIFICATIONS := 9
+
 @onready var notification_timer: Timer = $NotificationTimer
 @export var notification_mode := NotificationMode.RANDOM
 
 @export var min_notify_time := 4.0
-@export var max_notify_time := 16.0
+@export var max_notify_time := 12.0
 @export var fixed_notify_time := 8.0
 
 @export var notification_sound: AudioStream
@@ -72,24 +76,43 @@ func enable_apps():
 	
 	if notification_timer:
 		notification_timer.start()
+	
+	
 
 func start_notifications():
 	schedule_next_notification()
 
 func schedule_next_notification():
+	
+	if notif_id >= MAX_NOTIFICATIONS:
+		notification_timer.stop()
+		return
+	
 	var wait_time := 0.0
-
+	
 	match notification_mode:
 		NotificationMode.RANDOM:
 			wait_time = randf_range(min_notify_time, max_notify_time)
 		NotificationMode.FIXED:
 			wait_time = fixed_notify_time
-
+			
 	notification_timer.start(wait_time)
+	
+
 
 func _on_notification_timer_timeout():
+	if notif_id >= MAX_NOTIFICATIONS:
+		notification_timer.stop()
+		return
+	
+	notif_id += 1
+	
+	print("Notification: " + str(notif_id))
+	
 	notification_sfx.stream = notification_sound
 	notification_sfx.play()
+	
+	change_message_screen()
 	message_app_icon.texture = load("res://assets/sprites/MessageAppNotif.png")
 	
 	schedule_next_notification()
@@ -97,7 +120,11 @@ func _on_notification_timer_timeout():
 func stop_notification_sound():
 	if notification_sfx.playing:
 		notification_sfx.stop()
-	
+		
+
+func change_message_screen():
+	app_screen.texture = load("res://assets/sprites/messageapp/chloemessages/Chloe" + str(notif_id) + ".png")
+
 func _process(_delta: float) -> void:
 	if (timerVisible):
 		taxi_label.text = "Your taxi will arrive in: \n%s" % roundi(timer.time_left)
@@ -106,7 +133,11 @@ func _on_open_message_app() -> void:
 	stop_notification_sound()
 	disable_apps()
 	play_phone_sfx()
-	app_screen.texture = load("res://assets/sprites/messageapp/textexample.png")
+	if notif_id == 0:
+		app_screen.texture = load("res://assets/sprites/messageapp/chloemessages/ChloeNone.png")
+	else:
+		change_message_screen()
+	
 	message_app_icon.texture = load("res://assets/sprites/MessageApp.png")
 	
 	if notification_timer:
