@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bkorx52wivetv"]
+[gd_scene load_steps=22 format=3 uid="uid://bkorx52wivetv"]
 
 [ext_resource type="Script" uid="uid://bfqiw27quea5c" path="res://scripts/phone.gd" id="1_3rig2"]
 [ext_resource type="Texture2D" uid="uid://bk8hkm6k2awyr" path="res://assets/sprites/MessageApp.png" id="2_8nsb0"]
+[ext_resource type="AudioStream" uid="uid://dm50ipn6oxjhj" path="res://assets/sounds/Notif.wav" id="2_espqj"]
 [ext_resource type="Material" uid="uid://bk7tsxashm07s" path="res://assets/materials/black_phone.tres" id="2_mseb3"]
 [ext_resource type="Texture2D" uid="uid://4h7to1jx3ej7" path="res://assets/sprites/NavigationApp.png" id="3_8moxm"]
 [ext_resource type="ArrayMesh" uid="uid://bi3ixmqlo6hjt" path="res://assets/models/i phone x.obj" id="3_qvaam"]
@@ -45,6 +46,7 @@ script = ExtResource("1_3rig2")
 message_app = NodePath("PhoneCase/MessageApp")
 navigation_app = NodePath("PhoneCase/NavigationApp")
 uber_app = NodePath("PhoneCase/UberApp")
+notification_sound = ExtResource("2_espqj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0009996099, -2.7922617e-05, 5.105192e-07, -3.931042e-07, -4.2103434e-06, -0.0009999911, 2.7924523e-05, -0.0009996012, 4.197725e-06, -0.30202705, -0.07118237, 0.053258598)
@@ -173,6 +175,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
 
 [node name="FadeUi" parent="." instance=ExtResource("12_qvaam")]
 
+[node name="NotificationTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NotificationSFX" type="AudioStreamPlayer" parent="."]
+
 [connection signal="mouse_entered" from="PhoneCase" to="." method="on_mouse_enter"]
 [connection signal="mouse_exited" from="PhoneCase" to="." method="on_mouse_exit"]
 [connection signal="input_event" from="PhoneCase/MessageApp" to="PhoneCase/MessageApp" method="_on_input_event"]
@@ -196,3 +203,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44553834, 0)
 [connection signal="taxi_called" from="PhoneCase/AppAction/TaxiButton" to="." method="_on_taxi_called"]
 [connection signal="input_event" from="PhoneCase/AppAction/TaxiButton/MeshInstance3D/Area3D" to="PhoneCase/AppAction/TaxiButton" method="_on_input_event"]
 [connection signal="fade_out_completed" from="FadeUi" to="." method="_on_fade_out_completed"]
+[connection signal="timeout" from="NotificationTimer" to="." method="_on_notification_timer_timeout"]

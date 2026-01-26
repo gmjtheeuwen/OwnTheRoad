@@ -22,14 +22,17 @@ var fov_speed := 4.0
 
 func enter():
 	if (player):
+		player.phone_pressed.connect(on_phone_pressed)
 		player.get_node("Collision").disabled = true
 		camera = player_car.get_node("Head/Camera")
 		head = player_car.get_node("Head")
-		camera.set_current(true)
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		player.set_active_camera(camera)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		initialize_effects()
 		
 func exit():
+	if player.phone_pressed.is_connected(on_phone_pressed):
+		player.phone_pressed.disconnect(on_phone_pressed)
 	player_car.brake_input = 0.0
 	player_car.throttle_input = 0.0
 	player_car.steering_input = 0.0
@@ -53,6 +56,7 @@ func physics_update(delta: float, drunk_level: int = 0):
 	
 	for effect in effects:
 		effect.apply(delta, drunk_level)
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and head and camera:
@@ -66,6 +70,5 @@ func on_car_exited():
 	player.collision.disabled = false
 	transitioned.emit(self, "idle")
 
-func on_phone_entered():
-	print("phone entered")
+func on_phone_pressed():
 	transitioned.emit(self, "driving_phone")

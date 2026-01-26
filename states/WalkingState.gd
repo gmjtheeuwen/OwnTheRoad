@@ -14,10 +14,11 @@ var headbob_time = 0.0
 
 func enter():
 	if (player):
+		player.phone_pressed.connect(on_phone_pressed)
 		player.camera = player.get_node("Head/Camera")
 		player.get_node("Collision").disabled = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		player.camera.set_current(true)
+		player.set_active_camera(player.camera)
 
 func exit():
 	player.velocity.x = 0.0
@@ -53,5 +54,5 @@ func on_car_entered():
 	player.position = Vector3(0, -10, 0)
 	transitioned.emit(self, "driving")
 
-func on_phone_opened():
+func on_phone_pressed():
 	transitioned.emit(self, "idle_phone")
